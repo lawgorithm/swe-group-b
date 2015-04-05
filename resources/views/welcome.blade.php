@@ -21,7 +21,7 @@
 			}
 
 			.content {
-				text-align: center;
+				text-align: left;
 				display: inline-block;
 			}
 
