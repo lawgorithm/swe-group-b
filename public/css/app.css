@@ -2628,7 +2628,7 @@ select[multiple].form-group-lg .form-control {
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     vertical-align: middle;
   }
   .form-inline .form-control {
@@ -4119,11 +4119,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777777;
+  color: #27272b;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333333;
+  color: #27272b;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
