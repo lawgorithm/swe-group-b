@@ -11,7 +11,7 @@ body {
 }
 
 .wrapper {
-	min-height: 356px;
+	min-height: 360px;
 	position: relative;
 	width: 530px;
 	margin: 0 auto;
@@ -31,4 +31,12 @@ body {
 
 #msForm fieldset:not(:first-of-type) {
 	display: none;
+}
+
+.submit-button {
+	position: absolute;
+	width: 75%;
+	left: 12.5%;
+	margin: 0 auto;
+	bottom: 3px;
 }
