@@ -52,7 +52,7 @@ CREATE TABLE Section
  TA VARCHAR(20) NOT NULL,
  CourseID VARCHAR(10) REFERENCES Course(CourseID) NOT NULL,
  DateTime DATE NOT NULL,
- PRIMARY KEY(SecitonID)
+ PRIMARY KEY(SectionID)
 );
 
 --INSERT INTO Applicant VALUES ('abc123','Smith','John','5735551234','fake@fake.fake','3.59','12/2015','100');
