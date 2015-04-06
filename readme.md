@@ -1,4 +1,4 @@
-regithub todos
+Github todos
 ---
 git remote add github url
 git remote add openshift url
@@ -9,5 +9,8 @@ How to run locally
 ---
 
 '''php composer.phar install'''
+or
+curl -sS https://getcomposer.org/installer | php
+
 install missing dependencies
 '''php artisan serve'''
