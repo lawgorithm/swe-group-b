@@ -5,13 +5,13 @@
 	
 	$db = pg_connect('host=127.10.01.2 user=adminjaavkik password=RSjXYyeCyNyc dbname=sweworkspace');
 	
-	$studentName = pg_escape_string($_POST['studentName']);
-	$firstAndLast = explode(" ", $studentName);
+	protected $studentName = pg_escape_string($_POST['studentName']);
+	protected $firstAndLast = explode(" ", $studentName);
 	echo $firstAndLast[0];
 	echo $firstAndLast[1];
 
-	$studentPhone = pg_escape_string($_POST['studentPhone']);
-	$studentId = pg_escape_string($_POST['studentId']);
+	protected $studentPhone = pg_escape_string($_POST['studentPhone']);
+	protected $studentId = pg_escape_string($_POST['studentId']);
 	
 	
 	$studentGPA = pg_escape_string($_POST['studentGPA']);
