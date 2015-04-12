@@ -14,6 +14,7 @@ CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
  Email VARCHAR(40) NOT NULL,
  GPA VARCHAR(4) NOT NULL,
  GradDate DATE NOT NULL,
+ Graduate BOOLEAN NOT NULL,
  SpeakScore INTEGER,
  PRIMARY KEY(SSO)
 );
@@ -53,19 +54,3 @@ CREATE TABLE Section--Create Table for at least one Section within a Course, ass
  DateTime DATE NOT NULL,
  PRIMARY KEY(SectionID)
 );
-
---INSERT INTO Applicant VALUES ('abc123','Smith','John','5735551234','fake@fake.fake','3.59','12/2015','100');
---INSERT INTO Applicant VALUES ('zyx987','Nixon','Richard','888555431','jowels@president.fake','2.10','05/50','60');
-
---INSERT INTO Instructor VALUES ('qwertyj','Qwerty','Jack');
-
---INSERT INTO ApplicantCourse VALUES ('abc123','CS4320','1','0','A');
---INSERT INTO ApplicantCourse VALUES ('zyx987','CS4320','2','0','A');
-
---INSERT INTO Course VALUES ('CS4320','Software Engineering','qwertyj');
-
---INSERT INTO Section VALUES ('A','Monday Morning','abc123','CS4320','Mon 8AM');
---INSERT INTO Section VALUES ('A','Monday Morning','zyx987','CS4320','Mon 8AM');
-
-
-
