@@ -14,6 +14,8 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/', 'FormController@index');
 
+Route::get('rank', 'RankController@index');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
