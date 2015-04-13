@@ -15,7 +15,7 @@ body {
 	position: relative;
 	width: 530px;
 	margin: 0 auto;
-	padding: 56px 23px 15px;
+	padding: 56px 23px 25px;
 	border: 1px solid rgba(0,0,0,.1723);
 	border-radius: 4px;
 }
@@ -39,4 +39,5 @@ body {
 	left: 12.5%;
 	margin: 0 auto;
 	bottom: 3px;
+    margin-bottom: 8px;
 }
