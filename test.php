@@ -13,6 +13,10 @@
 	protected $studentPhone = pg_escape_string($_POST['studentPhone']);
 	protected $studentId = pg_escape_string($_POST['studentId']);
 	
+	if (isset($_POST['U']))
+	{
+		
+	
 	
 	$studentGPA = pg_escape_string($_POST['studentGPA']);
 	
