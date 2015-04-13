@@ -1,0 +1,88 @@
+body {
+    background-color: #fff;
+    /* TODO */
+}
+
+
+.logo {
+    font-family: 'Raleway';
+    color: #333;
+    font-size: 30px;
+}
+
+#course_list {
+    min-height: 500px;
+    position: absolute;
+    width: 30%;
+    margin: auto;
+    margin-left: 50px;
+    float: left;
+    padding: 10px 23px 15px;
+    border: 1px solid rgba(0,0,0,.1723);
+    border-radius: 4px;
+    background-color:#EAEAEA;
+
+}
+#course_ranking {
+    min-height: 500px;
+    position: relative;
+    width: 60%;
+    margin:  auto;
+    margin-right: 50px;
+    float: right;
+    padding: 10px 23px 15px;
+    border: 1px solid rgba(0,0,0,.1723);
+    border-radius: 4px;
+    background-color:#EAEAEA;
+
+}
+
+.course_header {
+    padding-bottom: 20px;
+
+}
+#list_course {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway';
+    font-size: 28px;
+    color: #0073ea;
+}
+
+.single_course {
+    padding: 8px;
+}
+.single_course:hover {
+    color: #000000;
+    cursor: pointer;
+}
+
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#sortable li {
+    margin: auto;
+    padding: 0.4em;
+    padding-left: 1.5em;
+    font-size: 1.4em;
+    height: 45px;
+}
+#sortable li span {
+    position: absolute;
+    margin-top: .3em;
+    margin-left: -1.3em;
+}
+#course_button {
+    height: 50px;
+    width: 200px;
+    margin-left: 35%;
+}
+#submit_space {
+    float: right;
+    margin: 15px 25px 0px 0px;
+    font-size: 17px;
+}
