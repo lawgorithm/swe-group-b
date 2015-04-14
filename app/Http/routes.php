@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 Route::get('/', 'FormController@index');
+Route::post('/', 'FormController@store');
 
 Route::get('rank', 'RankController@index');
 
