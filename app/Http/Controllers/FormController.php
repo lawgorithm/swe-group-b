@@ -54,6 +54,12 @@ class FormController extends Controller {
 	public function store(Request $request)
 	{
 		$input = Request::all();
+
+		/*
+			TODO AFTER DB
+			INSERT VALUES INTO db;
+		*/
+
 		return "It worked " . serialize($input) . "!";
 	}
 
