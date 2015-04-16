@@ -14,7 +14,7 @@ CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
  Email VARCHAR(40) NOT NULL,
  GPA VARCHAR(4) NOT NULL,
  GradDate DATE NOT NULL,
- Graduate BOOLEAN NOT NULL,
+ Program VARCHAR(10) NOT NULL,
  SpeakScore INTEGER,
  PRIMARY KEY(SSO)
 );
