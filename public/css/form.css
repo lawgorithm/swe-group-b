@@ -2,14 +2,6 @@ body {
   background-color: #fff;
   /* TODO */
 }
-
-
-.logo {
-  font-family: 'Raleway';
-  color: #333;
-  font-size: 30px;
-}
-
 .wrapper {
 	min-height: 470px;
 	position: relative;

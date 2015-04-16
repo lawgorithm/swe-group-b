@@ -3,13 +3,6 @@ body {
     /* TODO */
 }
 
-
-.logo {
-    font-family: 'Raleway';
-    color: #333;
-    font-size: 30px;
-}
-
 #course_list {
     min-height: 500px;
     position: absolute;
