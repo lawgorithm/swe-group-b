@@ -14,25 +14,27 @@ SWE Group B
     {
         die("Failed to connect to database: ".pg_last_error($db));
     }
-
+    $studentID = pg_escape_string($_POST['studentSSO']);
 	$studentName = pg_escape_string($_POST['studentName']);//take in name string, break into first and last
 	$firstAndLast = explode(" ", $studentName);
 	//echo $firstAndLast[0];
 	//echo $firstAndLast[1];
 	$studentPhone = pg_escape_string($_POST['studentPhone']);
-	$studentId = pg_escape_string($_POST['studentId']);
-	
+	$studentEmail = pg_escape_string($_POST['studentEmail']);
 	if(isset($_POST['U']))//if user undergrad
 	{
 	    $studentGPA = pg_escape_string($_POST['studentGPA']);
+        $studentProgram = pg_escape_string($_POST['studentProgram']);
     }
 
     if(isset($_POST['G']))//if user graduate
     {
+	    $studentGPA = pg_escape_string($_POST['studentGPA']);
+        $studentProgram = pg_escape_string($_POST['studentProgram']);
     }
 
 
-	$query = "INSERT INTO Applicant(FirstName, LastName, phone, GPA) VALUES(' " . $firstAndLast[0] . "' , '" . $firstAndLast[1] . "' , '" . $studentPhone . "' , '" . $studentID . "' , '" . $studentGPA . "')"; 
+	$query = "INSERT INTO Applicant(SSO, FirstName, LastName, Phone, GPA, Program) VALUES('".$studentSSO."','".$firstAndLast[0]."','".$firstAndLast[1]."','".$studentPhone."','".$studentEmail."','".$studentGPA."','".$studentProgram."')"; 
     $result = pg_query($db, $query);
 	if(!$result)
     {
