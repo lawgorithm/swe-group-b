@@ -14,7 +14,7 @@ INSERT INTO Instructor VALUES ('guilliamsd','Guilliams','Joe');
 
 
 INSERT INTO ApplicantCourse VALUES ('wer443','CS1050','1','0','A');
-INSERT INTO ApplicantCourse VALUES ('wer443','CS1050','1','0','B');
+INSERT INTO ApplicantCourse VALUES ('wer443','CS3050','1','0','A');
 INSERT INTO ApplicantCourse VALUES ('zyx987','CS2050','1','0','A');
 INSERT INTO ApplicantCourse VALUES ('jfj675','CS2050','2','0','A');
 INSERT INTO ApplicantCourse VALUES ('abc123','CS4320','1','0','A');
