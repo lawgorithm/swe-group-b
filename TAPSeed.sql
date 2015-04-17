@@ -29,4 +29,4 @@ INSERT INTO Course VALUES ('CS4320','Software Engineering','scottgs');
 
 
 INSERT INTO Section VALUES ('A','Monday Morning','0','CS4320','Mon 8AM');
-INSERT INTO Section VALUES ('A','Monday Morning','0','CS4320','Mon 8AM');
+INSERT INTO Section VALUES ('B','Monday Morning','0','CS4320','Mon 2PM');
