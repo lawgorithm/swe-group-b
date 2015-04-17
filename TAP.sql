@@ -1,9 +1,9 @@
 --swe Spring 2015 group B
 
-DROP SCHEMA IF EXISTS TAAPP CASCADE;
-CREATE SCHEMA TAAPP;
+DROP SCHEMA IF EXISTS TAP CASCADE;
+CREATE SCHEMA TAP;
 
-SET search_path = TAAPP;
+SET search_path = TAP;
 
 CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
 (
