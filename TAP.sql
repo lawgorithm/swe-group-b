@@ -13,7 +13,7 @@ CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
  Phone VARCHAR(10) NOT NULL,
  Email VARCHAR(40) NOT NULL,
  GPA VARCHAR(4) NOT NULL,
- GradDate DATE NOT NULL,
+ GradDate VARCHAR(8) NOT NULL,
  Program VARCHAR(10) NOT NULL,
  SpeakScore INTEGER,
  PRIMARY KEY(SSO)
