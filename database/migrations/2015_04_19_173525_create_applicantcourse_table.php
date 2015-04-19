@@ -12,21 +12,21 @@ class CreateApplicantcourseTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('ApplicantCourse', function(Blueprint $table)
+		Schema::create('applicantcourse', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('sso', 20);
-			$table->string('CourseID', 10);
+			$table->string('courseid', 10);
 			$table->integer('rank');
-			$table->boolean('AcceptStatus');
-			$table->string('SectionID', 1)->nullable();
+			$table->boolean('acceptstatus');
+			$table->string('sectionid', 1)->nullable();
 			$table->foreign('sso')
 			->references('sso')
 			->on('applicant');
-			$table->foreign('CourseID')
-			->references('CourseID')
-			->on('sectionID');
+			$table->foreign('courseid')
+			->references('courseid')
+			->on('sectionid');
 		});
 	}
 
@@ -37,7 +37,7 @@ class CreateApplicantcourseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('ApplicantCourse');
+		Schema::drop('applicantcourse');
 	}
 
 }

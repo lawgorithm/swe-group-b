@@ -12,10 +12,16 @@ class CreateSectionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Section', function(Blueprint $table)
+		Schema::create('section', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
+			$table->string('sectionid', 1)->primary();
+			$table->string('sectionname', 20);
+			$table->string('ta', 20);
+			$table->string('courseid', 10)->references('courseid')->on('course');
+			$table->date('dttm');
+
 		});
 	}
 
@@ -26,7 +32,7 @@ class CreateSectionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Section');
+		Schema::drop('section');
 	}
 
 }

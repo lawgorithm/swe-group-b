@@ -17,8 +17,8 @@ class CreateInstructorTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('sso', 20);
-			$table->string('LastName', 20);
-			$table->string('FirstName', 20);
+			$table->string('lastname', 20);
+			$table->string('firstname', 20);
 			$table->primary('sso');
 		});
 	}

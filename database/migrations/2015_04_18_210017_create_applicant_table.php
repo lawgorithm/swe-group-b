@@ -12,19 +12,19 @@ class CreateApplicantTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Applicant', function(Blueprint $table)
+		Schema::create('applicant', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('sso', 20);
-			$table->string('LastName', 20);
-			$table->string('Firstname', 20);
-			$table->integer('Phone');
-			$table->string('Email', 40);
-			$table->date('GradDate');
-			$table->boolean('Graduate');
-			$table->integer('SpeakScore')->nullable();
-			$table->primary('SSO');
+			$table->string('lastname', 20);
+			$table->string('firstname', 20);
+			$table->integer('phone');
+			$table->string('email', 40);
+			$table->date('graddate');
+			$table->boolean('graduate');
+			$table->integer('speakscore')->nullable();
+			$table->primary('sso');
 
 		});
 	}
