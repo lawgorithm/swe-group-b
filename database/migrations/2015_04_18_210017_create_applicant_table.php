@@ -23,7 +23,7 @@ class CreateApplicantTable extends Migration {
 			$table->string('Email', 40);
 			$table->date('GradDate');
 			$table->boolean('Graduate');
-			$table->integer('SpeakScore');
+			$table->integer('SpeakScore')->nullable();
 			$table->primary('SSO');
 
 		});
