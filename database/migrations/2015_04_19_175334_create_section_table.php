@@ -16,10 +16,10 @@ class CreateSectionTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('sectionid', 1)->primary();
+			$table->string('sectionid', 1)->unique();
 			$table->string('sectionname', 20);
 			$table->string('ta', 20);
-			$table->string('courseid', 10)->references('courseid')->on('course');
+			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
 			$table->date('dttm');
 
 		});
@@ -32,7 +32,7 @@ class CreateSectionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('section');
+		Schema::dropIfExists('section');
 	}
 
 }

@@ -23,10 +23,12 @@ class CreateApplicantcourseTable extends Migration {
 			$table->string('sectionid', 1)->nullable();
 			$table->foreign('sso')
 			->references('sso')
-			->on('applicant');
+			->on('applicant')
+			->onDelete('cascade');
 			$table->foreign('courseid')
 			->references('courseid')
-			->on('sectionid');
+			->on('course')
+			->onDelete('cascade');
 		});
 	}
 
@@ -37,7 +39,7 @@ class CreateApplicantcourseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('applicantcourse');
+		Schema::dropIfExists('applicantcourse');
 	}
 
 }

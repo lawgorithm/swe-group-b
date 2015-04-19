@@ -16,10 +16,10 @@ class CreateCourseTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('courseid', 10);
+			$table->string('courseid', 10)->unique();
 			$table->string('coursename', 40);
-			$table->string('instructor', 20)->references('sso')->on('instructor');
-			$table->primary('courseid');
+			$table->string('instructor', 20)->references('sso')->on('instructor')->onDelete('cascade');
+			//$table->primary('courseid');
 
 		});
 	}
@@ -31,7 +31,7 @@ class CreateCourseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('course');
+		Schema::dropIfExists('course');
 	}
 
 }

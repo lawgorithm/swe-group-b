@@ -16,10 +16,10 @@ class CreateInstructorTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('sso', 20);
+			$table->string('sso', 20)->unique();
 			$table->string('lastname', 20);
 			$table->string('firstname', 20);
-			$table->primary('sso');
+			//$table->primary('sso');
 		});
 	}
 
@@ -30,7 +30,7 @@ class CreateInstructorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('instructor');
+		Schema::dropIfExists('instructor');
 	}
 
 }
