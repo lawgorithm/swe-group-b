@@ -15,7 +15,6 @@ Route::get('/', 'FormController@index');
 Route::post('/', 'FormController@store');
 
 Route::get('rank', 'RankController@index');
-
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

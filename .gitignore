@@ -1,2 +1,5 @@
 /vendor
 /node_modules
+.idea/.name
+.idea/misc.xml
+.idea/workspace.xml
