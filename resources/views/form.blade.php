@@ -8,18 +8,19 @@
 <form id="msForm" action="/" method="POST">
   <fieldset id="fs1">
     <div class="form-group">
+    <!--
       <label for="studentName">Full Name</label>
       <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Brendon Tiszka">
-
+    -->
       <label for="studentPhone">Phone Number</label>
       <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 555-3272">
-
+<!--
       <label for="studentId">Student Id</label>
       <input type="text" class="form-control" id="studentId" name="studentId" placeholder="1603133769">
 
       <label for="studentEmail">Student Email</label>
       <input type="text" class="form-control" id="studentEmail" name="studentEmail" placeholder="bjt5n5@mail.missouri.edu">
-
+-->
       <div class="form-inline" style="margin-top: 11px;">
         <select class="form-control" name="studentStatus">
           <option value="Und">Undergraduate</option>
