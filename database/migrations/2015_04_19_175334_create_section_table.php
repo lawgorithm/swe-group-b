@@ -14,13 +14,13 @@ class CreateSectionTable extends Migration {
 	{
 		Schema::create('section', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
 			$table->string('sectionid', 1)->unique();
 			$table->string('sectionname', 20);
 			$table->string('ta', 20);
 			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
-			$table->date('dttm');
+			$table->string('datetime', 10);
+			//$table->increments('id');
+			//$table->timestamps();
 
 		});
 	}

@@ -14,9 +14,7 @@ class CreateApplicantcourseTable extends Migration {
 	{
 		Schema::create('applicantcourse', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
-			$table->string('sso', 20);
+			$table->string('sso', 20)->default('');
 			$table->string('courseid', 10);
 			$table->integer('rank');
 			$table->boolean('acceptstatus');
@@ -29,6 +27,8 @@ class CreateApplicantcourseTable extends Migration {
 			->references('courseid')
 			->on('course')
 			->onDelete('cascade');
+			//$table->increments('id');
+			//$table->timestamps();
 		});
 	}
 
