@@ -8,9 +8,12 @@ INSERT INTO instructor VALUES ('scottgs','Scott','Grant');
 INSERT INTO instructor VALUES ('klaricm','Klaric','Matthew');
 INSERT INTO instructor VALUES ('dickinsonm','Dickinson','Matthew');
 INSERT INTO instructor VALUES ('guilliamsd','Guilliams','Joe');
+INSERT INTO instructor VALUES ('chadhar','Chadha','Rohit');
+
 
 INSERT INTO course VALUES ('CS1050','Algorithm Design and Programming I','guilliamsd');
 INSERT INTO course VALUES ('CS2050','Algorithm Design and Programming II','guilliamsd');
+INSERT INTO course VALUES ('CS3050','Algorithm Design and Programming III','chadhar');
 INSERT INTO course VALUES ('CS3380','Database Applications','klaricm');
 INSERT INTO course VALUES ('CS4320','Software Engineering','scottgs');
 
