@@ -13,36 +13,39 @@
       <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 555-3272">
 
       <div class="form-inline" style="margin-top: 11px;">
-        <select class="form-control" name="studentStatus">
+        <select id="gradSelect" class="form-control" name="studentStatus">
           <option value="Und">Undergraduate</option>
-          <option value="Gra">Graduate</option>
+          <option id="gradOption" value="Gra">Graduate</option>
         </select>
 
-        <label for="studentGPA">Grade Point Average</label>
+        <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
         <input type="text" class="form-control" id="studentGPA" placeholder="3.14">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
       </div>
-      <div class="form-group">
-        <label for="prevTaught">Major</label>
-        <div class="form-inline">
-          <select class="form-control" name="studentMajor">
-            <option value="CS">CS</option>
-            <option value="IT">IT</option>
-          </select>
-          <select class="form-control" name="studentField">
-            <option value="BS">BS</option>
-            <option value="BA">BA</option>
-          </select>
-          <select class="form-control" name="studentYear">
-            <option value="freshman">Fresh</option>
-            <option value="sophomore">Sophmore</option>
-            <option value="junior">Junior</option>
-            <option value="senior">Senior</option>
-          </select>
-        </div>
+      
+      <label id="programLabel" for="prevTaught">Program and Level</label>
+      <div class="form-inline">
+        <select id="studentMajor" class="form-control" name="studentMajor">
+          <option value=''></option>
+          <option value="CS">CS</option>
+          <option value="IT">IT</option>
+        </select>
+        <select id="studentField" class="form-control" name="studentField">
+          <option value=''></option>
+          <option value="BS">BS</option>
+          <option value="BA">BA</option>
+        </select>
+        <select id="studentYear" class="form-control" name="studentYear">
+          <option value=''></option>
+          <option value="freshman">Fresh</option>
+          <option value="sophomore">Sophmore</option>
+          <option value="junior">Junior</option>
+          <option value="senior">Senior</option>
+        </select>
       </div>
+
       <label for="work">*Other places you work</label>
       <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
             
@@ -52,8 +55,13 @@
 
         <label for="prevTaught">Semester of last test</label>
         <select class="form-control" name="studentTaught">
-          <option value="F14">Fall 2014</option>
+          <option value=''></option>
+          <option value="F12">Fall 2012</option>
+          <option value="S13">Spring 2013</option>
+          <option value="F13">Fall 2013</option>
           <option value="S14">Spring 2014</option>
+          <option value="F14">Fall 2014</option>
+          <option value="S15">Spring 2015</option>
         </select>
       </div>
 
