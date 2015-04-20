@@ -3,7 +3,7 @@
 //Namespace for accepting requests
 use Illuminate\Support\Facades\Request;
 
-class FormController extends Controller {
+class WelcomeController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------

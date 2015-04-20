@@ -5,22 +5,13 @@
 @endsection
 
 @section('content')
-<form id="msForm" action="/" method="POST">
+<form id="msForm" action="/form" method="POST">
   <fieldset id="fs1">
     <div class="form-group">
-    <!--
-      <label for="studentName">Full Name</label>
-      <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Brendon Tiszka">
-    -->
+
       <label for="studentPhone">Phone Number</label>
       <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 555-3272">
-<!--
-      <label for="studentId">Student Id</label>
-      <input type="text" class="form-control" id="studentId" name="studentId" placeholder="1603133769">
 
-      <label for="studentEmail">Student Email</label>
-      <input type="text" class="form-control" id="studentEmail" name="studentEmail" placeholder="bjt5n5@mail.missouri.edu">
--->
       <div class="form-inline" style="margin-top: 11px;">
         <select class="form-control" name="studentStatus">
           <option value="Und">Undergraduate</option>
@@ -33,14 +24,25 @@
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
       </div>
-    </div>
-  </fieldset>
-  
-  <fieldset id="fs2">
-    <div class="form-group">
-      <label for="pal">Program and Level</label>
-      <input type="text" class="form-control" id="studentDegree" name="studentDegree" placeholder="CS BA jr">
-
+      <div class="form-group">
+        <label for="prevTaught">Major</label>
+        <div class="form-inline">
+          <select class="form-control" name="studentMajor">
+            <option value="CS">CS</option>
+            <option value="IT">IT</option>
+          </select>
+          <select class="form-control" name="studentField">
+            <option value="BS">BS</option>
+            <option value="BA">BA</option>
+          </select>
+          <select class="form-control" name="studentYear">
+            <option value="freshman">Fresh</option>
+            <option value="sophomore">Sophmore</option>
+            <option value="junior">Junior</option>
+            <option value="senior">Senior</option>
+          </select>
+        </div>
+      </div>
       <label for="work">*Other places you work</label>
       <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
             
@@ -58,11 +60,6 @@
 
       <label for="studentGday">Graduation Date</label>
       <input type="date" name="gradDate"/>
-      
-      <div class="submit-button">
-        <button class="btn btn-primary" id="prev1">Previous</button>
-        <button class="btn btn-primary" style="float: right;" id="next2">Next</button>
-      </div>
     </div>
   </fieldset>
 
