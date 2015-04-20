@@ -74,8 +74,9 @@
   <fieldset id="fs3">
     <div class="form-group">
       <label for="prevTaught">*Previously taught</label>
-      <div class="form-inline">
-        <select class="form-control" name="prevTaught">
+      <div id="previouslyTaught" class="form-inline">
+        <select id="prevTaught" class="form-control" name="prevTaught">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -195,11 +196,13 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreTaught">+</div>
       </div>
 
       <label for="currTaught">*Currently teaching</label>
-      <div class="form-inline">
-        <select class="form-control" name="currTaught">
+      <div id="currentlyTeaching" class="form-inline">
+        <select id="currTaught" class="form-control" name="currTaught">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -319,11 +322,13 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreCurrent">+</div>
       </div>
 
       <label for="likeTeach">Would like to teach</label>
-      <div class="form-inline">
-        <select class="form-control" name="likeTeach">
+      <div id="likeToTeach" class="form-inline">
+        <select id="likeTeach" class="form-control" name="likeTeach">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -443,6 +448,7 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreWant">+</div>
       </div>
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <div class="submit-button">

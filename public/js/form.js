@@ -1,5 +1,5 @@
 $(function() {
-
+	var moreTaught = 0, moreCurrent = 0, moreWant = 0;
 	$('#gradSelect').click(function(e) {
 		if($("#gradOption").is(':selected')) {
 			$("#studentMajor").hide();
@@ -19,6 +19,40 @@ $(function() {
 			$("#programLabel").show();
 		}
 	});
+
+	$("#moreTaught").click(function(e) {
+		var foo = $("#prevTaught").clone();
+		var tmp = foo.attr("id");
+		tmp = tmp + moreTaught;
+
+		foo.attr("id", tmp);
+		foo.attr("name", tmp);
+		foo.insertBefore("#moreTaught");
+		moreTaught = moreTaught + 1;
+	});
+
+	$("#moreCurrent").click(function(e) {
+		var foo = $("#currTaught").clone()
+		var tmp = foo.attr("id");
+		tmp = tmp + moreCurrent;
+
+		foo.attr("id", tmp);
+		foo.attr("name", tmp);
+		foo.insertBefore("#moreCurrent");
+		moreCurrent = moreCurrent + 1;
+	});
+
+	$("#moreWant").click(function(e) {
+		var foo = $("#likeTeach").clone()
+		var tmp = foo.attr("id");
+		tmp = tmp + moreWant;
+
+		foo.attr("id", tmp);
+		foo.attr("name", tmp);
+		foo.insertBefore("#moreWant");
+		moreWant = moreWant + 1;
+	});
+
 
 	$("#next1").click(function(e) {
 		e.preventDefault();
