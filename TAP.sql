@@ -40,7 +40,7 @@ CREATE TABLE ApplicantCourse--Create Table for an Applicant to a Course with a g
 CREATE TABLE Course--Create Table for Course(s) taught by an Instructor
 (
  CourseID VARCHAR(10) NOT NULL,
- CourseName VARCHAR(40) NOT NULL,
+ CourseName VARCHAR(80) NOT NULL,
  Instruct VARCHAR(20) REFERENCES Instructor(SSO) NOT NULL,
  PRIMARY KEY(CourseID)
 );
