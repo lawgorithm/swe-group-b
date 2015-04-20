@@ -38,7 +38,7 @@
   <fieldset id="fs2">
     <div class="form-group">
       <label for="pal">Program and Level</label>
-      <input type="text" class="form-control" id="studentId" name="studentId" placeholder="CS BA jr">
+      <input type="text" class="form-control" id="studentDegree" name="studentDegree" placeholder="CS BA jr">
 
       <label for="work">*Other places you work</label>
       <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
