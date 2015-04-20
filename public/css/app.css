@@ -6231,3 +6231,16 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+
+.logo {
+  font-family: 'Raleway';
+  color: #333;
+  font-size: 30px;
+}
+
+.logo:hover {
+  text-decoration: none;
+    font-family: 'Raleway';
+    color: #333;
+    font-size: 30px;
+}

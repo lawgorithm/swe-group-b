@@ -3,15 +3,8 @@ body {
   /* TODO */
 }
 
-
-.logo {
-  font-family: 'Raleway';
-  color: #333;
-  font-size: 30px;
-}
-
 .wrapper {
-	min-height: 470px;
+	height: 500px;
 	position: relative;
 	width: 530px;
 	margin: 0 auto;
