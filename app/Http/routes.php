@@ -18,6 +18,8 @@ Route::get('rank', 'RankController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('feedback', 'FeedbackController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
