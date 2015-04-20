@@ -2,8 +2,9 @@ body {
   background-color: #fff;
   /* TODO */
 }
+
 .wrapper {
-	min-height: 470px;
+	height: 500px;
 	position: relative;
 	width: 530px;
 	margin: 0 auto;

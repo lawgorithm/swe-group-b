@@ -5,40 +5,46 @@
 @endsection
 
 @section('content')
-<form id="msForm" action="/" method="POST">
+<form id="msForm" action="/form" method="POST">
   <fieldset id="fs1">
     <div class="form-group">
-      <label for="studentName">Full Name</label>
-      <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Brendon Tiszka">
 
       <label for="studentPhone">Phone Number</label>
       <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 555-3272">
 
-      <label for="studentId">Student Id</label>
-      <input type="text" class="form-control" id="studentId" name="studentId" placeholder="1603133769">
-
-      <label for="studentEmail">Student Email</label>
-      <input type="text" class="form-control" id="studentEmail" name="studentEmail" placeholder="bjt5n5@mail.missouri.edu">
-
       <div class="form-inline" style="margin-top: 11px;">
-        <select class="form-control" name="studentStatus">
+        <select id="gradSelect" class="form-control" name="studentStatus">
           <option value="Und">Undergraduate</option>
-          <option value="Gra">Graduate</option>
+          <option id="gradOption" value="Gra">Graduate</option>
         </select>
 
-        <label for="studentGPA">Grade Point Average</label>
+        <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
         <input type="text" class="form-control" id="studentGPA" placeholder="3.14">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
       </div>
-    </div>
-  </fieldset>
-  
-  <fieldset id="fs2">
-    <div class="form-group">
-      <label for="pal">Program and Level</label>
-      <input type="text" class="form-control" id="studentDegree" name="studentDegree" placeholder="CS BA jr">
+      
+      <label id="programLabel" for="prevTaught">Program and Level</label>
+      <div class="form-inline">
+        <select id="studentMajor" class="form-control" name="studentMajor">
+          <option value=''></option>
+          <option value="CS">CS</option>
+          <option value="IT">IT</option>
+        </select>
+        <select id="studentField" class="form-control" name="studentField">
+          <option value=''></option>
+          <option value="BS">BS</option>
+          <option value="BA">BA</option>
+        </select>
+        <select id="studentYear" class="form-control" name="studentYear">
+          <option value=''></option>
+          <option value="freshman">Fresh</option>
+          <option value="sophomore">Sophmore</option>
+          <option value="junior">Junior</option>
+          <option value="senior">Senior</option>
+        </select>
+      </div>
 
       <label for="work">*Other places you work</label>
       <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
@@ -49,27 +55,28 @@
 
         <label for="prevTaught">Semester of last test</label>
         <select class="form-control" name="studentTaught">
-          <option value="F14">Fall 2014</option>
+          <option value=''></option>
+          <option value="F12">Fall 2012</option>
+          <option value="S13">Spring 2013</option>
+          <option value="F13">Fall 2013</option>
           <option value="S14">Spring 2014</option>
+          <option value="F14">Fall 2014</option>
+          <option value="S15">Spring 2015</option>
         </select>
       </div>
 
 
       <label for="studentGday">Graduation Date</label>
       <input type="date" name="gradDate"/>
-      
-      <div class="submit-button">
-        <button class="btn btn-primary" id="prev1">Previous</button>
-        <button class="btn btn-primary" style="float: right;" id="next2">Next</button>
-      </div>
     </div>
   </fieldset>
 
   <fieldset id="fs3">
     <div class="form-group">
       <label for="prevTaught">*Previously taught</label>
-      <div class="form-inline">
-        <select class="form-control" name="prevTaught">
+      <div id="previouslyTaught" class="form-inline">
+        <select id="prevTaught" class="form-control" name="prevTaught">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -189,11 +196,13 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreTaught">+</div>
       </div>
 
       <label for="currTaught">*Currently teaching</label>
-      <div class="form-inline">
-        <select class="form-control" name="currTaught">
+      <div id="currentlyTeaching" class="form-inline">
+        <select id="currTaught" class="form-control" name="currTaught">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -313,11 +322,13 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreCurrent">+</div>
       </div>
 
       <label for="likeTeach">Would like to teach</label>
-      <div class="form-inline">
-        <select class="form-control" name="likeTeach">
+      <div id="likeToTeach" class="form-inline">
+        <select id="likeTeach" class="form-control" name="likeTeach">
+          <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
           <option value="1040">1040</option>
@@ -437,6 +448,7 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
+        <div class="btn btn-success" id="moreWant">+</div>
       </div>
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <div class="submit-button">
