@@ -15,16 +15,15 @@ class RankController extends Controller {
 	 */
 	public function index()
 	{
-<<<<<<< HEAD
         $courses = Course::all()->toArray();
-=======
+
         $this->check = \Auth::check();
         if($this->check == false)
         {
             return redirect('auth/login');
         }
 
-		return view('rank');
+        return view('rank', ['courses' => $courses]);
 	}
 
 	/**
@@ -57,9 +56,4 @@ class RankController extends Controller {
 	{
 		//
 	}
->>>>>>> jpvc4_sprint3
-
-		return view('rank', ['courses' => $courses]);
-	}
-
 }
