@@ -19,7 +19,7 @@
         </select>
 
         <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
-        <input type="text" class="form-control" id="studentGPA" placeholder="3.14">
+        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.14">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
@@ -54,7 +54,7 @@
         <input type="text" class="form-control" style="width: 80px; margin-right: 20px;" id="opt" name="studentOpt" placeholder="4">
 
         <label for="prevTaught">Semester of last test</label>
-        <select class="form-control" name="studentTaught">
+        <select class="form-control" name="gradDate">
           <option value=''></option>
           <option value="F12">Fall 2012</option>
           <option value="S13">Spring 2013</option>
