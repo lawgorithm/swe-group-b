@@ -25,7 +25,7 @@ class FeedbackController extends Controller {
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -35,12 +35,6 @@ class FeedbackController extends Controller {
      */
     public function index()
     {
-        $this->check = \Auth::check();
-        if($this->check == false)
-        {
-            return redirect('auth/login');
-        }
-
         return view('feedback');
     }
 

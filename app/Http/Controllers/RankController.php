@@ -8,7 +8,19 @@ use Illuminate\Support\Collection;
 
 class RankController extends Controller {
     protected $check;
-	/**
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -16,12 +28,6 @@ class RankController extends Controller {
 	public function index()
 	{
         $courses = Course::all()->toArray();
-
-        $this->check = \Auth::check();
-        if($this->check == false)
-        {
-            return redirect('auth/login');
-        }
 
         return view('rank', ['courses' => $courses]);
 	}

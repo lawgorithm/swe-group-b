@@ -32,12 +32,6 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-        $this->check = \Auth::check();
-        if($this->check == false)
-        {
-            return redirect('auth/login');
-        }
-
 		return view('home');
 	}
 }
