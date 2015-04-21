@@ -2,6 +2,7 @@
 
 //Namespace for accepting requests
 use Illuminate\Support\Facades\Request;
+use App\Applicant;
 
 class FormController extends Controller {
 
@@ -59,8 +60,24 @@ class FormController extends Controller {
 			TODO AFTER DB
 			INSERT VALUES INTO db;
 		*/
+        $applicant = new Applicant();
+        $applicant->sso = 'puff420';
+        $applicant->lastname = 'high';
+        $applicant->firstname = 'johnny';
+        $applicant->phone = $input['studentPhone'];
+        $applicant->email = 'puff420@mail.missouri.edu';
+        $applicant->gpa = $input['studentGPA'];
+        $applicant->graddate = $input['gradDate'];
+        if ($input['studentStatus'] == 'Und')
+            $applicant->program = $input['studentStatus'] . " " .$input['studentMajor'] . " "
+                                . $input['studentField'] . " " . $input['studentYear'];
+        else
+            $applicant->program = $input['studentStatus'];
+        if ($input['studentOpt'] != "") $applicant->speakscore = $input['studentOpt'];
 
-		return "It worked " . serialize($input) . "!";
+        $applicant->save();
+
+        return "It worked " . serialize($input) . "!" . "\n";
 	}
 
 	/**

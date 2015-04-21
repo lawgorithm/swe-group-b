@@ -12,4 +12,9 @@ class Course extends Model {
         'coursename',
         'instructor'
     ];
+
+    public $timestamps = false;
+
+    public $incrementing = false;
+
 }
