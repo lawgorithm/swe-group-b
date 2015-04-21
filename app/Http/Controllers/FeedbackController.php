@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller {
-
+    protected $check;
     /*
     |--------------------------------------------------------------------------
     | Feedback Controller
@@ -35,6 +35,12 @@ class FeedbackController extends Controller {
      */
     public function index()
     {
+        $this->check = \Auth::check();
+        if($this->check == false)
+        {
+            return redirect('auth/login');
+        }
+
         return view('feedback');
     }
 

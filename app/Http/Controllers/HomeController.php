@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+use App\Http\Requests\Request;
 
+class HomeController extends Controller {
+    protected $check;
 	/*
 	|--------------------------------------------------------------------------
 	| Home Controller
@@ -30,7 +32,12 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+        $this->check = \Auth::check();
+        if($this->check == false)
+        {
+            return redirect('auth/login');
+        }
+
 		return view('home');
 	}
-
 }

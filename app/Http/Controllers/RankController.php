@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class RankController extends Controller {
-
+    protected $check;
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -14,6 +14,12 @@ class RankController extends Controller {
 	 */
 	public function index()
 	{
+        $this->check = \Auth::check();
+        if($this->check == false)
+        {
+            return redirect('auth/login');
+        }
+
 		return view('rank');
 	}
 
