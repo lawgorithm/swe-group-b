@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Request;
 use App\Applicant;
 
 class FormController extends Controller {
-
+    protected $check;
 	/*
 	|--------------------------------------------------------------------------
 	| Form Controller
@@ -34,6 +34,12 @@ class FormController extends Controller {
 	 */
 	public function index()
 	{
+        $this->check = \Auth::check();
+        if($this->check == false)
+        {
+            return redirect('auth/login');
+        }
+
 		return view('form');
 	}
 

@@ -1,5 +1,5 @@
 /vendor
 /node_modules
-/.env
-/config/database.php
-*.DS_Store
+.idea/.name
+.idea/misc.xml
+.idea/workspace.xml
