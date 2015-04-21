@@ -65,9 +65,22 @@
         </select>
       </div>
 
-
+      <div class="form-inline">
       <label for="studentGday">Graduation Date</label>
-      <input type="date" name="gradDate"/>
+      <select class="form-control" name="studentTaught">
+        <option value=''></option>
+        <option value="F15">Fall 2015</option>
+        <option value="S16">Spring 2016</option>
+        <option value="F16">Fall 2016</option>
+        <option value="S17">Spring 2017</option>
+        <option value="F17">Fall 2017</option>
+        <option value="S18">Spring 2018</option>
+        <option value="F18">Fall 2018</option>
+        <option value="S19">Spring 2019</option>
+        <option value="F19">Fall 2019</option>
+        <option value="S20">Spring 2020</option>
+      </select>
+      </div>
     </div>
   </fieldset>
 
@@ -75,6 +88,7 @@
     <div class="form-group">
       <label for="prevTaught">*Previously taught</label>
       <div id="previouslyTaught" class="form-inline">
+        <div class="btn btn-success btn-helper" id="moreTaught">+</div>
         <select id="prevTaught" class="form-control" name="prevTaught">
           <option value=""></option>
           <option value="1000">1000</option>
@@ -196,11 +210,11 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
-        <div class="btn btn-success" id="moreTaught">+</div>
       </div>
 
       <label for="currTaught">*Currently teaching</label>
       <div id="currentlyTeaching" class="form-inline">
+        <div class="btn btn-success btn-helper" id="moreCurrent">+</div>
         <select id="currTaught" class="form-control" name="currTaught">
           <option value=""></option>
           <option value="1000">1000</option>
@@ -322,11 +336,11 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
-        <div class="btn btn-success" id="moreCurrent">+</div>
       </div>
 
       <label for="likeTeach">Would like to teach</label>
       <div id="likeToTeach" class="form-inline">
+        <div class="btn btn-success btn-helper" id="moreWant" >+</div>
         <select id="likeTeach" class="form-control" name="likeTeach">
           <option value=""></option>
           <option value="1000">1000</option>
@@ -448,7 +462,6 @@
           <option value="9001">9001</option>
           <option value="9990">9990</option>
         </select>
-        <div class="btn btn-success" id="moreWant">+</div>
       </div>
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <div class="submit-button">

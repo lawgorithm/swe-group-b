@@ -21,14 +21,16 @@ $(function() {
 	});
 
 	$("#moreTaught").click(function(e) {
-		var foo = $("#prevTaught").clone();
-		var tmp = foo.attr("id");
-		tmp = tmp + moreTaught;
+			var foo = $("#prevTaught").clone();
+			var tmp = foo.attr("id");
+			tmp = tmp + moreTaught;
 
-		foo.attr("id", tmp);
-		foo.attr("name", tmp);
-		foo.insertBefore("#moreTaught");
-		moreTaught = moreTaught + 1;
+			foo.attr("id", tmp);
+			foo.attr("name", tmp);
+			if (moreTaught < 4) {
+				foo.appendTo("#previouslyTaught");
+				moreTaught = moreTaught + 1;
+			}
 	});
 
 	$("#moreCurrent").click(function(e) {
@@ -38,8 +40,10 @@ $(function() {
 
 		foo.attr("id", tmp);
 		foo.attr("name", tmp);
-		foo.insertBefore("#moreCurrent");
-		moreCurrent = moreCurrent + 1;
+		if (moreCurrent < 4) {
+			foo.appendTo("#currentlyTeaching");
+			moreCurrent = moreCurrent + 1;
+		}
 	});
 
 	$("#moreWant").click(function(e) {
@@ -49,8 +53,10 @@ $(function() {
 
 		foo.attr("id", tmp);
 		foo.attr("name", tmp);
-		foo.insertBefore("#moreWant");
-		moreWant = moreWant + 1;
+		if (moreWant < 4) {
+			foo.appendTo("#likeToTeach");
+			moreWant = moreWant + 1;
+		}
 	});
 
 
