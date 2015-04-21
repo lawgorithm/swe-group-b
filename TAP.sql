@@ -15,7 +15,12 @@ CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
  GPA VARCHAR(4) NOT NULL,
  GradDate VARCHAR(8) NOT NULL,
  Program VARCHAR(10) NOT NULL,
+ PreviousWork VARCHAR(140) NOT NULL,
+ CurrentTeach VARCHAR(40) NOT NULL,
+ PreviousTeach VARCHAR(120) NOT NULL,
  SpeakScore INTEGER,
+ SpeakDate VAR(10),
+ PasswordTemp VARCHAR(20) NOT NULL,
  PRIMARY KEY(SSO)
 );
 
@@ -24,6 +29,7 @@ CREATE TABLE Instructor--Create Table for Instructor(s) of Course(s)
  SSO VARCHAR(20) NOT NULL DEFAULT '',
  LastName VARCHAR(20) NOT NULL,
  FirstName VARCHAR(20) NOT NULL,
+ PasswordTemp VARCHAR(20) NOT NULL,
  PRIMARY KEY(SSO)
 );
 
@@ -32,6 +38,7 @@ CREATE TABLE ApplicantCourse--Create Table for an Applicant to a Course with a g
  SSO VARCHAR(20) NOT NULL DEFAULT '',
  CourseID VARCHAR(10) NOT NULL,
  Rank INTEGER NOT NULL,
+ Feedback VARCHAR(140) NOT NULL,
  AcceptStatus BOOLEAN NOT NULL,
  SectionID VARCHAR(1),
  PRIMARY KEY(SSO, CourseID)
