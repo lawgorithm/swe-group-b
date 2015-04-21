@@ -1,0 +1,28 @@
+#main {
+
+    min-height: 500px;
+    position: absolute;
+    width: 92%;
+    margin: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,.1723);
+    border-radius: 4px;
+    background-color:#EAEAEA;
+
+}
+
+
+#students {
+    min-height: 500px;
+    position: relative;
+    width: 30%;
+    margin: auto;
+    float: right;
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.1723);
+    border-radius: 4px;
+    background-color: #ffffff;
+
+}

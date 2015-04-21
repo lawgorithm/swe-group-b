@@ -9,11 +9,11 @@
     <div id="course_list">
     <h3 class="course_header">List of Courses</h3>
 
-        <ul id="list_course"
-            <li class="single_course"><strong></strong></li>
-            <li class="single_course"><strong>Course 1</strong></li>
-            <li class="single_course"><strong>Course 2</strong></li>
-            <li class="single_course"><strong>Course 3</strong></li>
+        <ul id="list_course">
+            @foreach($courses as $course)
+                <li class="single_course"><strong>{{print $course['coursename']}}</strong></li>
+            @endforeach
+
         </ul>
     </div>
     <div id="course_ranking">

@@ -14,4 +14,9 @@ class Applicant_Course extends Model {
         'sectionid'
     ];
 
+    public $timestamps = false;
+
+    public $incrementing = false;
+
+
 }
