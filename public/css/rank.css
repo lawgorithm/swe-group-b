@@ -45,6 +45,7 @@ body {
 
 .single_course {
     padding: 8px;
+    font-size: 20px;
 }
 .single_course:hover {
     color: #000000;

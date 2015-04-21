@@ -20,8 +20,8 @@ class CreateApplicantTable extends Migration {
 			$table->string('phone', 10);
 			$table->string('email', 40);
 			$table->string('gpa', 4);
-			$table->string('graddate', 8);
-			$table->string('program', 10);
+			$table->string('graddate', 20);
+			$table->string('program', 20);
 			$table->integer('speakscore')->nullable();
 			//$table->increments('id');
 			//$table->timestamps();

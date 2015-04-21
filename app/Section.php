@@ -15,4 +15,7 @@ class Section extends Model {
         'datetime'
     ];
 
+    public $timestamps = false;
+    public $incrementing = false;
+
 }
