@@ -4,3 +4,7 @@
 /config/database.php
 *.DS_Store
 .idea/*
+.idea/.name
+.idea/misc.xml
+.idea/workspace.xml
+.env

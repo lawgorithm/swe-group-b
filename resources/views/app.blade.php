@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>TA/PLA Application</title>
 
 	<link href="/css/app.css" rel="stylesheet">
 	@yield('headers')
@@ -24,21 +24,27 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a target="_blank" href="">Insructions</a>
-					</li>
-					<li>
-						<a target="_blank" href="">Reference</a>
-					</li>
-					<li>
-						<a target="_blank" href="">Help</a>
-					</li>
-					<li>
-						<a href="#TODO">Sign In</a>
-					</li>
-					<li>
-						<a href="#TODO">Register</a>
-					</li>
+					{{--<li>--}}
+						{{--<a target="_blank" href="">Insructions</a>--}}
+					{{--</li>--}}
+					{{--<li>--}}
+						{{--<a target="_blank" href="">Reference</a>--}}
+					{{--</li>--}}
+					{{--<li>--}}
+						{{--<a target="_blank" href="">Help</a>--}}
+					{{--</li>--}}
+                    <?php
+                        $check = \Auth::check();
+
+                        if($check == false) {
+                            echo '<li><a href="/auth/register">Register</a></li>';
+                            echo '<li><a href="/auth/login">Sign In</a></li>';
+                        }
+                        else {
+                            echo '<li><a href="/form">Apply!</a></li>';
+                           echo '<li><a href="/auth/logout">Logout</a></li>';
+                        }
+                    ?>
 				</ul>
 			</div>
 		</div>
