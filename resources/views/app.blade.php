@@ -24,15 +24,6 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					{{--<li>--}}
-						{{--<a target="_blank" href="">Insructions</a>--}}
-					{{--</li>--}}
-					{{--<li>--}}
-						{{--<a target="_blank" href="">Reference</a>--}}
-					{{--</li>--}}
-					{{--<li>--}}
-						{{--<a target="_blank" href="">Help</a>--}}
-					{{--</li>--}}
                     <?php
                         $check = \Auth::check();
 
@@ -42,7 +33,9 @@
                         }
                         else {
                             echo '<li><a href="/form">Apply!</a></li>';
-                           echo '<li><a href="/auth/logout">Logout</a></li>';
+                            echo '<li><a href="/rank">Rank</a></li>';
+                            echo '<li><a href="/feedback">Feedback</a></li>';
+                            echo '<li><a href="/auth/logout">Logout</a></li>';
                         }
                     ?>
 				</ul>
