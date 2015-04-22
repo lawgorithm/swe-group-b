@@ -19,7 +19,7 @@ class CreateRoleTable extends Migration {
             //$table->string('firstname', 20)->default('');
             //$table->string('phone', 10);
             //$table->string('email', 40);
-            $table->string('role', 10);//applicant, instructor or admin(advisor)
+            $table->string('user_role', 10);//applicant, instructor or admin(advisor)
 			//$table->increments('id');
 			//$table->timestamps();
             //$table->primary('sso');
