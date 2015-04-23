@@ -17,6 +17,7 @@ class CreateApplicantcourseTable extends Migration {
 			$table->string('sso', 20)->default('');
 			$table->string('courseid', 10);
 			$table->integer('rank');
+			$table->string('feedback', 140);
 			$table->boolean('acceptstatus');
 			$table->string('sectionid', 1)->nullable();
 			$table->foreign('sso')
