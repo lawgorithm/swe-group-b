@@ -15,8 +15,7 @@ class CreateApplicantTable extends Migration {
 		Schema::create('applicant', function(Blueprint $table)
 		{
 			$table->string('sso', 20)->unique();
-			$table->string('lastname', 20)->default('');
-			$table->string('firstname', 20)->default('');
+			$table->string('name', 40);
 			$table->string('phone', 10);
 			$table->string('email', 40);
 			$table->string('gpa', 4);
