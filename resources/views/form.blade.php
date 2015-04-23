@@ -19,7 +19,7 @@
         </select>
 
         <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
-        <input type="text" class="form-control" id="studentGPA" placeholder="3.14">
+        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.14">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
