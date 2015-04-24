@@ -10,7 +10,7 @@
     <div class="form-group">
 
       <label for="studentPhone">Phone Number</label>
-      <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 555-3272">
+      <input type="text" class="form-control" id="studentPhone" name="studentPhone" placeholder="(816) 830-5123">
 
       <div class="form-inline" style="margin-top: 11px;">
         <select id="gradSelect" class="form-control" name="studentStatus">
@@ -19,7 +19,7 @@
         </select>
 
         <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
-        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.14">
+        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.141">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
@@ -65,9 +65,20 @@
         </select>
       </div>
 
+      <div class="form-inline">
 
-      <label for="studentGday">Graduation Date</label>
-      <input type="date" name="gradDate"/>
+        <label for="prevTaught">Graduation Date</label>
+        <select class="form-control" name="gradDate">
+          <option value=''></option>
+          <option value="F15">Fall 2015</option>
+          <option value="S16">Spring 2016</option>
+          <option value="F16">Fall 2016</option>
+          <option value="S17">Spring 2017</option>
+          <option value="F17">Fall 2017</option>
+          <option value="S18">Spring 2018</option>
+        </select>
+      </div>
+
     </div>
   </fieldset>
 
@@ -75,7 +86,7 @@
     <div class="form-group">
       <label for="prevTaught">*Previously taught</label>
       <div id="previouslyTaught" class="form-inline">
-        <select id="prevTaught" class="form-control" name="prevTaught">
+        <select id="prevTaught" class="form-control" name="prevTaught[]">
           <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
@@ -201,7 +212,7 @@
 
       <label for="currTaught">*Currently teaching</label>
       <div id="currentlyTeaching" class="form-inline">
-        <select id="currTaught" class="form-control" name="currTaught">
+        <select id="currTaught" class="form-control" name="currTaught[]">
           <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
@@ -327,7 +338,7 @@
 
       <label for="likeTeach">Would like to teach</label>
       <div id="likeToTeach" class="form-inline">
-        <select id="likeTeach" class="form-control" name="likeTeach">
+        <select id="likeTeach" class="form-control" name="likeTeach[]">
           <option value=""></option>
           <option value="1000">1000</option>
           <option value="1001">1001</option>
@@ -461,6 +472,7 @@
 @endsection
 
 @section('scripts')
+<script src="/js/formatter.js"></script>
 <script src="/js/form.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 @endsection

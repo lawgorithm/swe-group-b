@@ -2,9 +2,9 @@ $(function() {
 	var moreTaught = 0, moreCurrent = 0, moreWant = 0;
 	$('#gradSelect').click(function(e) {
 		if($("#gradOption").is(':selected')) {
-			$("#studentMajor").hide();
-			$("#studentYear").hide();
-			$("#studentGPA").hide();
+			$("#studentMajor").val("").hide();
+			$("#studentYear").val("").hide();
+			$("#studentGPA").val("").hide();
 			$("#studentField").hide();
 			$("#gpaLabel").hide();
 			$("#programLabel").hide();
@@ -21,36 +21,30 @@ $(function() {
 	});
 
 	$("#moreTaught").click(function(e) {
-		var foo = $("#prevTaught").clone();
-		var tmp = foo.attr("id");
-		tmp = tmp + moreTaught;
+		var obj = $("#prevTaught").clone();
 
-		foo.attr("id", tmp);
-		foo.attr("name", tmp);
-		foo.insertBefore("#moreTaught");
-		moreTaught = moreTaught + 1;
+		if (moreTaught < 15) {
+			obj.insertBefore("#moreTaught");
+			moreTaught = moreTaught + 1;
+		}
 	});
 
 	$("#moreCurrent").click(function(e) {
-		var foo = $("#currTaught").clone()
-		var tmp = foo.attr("id");
-		tmp = tmp + moreCurrent;
+		var obj = $("#currTaught").clone()
 
-		foo.attr("id", tmp);
-		foo.attr("name", tmp);
-		foo.insertBefore("#moreCurrent");
-		moreCurrent = moreCurrent + 1;
+		if (moreCurrent < 4) {
+			obj.insertBefore("#moreCurrent");
+			moreCurrent = moreCurrent + 1;
+		}
 	});
 
 	$("#moreWant").click(function(e) {
-		var foo = $("#likeTeach").clone()
-		var tmp = foo.attr("id");
-		tmp = tmp + moreWant;
+		var obj = $("#likeTeach").clone();
 
-		foo.attr("id", tmp);
-		foo.attr("name", tmp);
-		foo.insertBefore("#moreWant");
-		moreWant = moreWant + 1;
+		if (moreWant < 4) {
+			obj.insertBefore("#moreWant");
+			moreWant = moreWant + 1;
+		}
 	});
 
 
@@ -59,9 +53,25 @@ $(function() {
 		$("#fs3").show();
 		$("#fs1").hide();
 	});
+
 	$("#prev2").click(function(e) {
 		e.preventDefault();
 		$("#fs1").show();
 		$("#fs3").hide();
 	});
+
+	var phoneInput = document.getElementById('studentPhone');
+	if (phoneInput) {
+		new Formatter(phoneInput, {
+			'pattern': '({{999}}) {{999}}-{{9999}}'
+		});
+	}
+
+	var gpaInput = document.getElementById('studentGPA');
+	if (gpaInput) {
+		new Formatter(gpaInput, {
+			'pattern': '{{9}}.{{999}}'
+		});
+	}
+
 });
