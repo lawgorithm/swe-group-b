@@ -14,9 +14,10 @@ class CreateRoleTable extends Migration {
 	{
 		Schema::create('role', function(Blueprint $table)
 		{
-            $table->string('sso', 20)->primary();
+			$table->increments('id');
+			$table->timestamps();
+            $table->string('sso', 20)->unique();
             $table->string('user_role', 10);//applicant, instructor or admin(advisor)
-            //$table->primary('sso');
 		});
 	}
 

@@ -13,8 +13,4 @@ class Instructor extends Model {
         'name',
     ];
 
-    public $timestamps = false;
-
-    public $incrementing = false;
-
 }

@@ -14,9 +14,11 @@ class CreateInstructorTable extends Migration {
 	{
 		Schema::create('instructor', function(Blueprint $table)
 		{
-			$table->string('sso', 20)->references('sso')->on('role')->onDelete('cascade');
+			$table->increments('id');
+			$table->timestamps();
+			$table->string('sso', 20)->unique();
 			$table->string('name', 40)->default('');
-			$table->primary('sso');
+			$table->foreign('sso')->references('sso')->on('role')->onDelete('cascade');
 		});
 	}
 

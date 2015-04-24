@@ -34,5 +34,5 @@ App\User::create(['name' => 'Lawrence Williams', 'sso' => 'lmwv2c', 'email' => '
 App\User::create(['name' => 'Jackson Nowotny', 'sso' => 'jn9qc', 'email' => 'jn9qc@mail.missouri.edu', 'password' => Hash::make('secret')]);
 App\User::create(['name' => 'Ryan Iffrig', 'sso' => 'rmixv8', 'email' => 'rmxiv8@mail.missouri.edu', 'password' => Hash::make('secret')]);
 App\User::create(['name' => 'Master Hand', 'sso' => 'masterhand', 'email' => 'lawrencewilliams.lw@gmail.com', 'password' => Hash::make('iamthemaster')]);
-App\User::create(['name' => 'Jackson Nowotny', 'sso' => 'cq9nc', 'email' => 'ajnowotny@gmail.com', 'password' => Hash::make('secret')]);
-App\User::create(['name' => 'Michael Jordon', 'sso' => 'wer443', 'email' => 'winning@basket.ball', 'password' => Hash::make('secret')]);
+App\User::create(['name' => 'Jackson Nowotny', 'sso' => 'cq9nj', 'email' => 'ajnowotny@gmail.com', 'password' => Hash::make('secret')]);
+App\User::create(['name' => 'Michael Jordan', 'sso' => 'wer443', 'email' => 'winning@basket.ball', 'password' => Hash::make('secret')]);

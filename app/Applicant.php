@@ -19,8 +19,4 @@ class Applicant extends Model {
         'speakscore'
     ];
 
-    public $timestamps = false;
-
-    public $incrementing = false;
-
 }

@@ -14,9 +14,12 @@ class CreateApplicantCourseTable extends Migration {
 	{
 		Schema::create('applicantcourse', function(Blueprint $table)
 		{
-			$table->string('sso', 20)->references('sso')->on('applicant')->onDelete('cascade');
-			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
+			$table->timestamps();
+			$table->string('sso', 20);
+			$table->string('courseid', 10);
 			$table->string('action', 3);
+			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');
+			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');
 		});
 	}
 
@@ -27,7 +30,7 @@ class CreateApplicantCourseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('applicantcourse');
+		Schema::dropIfExists('applicantcourse');
 	}
 
 }

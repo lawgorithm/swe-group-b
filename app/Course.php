@@ -14,8 +14,6 @@ class Course extends Model {
         'instructor'
     ];
 
-    public $timestamps = false;
-
     public $incrementing = false;
 
 }

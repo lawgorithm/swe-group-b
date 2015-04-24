@@ -13,10 +13,7 @@ class Applicant_Course extends Model {
         'courseid',
         'action'
     ];
-
-    public $timestamps = false;
-
+    
     public $incrementing = false;
-
 
 }

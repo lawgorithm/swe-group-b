@@ -14,8 +14,4 @@ class Role extends Model {
         'user_role'
     ];
 
-    public $timestamps = false;
-
-    public $incrementing = false;
-
 }

@@ -14,11 +14,15 @@ class CreateApplicantofferTable extends Migration {
 	{
 		Schema::create('applicantoffer', function(Blueprint $table)
 		{
-			$table->string('sso', 20)->references('sso')->on('applicant')->onDelete('cascade');
-			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
+			$table->increments('id');
+			$table->timestamps();
+			$table->string('sso', 20);
+			$table->string('courseid', 10);
 			$table->integer('rank');
 			$table->boolean('acceptstatus');
 			$table->string('feedback', 140);
+			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');
+			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');
 		});
 	}
 
@@ -29,7 +33,7 @@ class CreateApplicantofferTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('applicantoffer');
+		Schema::dropIfExists('applicantoffer')->cascade();
 	}
 
 }

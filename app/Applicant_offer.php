@@ -16,8 +16,6 @@ class Applicant_offer extends Model {
         'sectionid',
     ];
 
-    public $timestamps = false;
-
     public $incrementing = false;
 
 }
