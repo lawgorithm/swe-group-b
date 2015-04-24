@@ -1,5 +1,0 @@
-$user=new App\User;
-$user->password=Hash::make('yolo');
-$user->email='yolocity@hash.tag';
-$user->name="Table Top";
-$user->save();
