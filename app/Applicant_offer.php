@@ -2,15 +2,18 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Instructor extends Model {
+class Applicant_offer extends Model {
 
     // assign table to model
-    protected $table = 'instructor';
+    protected $table = 'applicantoffer';
 
     // attributes to edit
     protected $fillable = [
         'sso',
-        'name',
+        'courseid',
+        'rank',
+        'acceptstatus',
+        'sectionid',
     ];
 
     public $timestamps = false;
