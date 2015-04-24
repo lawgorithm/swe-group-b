@@ -14,10 +14,11 @@ class CreateApplicantofferTable extends Migration {
 	{
 		Schema::create('applicantoffer', function(Blueprint $table)
 		{
-			$table->string('sso', 20)->references('sso')->on('role')->onDelete('cascade');
+			$table->string('sso', 20)->references('sso')->on('applicant')->onDelete('cascade');
 			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
 			$table->integer('rank');
 			$table->boolean('acceptstatus');
+			$table->string('feedback', 140);
 		});
 	}
 
