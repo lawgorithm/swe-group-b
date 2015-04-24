@@ -9,9 +9,9 @@ class Applicant_Course extends Model {
 
     // attributes to edit
     protected $fillable = [
-        'rank',
-        'acceptstatus',
-        'sectionid'
+        'sso',
+        'courseid',
+        'action'
     ];
 
     public $timestamps = false;

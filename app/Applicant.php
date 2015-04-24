@@ -9,6 +9,8 @@ class Applicant extends Model {
 
     // attributes to edit
     protected $fillable = [
+        'name',
+        'sso',
         'phone',
         'email',
         'gpa',

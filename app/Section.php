@@ -9,6 +9,7 @@ class Section extends Model {
 
     // attributes to edit
     protected $fillable = [
+        'sectionid',
         'sectionname',
         'ta',
         'courseid',
