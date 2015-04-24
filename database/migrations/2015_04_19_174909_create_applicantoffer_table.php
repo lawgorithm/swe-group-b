@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSectionTable extends Migration {
+class CreateApplicantofferTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,12 @@ class CreateSectionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('section', function(Blueprint $table)
+		Schema::create('applicantoffer', function(Blueprint $table)
 		{
-			$table->string('sectionid', 1)->unique();
-			$table->string('sectionname', 20);
-			$table->string('ta', 20);
+			$table->string('sso', 20)->references('sso')->on('role')->onDelete('cascade');
 			$table->string('courseid', 10)->references('courseid')->on('course')->onDelete('cascade');
-			$table->string('datetime', 10);
-			//$table->increments('id');
-			//$table->timestamps();
-
+			$table->integer('rank');
+			$table->boolean('acceptstatus');
 		});
 	}
 
@@ -32,7 +28,7 @@ class CreateSectionTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('section');
+		Schema::dropIfExists('applicantoffer');
 	}
 
 }

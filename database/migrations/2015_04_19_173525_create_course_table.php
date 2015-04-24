@@ -14,13 +14,9 @@ class CreateCourseTable extends Migration {
 	{
 		Schema::create('course', function(Blueprint $table)
 		{
-			$table->string('courseid', 10)->unique();
+			$table->string('courseid', 10)->primary();
 			$table->string('coursename', 80);
 			$table->string('instructor', 20)->references('sso')->on('instructor')->onDelete('cascade');
-			//$table->increments('id');
-			//$table->timestamps();
-			//$table->primary('courseid');
-
 		});
 	}
 
