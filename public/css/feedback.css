@@ -13,9 +13,8 @@
 
 }
 
-
 #students {
-    min-height: 500px;
+    min-height: 350px;
     position: relative;
     width: 30%;
     margin: auto;
@@ -24,5 +23,61 @@
     border: 1px solid rgba(0,0,0,.1723);
     border-radius: 4px;
     background-color: #ffffff;
+}
+.multiple{
+    width: 300px;
+    margin: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    color:#000;
+    background-color:#EAEAEA;
+    border:2px solid #8E8E8E;
+    font-size:2em;
+    font-weight:bold;
+}
 
+#comments{
+    min-height: 350px;
+    position: relative;
+    width: 65%;
+    float: left;
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.1723);
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+.student-name{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    padding-left: 20px;
+}
+hr.fancy-line {
+    border: 0;
+    height: 1px;
+}
+hr.fancy-line:before {
+    top: -0.5em;
+    height: 1em;
+}
+hr.fancy-line:after {
+     content:'';
+     height: 0.5em;
+     top: 1px;
+ }
+hr.fancy-line:before, hr.fancy-line:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+}
+hr.fancy-line, hr.fancy-line:before {
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 85%);
+}
+.comment{
+    width: 700px;
+    resize: none;
+}
+
+.feedback-button{
+    min-height: 25px;
+    padding: 5px 5px 5px 5px;
+    float: right;
 }

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Applicant;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -35,7 +36,9 @@ class FeedbackController extends Controller {
      */
     public function index()
     {
-        return view('feedback');
-    }
+        $applicants = new Applicant();
+        $applicants = $applicants->getApplicantsByCourseId('CS1050');
 
+        return view('feedback')->with('applicants', $applicants);
+    }
 }
