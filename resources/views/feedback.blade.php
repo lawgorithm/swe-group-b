@@ -23,32 +23,27 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                     Deny
                 </label>
+
+                <div class="form-actions feedback-button">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save changes</button>
+                </div>
             </div>
         </div>
         <div id="students">
-            @foreach($applicants as $applicant)
-                <select multiple="multiple" class="multiple">
-                    <option class="applicant" name="{{$applicant->firstname}} {{$applicant->lastname}}">{{$applicant->firstname}} {{$applicant->lastname}}</option>
-                    <option class="applicant" name="Someone Else">Someone Else</option>
+                <span class="courseapplicantsheader">Applicants for 'course':</span>
+                <hr class="fancy-line"/>
+                <select multiple="multiple" class="multiple custom-mult">
+                    <option class="applicant" onclick="replaceWithNameSelected()" name="Someone Else">Someone Else</option>
                     <option class="applicant" name="Bill Johnson">Bill Johnson</option>
                     <option class="applicant" name="Butch Coolidge">Butch Coolidge</option>
                     <option class="applicant" name="Andy">Andy</option>
                     <option class="applicant" name="Randy">Randy</option>
-                    <option class="applicant" name="A blue guy">A blue guy</option>
+                    <option class="applicant" name="A red guy">A red guy</option>
                     <option class="applicant" name="More people">More people</option>
                     <option class="applicant" name="Someone Else">Someone Else</option>
                     <option class="applicant" name="Someone Else">Someone Else</option>
-
                 </select>
-            @endforeach
         </div>
-
-        {{--@if(TODO Check that all students have been selected)--}}
-        <div class="form-actions feedback-button">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save changes</button>
-        </div>
-        {{--@endif--}}
-
     </div>
 
     <!-- Modal -->
@@ -63,11 +58,11 @@
                     The following students did not receive any feedback.
                     Are you sure you want to continue?
 
-                    @foreach($applicants as $applicant)
-                        <ul>
-                            <li>{{$applicant->firstname}} {{$applicant->lastname}}</li>
-                        </ul>
-                    @endforeach
+                    {{--@foreach($applicants as $applicant)--}}
+                        {{--<ul>--}}
+                            {{--<li>{{$applicant->firstname}} {{$applicant->lastname}}</li>--}}
+                        {{--</ul>--}}
+                    {{--@endforeach--}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
