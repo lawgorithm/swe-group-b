@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstructorTable extends Migration {
+class CreateRoleTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,12 @@ class CreateInstructorTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('instructor', function(Blueprint $table)
+		Schema::create('role', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('sso', 20)->unique();
-			$table->string('name', 40)->default('');
-			$table->foreign('sso')->references('sso')->on('role')->onDelete('cascade');
+            $table->string('sso', 20)->unique();
+            $table->string('user_role', 10);//applicant, instructor or admin(advisor)
 		});
 	}
 
@@ -29,7 +28,7 @@ class CreateInstructorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('instructor');
+		Schema::dropIfExists('role');
 	}
 
 }

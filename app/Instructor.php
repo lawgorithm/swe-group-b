@@ -9,11 +9,8 @@ class Instructor extends Model {
 
     // attributes to edit
     protected $fillable = [
-
+        'sso',
+        'name',
     ];
-
-    public $timestamps = false;
-
-    public $incrementing = false;
 
 }

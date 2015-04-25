@@ -2,18 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Applicant_Course extends Model {
+class Role extends Model {
+
 
     // assign table to model
-    protected $table = 'applicantcourse';
+    protected $table = 'role';
 
     // attributes to edit
     protected $fillable = [
         'sso',
-        'courseid',
-        'action'
+        'user_role'
     ];
-    
-    public $incrementing = false;
 
 }

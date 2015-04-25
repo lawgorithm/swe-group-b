@@ -9,11 +9,10 @@ class Course extends Model {
 
     // attributes to edit
     protected $fillable = [
+        'courseid',
         'coursename',
         'instructor'
     ];
-
-    public $timestamps = false;
 
     public $incrementing = false;
 

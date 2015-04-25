@@ -9,6 +9,8 @@ class Applicant extends Model {
 
     // attributes to edit
     protected $fillable = [
+        'name',
+        'sso',
         'phone',
         'email',
         'gpa',
@@ -16,9 +18,5 @@ class Applicant extends Model {
         'program',
         'speakscore'
     ];
-
-    public $timestamps = false;
-
-    public $incrementing = false;
 
 }

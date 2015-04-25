@@ -8,18 +8,18 @@ SET search_path = TAP;
 CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
 (
  SSO VARCHAR(20) NOT NULL DEFAULT '',
- LastName VARCHAR(20) NOT NULL,
- FirstName VARCHAR(20) NOT NULL,
+ Name VARCHAR(40) NOT NULL,
  Phone VARCHAR(10) NOT NULL,
  Email VARCHAR(40) NOT NULL,
  GPA VARCHAR(4) NOT NULL,
- GradDate VARCHAR(8) NOT NULL,
+ GradDate VARCHAR(10) NOT NULL,
  Program VARCHAR(10) NOT NULL,
- PreviousWork VARCHAR(140) NOT NULL,
- CurrentTeach VARCHAR(40) NOT NULL,
- PreviousTeach VARCHAR(120) NOT NULL,
+ PreviousWork VARCHAR(140),
+ PreviousTeach VARCHAR[40],
+ CurrentTeach VARCHAR[4],
+ FutureTeach VARCHAR[4],
  SpeakScore INTEGER,
- SpeakDate VAR(10),
+ SpeakDate VARCHAR(10),
  PasswordTemp VARCHAR(20) NOT NULL,
  PRIMARY KEY(SSO)
 );
@@ -27,8 +27,7 @@ CREATE TABLE Applicant--Create Table for Applicant with all pertinent info
 CREATE TABLE Instructor--Create Table for Instructor(s) of Course(s)
 (
  SSO VARCHAR(20) NOT NULL DEFAULT '',
- LastName VARCHAR(20) NOT NULL,
- FirstName VARCHAR(20) NOT NULL,
+ Name VARCHAR(40) NOT NULL,
  PasswordTemp VARCHAR(20) NOT NULL,
  PRIMARY KEY(SSO)
 );

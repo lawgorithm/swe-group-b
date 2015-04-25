@@ -56,16 +56,14 @@ class FormController extends Controller {
 	{
 		$input = Request::all();
 
-		/*
-			TODO AFTER DB
-			INSERT VALUES INTO db;
-		*/
         $applicant = new Applicant();
-        $applicant->sso = 'puff420';
-        $applicant->lastname = 'high';
-        $applicant->firstname = 'johnny';
+
+        $user = \Auth::user()->toArray();
+
+        $applicant->sso = $user['sso'];
+        $applicant->name = $user['name'];
+        $applicant->email = $user['email'];
         $applicant->phone = $input['studentPhone'];
-        $applicant->email = 'puff420@mail.missouri.edu';
         $applicant->gpa = $input['studentGPA'];
         $applicant->graddate = $input['gradDate'];
         if ($input['studentStatus'] == 'Und')

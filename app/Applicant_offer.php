@@ -2,20 +2,20 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model {
+class Applicant_offer extends Model {
 
     // assign table to model
-    protected $table = 'section';
+    protected $table = 'applicantoffer';
 
     // attributes to edit
     protected $fillable = [
-        'sectionname',
-        'ta',
+        'sso',
         'courseid',
-        'datetime'
+        'rank',
+        'acceptstatus',
+        'sectionid',
     ];
 
-    public $timestamps = false;
     public $incrementing = false;
 
 }
