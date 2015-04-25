@@ -11,7 +11,7 @@
 
         <ul id="list_course">
             @foreach($courses as $course)
-                <li class="single_course"><strong>{{print $course['coursename']}}</strong></li>
+                <li class="single_course"><strong>{{$course['coursename']}}</strong></li>
             @endforeach
 
         </ul>

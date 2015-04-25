@@ -33,7 +33,7 @@ class CreateApplicantofferTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('applicantoffer')->cascade();
+		Schema::dropIfExists('applicantoffer');
 	}
 
 }
