@@ -20,12 +20,16 @@ class CreateApplicantTable extends Migration {
 			$table->string('name', 40);
 			$table->string('phone', 20);
 			$table->string('email', 40);
-			$table->string('gpa', 4);
+			$table->string('gpa', 4)->nullable();
 			$table->string('graddate', 20);
 			$table->string('program', 20);
 			$table->string('previouswork', 140)->nullable();
 			$table->integer('speakscore')->nullable();
 			$table->string('speakdate')->nullable();
+			//$table->increments('id');
+			//$table->timestamps();
+			//$table->primary('sso');
+
 		});
 	}
 

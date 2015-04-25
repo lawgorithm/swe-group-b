@@ -16,7 +16,9 @@ class Applicant extends Model {
         'gpa',
         'graddate',
         'program',
-        'speakscore'
+        'previouswork',
+        'speakscore',
+        'speakdate'
     ];
 
 }
