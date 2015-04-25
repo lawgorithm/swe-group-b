@@ -3,6 +3,8 @@
 //Namespace for accepting requests
 use Illuminate\Support\Facades\Request;
 use App\Applicant;
+use App\Course;
+use App\Applicant_Course;
 
 class FormController extends Controller {
     protected $check;
@@ -34,7 +36,9 @@ class FormController extends Controller {
 	 */
 	public function index()
 	{
-		return view('form');
+        $courses = Course::all()->toArray();
+
+        return view('form', ['courses' => $courses]);
 	}
 
 	/**
@@ -53,29 +57,62 @@ class FormController extends Controller {
 	 * @return Response
 	 */
 	public function store(Request $request)
-	{
-		$input = Request::all();
-
-        $applicant = new Applicant();
+    {
+        $input = Request::all();
 
         $user = \Auth::user()->toArray();
 
-        $applicant->sso = $user['sso'];
-        $applicant->name = $user['name'];
-        $applicant->email = $user['email'];
-        $applicant->phone = $input['studentPhone'];
-        $applicant->gpa = $input['studentGPA'];
-        $applicant->graddate = $input['gradDate'];
-        if ($input['studentStatus'] == 'Und')
-            $applicant->program = $input['studentStatus'] . " " .$input['studentMajor'] . " "
-                                . $input['studentField'] . " " . $input['studentYear'];
-        else
-            $applicant->program = $input['studentStatus'];
-        if ($input['studentOpt'] != "") $applicant->speakscore = $input['studentOpt'];
+        if ($input['studentStatus'] == 'Und') {
+            $program = $input['studentStatus'] . " " . $input['studentMajor'] . " "
+                . $input['studentField'] . " " . $input['studentYear'];
+            $GPA = $input['studentGPA'];
+        } else {
+            $program = $input['studentStatus'];
+            $GPA = null;
+        }
 
-        $applicant->save();
+        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : 0;
 
-        return "It worked " . serialize($input) . "!" . "\n";
+        $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
+
+        $work = ($input['studentWork'] != "") ? $input['studentWork'] : null;
+
+        Applicant::create([
+            'sso' => $user['sso'],
+            'name' => $user['name'],
+            'email' => $user['email'],
+            'phone' => $input['studentPhone'],
+            'gpa' => $GPA,
+            'graddate' => $input['gradDate'],
+            'program' => $program,
+            'previouswork' => $work,
+            'speakscore' => $speakscore,
+            'speakdate' => $speakdate
+        ]);
+
+        foreach ($input['prevTaught'] as $prev) {
+            Applicant_Course::create([
+                'sso' => $user['sso'],
+                'courseid' => $prev,
+                'action' => "100"
+            ]);
+        }
+        foreach ($input['currTaught'] as $curr) {
+            Applicant_Course::create([
+                'sso' => $user['sso'],
+                'courseid' => $curr,
+                'action' => "010"
+            ]);
+        }
+        foreach ($input['likeTeach'] as $like) {
+            Applicant_Course::create([
+                'sso' => $user['sso'],
+                'courseid' => $like,
+                'action' => "001"
+            ]);
+        }
+
+        return "It worked " . serialize($input) . "!";
 	}
 
 	/**
