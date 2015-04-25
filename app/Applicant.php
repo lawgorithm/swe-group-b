@@ -17,7 +17,9 @@ class Applicant extends Model {
         'gpa',
         'graddate',
         'program',
-        'speakscore'
+        'previouswork',
+        'speakscore',
+        'speakdate'
     ];
 
     public function getApplicantsByCourseId($courseId)
