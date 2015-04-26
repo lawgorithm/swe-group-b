@@ -40,6 +40,19 @@ App\Course::create(['courseid' => 'CS4320', 'coursename' => 'Software Engineerin
 App\Course::create(['courseid' => 'CS4450', 'coursename' => 'Principles of Programming Language', 'instructor' => 'harrisonw']);
 App\Course::create(['courseid' => 'CS4520', 'coursename' => 'Operating Systems I', 'instructor' => 'springerg']);
 
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+App\Applicant_Course::create
+
 
 
 App\User::create(['name' => 'Lawrence Williams', 'sso' => 'lmwv2c', 'email' => 'lmwv2c@mail.missouri.edu', 'password' => Hash::make('secret')]);
