@@ -26,9 +26,6 @@ class CreateApplicantTable extends Migration {
 			$table->string('previouswork', 140)->nullable();
 			$table->integer('speakscore')->nullable();
 			$table->string('speakdate')->nullable();
-			//$table->increments('id');
-			//$table->timestamps();
-			//$table->primary('sso');
 
 		});
 	}

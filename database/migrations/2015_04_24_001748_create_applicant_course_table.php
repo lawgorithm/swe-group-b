@@ -18,6 +18,7 @@ class CreateApplicantCourseTable extends Migration {
 			$table->string('sso', 20);
 			$table->string('courseid', 10);
 			$table->string('action', 3);
+			$table->integer('rank')->index();
 			$table->string('feedback', 140);
 			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');
 			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');
