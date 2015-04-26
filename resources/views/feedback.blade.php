@@ -25,24 +25,18 @@
                     Deny
                 </label>
                 <div class="form-actions feedback-button">
-                    <button name="save-feedback" type="submit" class="btn btn-primary">Save feedback</button>
+                    <button type="submit" class="btn btn-primary">Save feedback</button>
                 </div>
             </div>
         </div>
         <div id="students">
                 <span class="courseapplicantsheader">Applicants for 'course':</span>
                 <hr class="fancy-line"/>
+            @foreach($applicants as $applicant)
                 <select name="students" multiple="multiple" class="multiple custom-mult">
-                    <option class="applicant" name="Someone Else">Someone Else</option>
-                    <option class="applicant" name="Bill Johnson">Bill Johnson</option>
-                    <option class="applicant" name="Butch Coolidge">Butch Coolidge</option>
-                    <option class="applicant" name="Andy">Andy</option>
-                    <option class="applicant" name="Randy">Randy</option>
-                    <option class="applicant" name="A red guy">A red guy</option>
-                    <option class="applicant" name="More people">More people</option>
-                    <option class="applicant" name="Someone Else">Someone Else</option>
-                    <option class="applicant" name="Someone Else">Someone Else</option>
+                    <option id="{{$applicant->name}}" class="applicant" name="{{$applicant->name}}">{{$applicant->name}}</option>
                 </select>
+            @endforeach
         </div>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     </div>

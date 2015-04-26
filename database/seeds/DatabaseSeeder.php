@@ -38,6 +38,7 @@ class RoleTableSeeder extends Seeder {
         App\Role::create(['sso' => 'lmwv2c', 'user_role' => 'applicant']);
         App\Role::create(['sso' => 'jn9qc', 'user_role' => 'applicant']);
         App\Role::create(['sso' => 'rmixv8', 'user_role' => 'applicant']);
+	    App\Role::create(['sso' => 'jpvc4', 'user_role' => 'applicant']);
 
         App\Role::create(['sso' => 'scottgs', 'user_role' => 'instructor']);
         App\Role::create(['sso' => 'klaricm', 'user_role' => 'instructor']);
@@ -66,9 +67,8 @@ class UserTableSeeder extends Seeder {
         App\User::create(['name' => 'Master Hand', 'sso' => 'masterhand', 'email' => 'lawrencewilliams.lw@gmail.com', 'password' => Hash::make('iamthemaster')]);
         App\User::create(['name' => 'Jackson Nowotny', 'sso' => 'cq9nj', 'email' => 'ajnowotny@gmail.com', 'password' => Hash::make('secret')]);
         App\User::create(['name' => 'Michael Jordan', 'sso' => 'wer443', 'email' => 'winning@basket.ball', 'password' => Hash::make('secret')]);
-
+	    App\User::create(['name' => 'Jake Parham', 'sso' => 'jpvc4', 'email' => 'jpvc4@mail.missouri.edu', 'password' => Hash::make('secret')]);
     }
-
 }
 
 class CourseTableSeeder extends Seeder {

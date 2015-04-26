@@ -30,7 +30,8 @@ class Applicant extends Model {
         $applicants = $db::table('applicant')
                             ->join('applicantcourse', 'applicant.sso', '=', 'applicantcourse.sso')
                             ->where('applicantcourse.courseid', '=', $courseId)
-                            ->select('applicant.firstname', 'applicant.lastname')
+                            ->where('applicantcourse.action', '=', '001')
+                            ->select('applicant.name', 'applicant.sso')
                             ->get();
 
         return $applicants;

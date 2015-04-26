@@ -2,6 +2,7 @@
 
 use App\Applicant;
 use App\Applicant_Course;
+use App\Applicant_offer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -39,21 +40,28 @@ class FeedbackController extends Controller {
     public function index()
     {
         $applicants = new Applicant();
-       // $applicants = $applicants->getApplicantsByCourseId('CS1050');
+        $applicants = $applicants->getApplicantsByCourseId('CS1050');
 
-        return view('feedback');
+        return view('feedback')->with('applicants', $applicants);
     }
 
     public function store(Request $request){
-        $applicant_feedback = new \stdClass();
-        $applicants = array();
+        $applicant = new \stdClass();
+        $applicant_feedback = new Applicant_offer();
 
-        $applicants = [
-            0 => $applicant_feedback->name = $_POST['students'],
-            1 => $applicant_feedback->acceptedstatus = $_POST['optionsRadios'],
-            2 => $applicant_feedback->feedback = $_POST['feedback'],
-        ];
+        if(isset($_POST)) {
+            $applicant->name = $_POST['students'];
+            $applicant->acceptedstatus = $_POST['optionsRadios'];
+            $applicant->feedback = $_POST['feedback'];
 
-        return redirect('feedback');
+            $success = $applicant_feedback->updateApplicantFeedback($applicant);
+
+            if ($success == true) {
+                return redirect('feedback');
+            }
+        }
+        else{
+            echo "You didn't fill out the required materials";
+        }
     }
 }
