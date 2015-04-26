@@ -6,34 +6,34 @@
 @endsection
 
 @section('content')
+<form id="feedback" action="#" method="post">
     <div id="main">
         <div id="comments">
             <div id="student-name">
                 <strong class="student-name"></strong>
             </div>
             <hr class="fancy-line" />
-            <textarea rows="8" class="comment" placeholder="Comment here..."></textarea>
+            <textarea name="feedback" rows="8" class="comment" placeholder="Comment here..."></textarea>
             <br />
             <div style="padding-left: 25px;">
                 <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="accept" checked>
                         Accept
                 </label>
                 <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="deny">
                     Deny
                 </label>
-
                 <div class="form-actions feedback-button">
-                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save changes</button>
+                    <button name="save-feedback" type="submit" class="btn btn-primary">Save feedback</button>
                 </div>
             </div>
         </div>
         <div id="students">
                 <span class="courseapplicantsheader">Applicants for 'course':</span>
                 <hr class="fancy-line"/>
-                <select multiple="multiple" class="multiple custom-mult">
-                    <option class="applicant" onclick="replaceWithNameSelected()" name="Someone Else">Someone Else</option>
+                <select name="students" multiple="multiple" class="multiple custom-mult">
+                    <option class="applicant" name="Someone Else">Someone Else</option>
                     <option class="applicant" name="Bill Johnson">Bill Johnson</option>
                     <option class="applicant" name="Butch Coolidge">Butch Coolidge</option>
                     <option class="applicant" name="Andy">Andy</option>
@@ -44,6 +44,7 @@
                     <option class="applicant" name="Someone Else">Someone Else</option>
                 </select>
         </div>
+        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
 
     <!-- Modal -->
@@ -71,7 +72,7 @@
             </div>
         </div>
     </div>
-
+</form>
 
 @endsection
 

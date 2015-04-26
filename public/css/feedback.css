@@ -86,3 +86,8 @@ hr.fancy-line, hr.fancy-line:before {
     padding: 5px 5px 5px 5px;
     float: right;
 }
+
+.saveall-button{
+    padding-top: 25px;
+    float: right;
+}
