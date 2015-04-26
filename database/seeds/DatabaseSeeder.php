@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('CourseTableSeeder');
+		//$this->call('ApplicantCourseTableSeeder'); 
 	}
 
 }
@@ -99,7 +100,7 @@ class ApplicantCourseTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('applicantcourse')->delete()
+		DB::table('applicantcourse')->delete();
 		
 		
 		App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => '1050', 'action' => '100', 'rank' => '2', 'feedback' => 'student never came to class but got good grades']);
@@ -108,7 +109,7 @@ class ApplicantCourseTableSeeder extends Seeder {
 		
 		App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => '2050', 'action' => '001', 'rank' => '2', 'feedback' => 'terrible student with no work ethic']);
 		App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => '2050', 'action' => '001', 'rank' => '3', 'feedback' => 'student was caught cheating on homework']);
-		App\Applicant_Course::create(['sso' => 'lmwv2c, 'courseid' => '2050', 'action' => '001', 'rank' => '1', 'feedback' => 'student was a delight to teach']);
+		App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => '2050', 'action' => '001', 'rank' => '1', 'feedback' => 'student was a delight to teach']);
 
 		App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => '2270', 'action' => '100', 'rank' => '3', 'feedback' => 'this student failed every test']);
 		App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => '2270', 'action' => '100', 'rank' => '2', 'feedback' => 'student forgot about homeworks often']);
