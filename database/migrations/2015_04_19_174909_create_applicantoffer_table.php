@@ -18,9 +18,7 @@ class CreateApplicantofferTable extends Migration {
 			$table->timestamps();
 			$table->string('sso', 20);
 			$table->string('courseid', 10);
-			$table->integer('rank')->index();
 			$table->boolean('acceptstatus');
-			$table->string('feedback', 140);
 			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');
 			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');
 		});

@@ -7,7 +7,7 @@
 @section('content')
 
     <div id="course_list">
-    <h3 class="course_header">List of Courses</h3>
+        <h3 class="course_header">List of Courses</h3>
 
         <ul id="list_course">
             @foreach($courses as $course)
