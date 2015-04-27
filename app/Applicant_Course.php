@@ -16,4 +16,13 @@ class Applicant_Course extends Model {
     
     public $incrementing = false;
 
+    public function updateApplicantFeedback($applicants)
+    {
+        $success = true;
+        return $success;
+//        $success = DB::table('Applicant_offer')->update(
+//            ['rank' => $applicants->rank, 'feedback' => $applicants->feedback]
+//        );
+    }
+
 }
