@@ -51,7 +51,7 @@ class FeedbackController extends Controller {
         return view('feedback', ['applicants' => $applicants, 'courses' => $courses]);
     }
 
-    
+
     public function store(Request $request){
         $applicant = new \stdClass();
         $applicant_feedback = new Applicant_offer();
