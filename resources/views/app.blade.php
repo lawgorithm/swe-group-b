@@ -25,18 +25,24 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
                     <?php
-                        $check = \Auth::check();
 
-                        if($check == false) {
+                        if(!\Auth::check()) {
                             echo '<li><a href="/auth/register">Register</a></li>';
                             echo '<li><a href="/auth/login">Sign In</a></li>';
                         }
                         else {
-                            echo '<li><a href="/form">Apply!</a></li>';
-                            echo '<li><a href="/rank">Rank</a></li>';
-                            echo '<li><a href="/feedback">Feedback</a></li>';
+                            if (\Auth::user()->isApplicant()){
+                                echo '<li><a href="/form">Apply!</a></li>';
+                            }
+                            if (\Auth::user()->isAdmin()){
+                                echo '<li><a href="/rank">Rank</a></li>';
+                            }
+                            if (\Auth::user()->isInstructor()){
+                                echo '<li><a href="/feedback">Feedback</a></li>';
+                            }
                             echo '<li><a href="/auth/logout">Logout</a></li>';
                         }
+
                     ?>
 				</ul>
 			</div>
