@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('CourseTableSeeder');
-		//$this->call('ApplicantCourseTableSeeder'); 
+		$this->call('ApplicantTableSeeder');
+		$this->call('ApplicantCourseTableSeeder');
 	}
 
 }
@@ -93,6 +94,23 @@ class CourseTableSeeder extends Seeder {
     }
 
 }
+
+class ApplicantTableSeeder extends Seeder {
+
+	public function run ()
+	{
+		DB::table('applicant')->delete();
+		
+	
+		App\Applicant::create(['sso' => 'wer443', 'name' => 'Michael Jordan', 'phone' => '1231231127', 'email' => 'winning@basket.ball', 'gpa' => '4.0', 'graddate' => 'S16   ', 'program' => 'CS BS fresh', 'previouswork' => 'Taco Bell', 'speakscore' => 'NULL', 'speakdate' => 'NULL']);
+		App\Applicant::create(['sso' => 'lmwv2c', 'name' => 'Lawrence Williams', 'phone' => '1234557878', 'email' => 'lawrencewilliams.lw@gmail.com', 'gpa' => '3.2', 'graddate' => 'S17', 'program' => 'IT BA soph', 'previouswork' => 'Strip Club', 'speakscore' => 'NULL', 'speakdate' => 'NULL']);
+		App\Applicant::create(['sso' => 'jn9qc', 'name' => 'Jackson Nowotny', 'phone' => '7774448787', 'email' => 'ajnowotny@gmail.com', 'gpa' => '2.9', 'graddate' => 'F16', 'program' => 'CS BS junior', 'previouswork' => 'Burger King', 'speakscore' => '2', 'speakdate' => '05/20/2016']);
+		App\Applicant::create(['sso' => 'rmixv8', 'name' => 'Ryan Iffrig', 'phone' => '8988986655', 'email' => 'rmixv8@mail.missouri.edu', 'gpa' => '3.0', 'graddate' => 'F17', 'program' => 'IT BS senior', 'previouswork' => 'El Maquey', 'speakscore' => 'NULL', 'speakdate' => 'NULL']);
+		App\Applicant::create(['sso' => 'jpvc4', 'name' => 'Jake Parham', 'phone' => '1237895656', 'email' => 'jpvc4@mail.missouri.edu', 'gpa' => '1.9', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Panda Express', 'speakscore' => 'NULL', 'speakdate' => 'NULL']);
+	}
+	
+}
+
 
 class ApplicantCourseTableSeeder extends Seeder {
 
