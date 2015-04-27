@@ -1,6 +1,8 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 
 class Instructor extends Model {
 
@@ -12,5 +14,6 @@ class Instructor extends Model {
         'sso',
         'name',
     ];
+
 
 }

@@ -32,7 +32,13 @@
         <div id="students">
                 <span class="courseapplicantsheader">Applicants for 'course':</span>
                 <hr class="fancy-line"/>
-                <select name="students" multiple="multiple" class="multiple custom-mult">
+
+                <select name="courses" class="multiple custom-mult">
+                    @foreach($courses as $course)
+                        <option id="{{$course->courseid}}" class="applicant" name="{{$course->courseid}}">{{$course->courseid}}</option>
+                    @endforeach
+                </select>
+                <select name="students" class="multiple custom-mult">
                     @foreach($applicants as $applicant)
                         <option id="{{$applicant->name}}" class="applicant" name="{{$applicant->name}}">{{$applicant->name}}</option>
                     @endforeach

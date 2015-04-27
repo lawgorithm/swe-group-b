@@ -3,6 +3,7 @@
 use App\Applicant;
 use App\Applicant_Course;
 use App\Applicant_offer;
+use App\Course;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -40,12 +41,17 @@ class FeedbackController extends Controller {
      */
     public function index()
     {
+        $courses = new Course();
+        $courses = $courses->getAllCourses();
         $applicants = new Applicant();
-        $applicants = $applicants->getApplicantsByCourseId('CS2050');
 
-        return view('feedback')->with('applicants', $applicants);
+        $applicants = $applicants->getApplicantsByCourseId('CS1050');
+
+
+        return view('feedback', ['applicants' => $applicants, 'courses' => $courses]);
     }
 
+    
     public function store(Request $request){
         $applicant = new \stdClass();
         $applicant_feedback = new Applicant_offer();
