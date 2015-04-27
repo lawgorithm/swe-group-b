@@ -17,8 +17,8 @@ class RankController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role');
     }
-
 
     /**
 	 * Display a listing of the resource.
@@ -30,36 +30,5 @@ class RankController extends Controller {
         $courses = Course::all()->toArray();
 
         return view('rank', ['courses' => $courses]);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
 	}
 }
