@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Applicant extends Model {
 
@@ -21,4 +22,18 @@ class Applicant extends Model {
         'speakdate'
     ];
 
+    public function getApplicantsByCourseId($courseId)
+    {
+        $applicants = new Applicant();
+        $db = new DB();
+
+        $applicants = $db::table('applicant')
+                            ->join('applicantcourse', 'applicant.sso', '=', 'applicantcourse.sso')
+                            ->where('applicantcourse.courseid', '=', $courseId)
+                            ->where('applicantcourse.action', '=', '001')
+                            ->select('applicant.name', 'applicant.sso')
+                            ->get();
+
+        return $applicants;
+    }
 }

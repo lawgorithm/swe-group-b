@@ -1,12 +1,16 @@
 <?php namespace App\Http\Controllers;
 
+use App\Applicant;
+use App\Applicant_Course;
+use App\Applicant_offer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use MyProject\Proxies\__CG__\OtherProject\Proxies\__CG__\stdClass;
 
 class FeedbackController extends Controller {
-    protected $check;
+    private $tempFeedback = array();
     /*
     |--------------------------------------------------------------------------
     | Feedback Controller
@@ -35,7 +39,29 @@ class FeedbackController extends Controller {
      */
     public function index()
     {
-        return view('feedback');
+        $applicants = new Applicant();
+        $applicants = $applicants->getApplicantsByCourseId('CS1050');
+
+        return view('feedback')->with('applicants', $applicants);
     }
 
+    public function store(Request $request){
+        $applicant = new \stdClass();
+        $applicant_feedback = new Applicant_offer();
+
+        if(isset($_POST)) {
+            $applicant->name = $_POST['students'];
+            $applicant->acceptedstatus = $_POST['optionsRadios'];
+            $applicant->feedback = $_POST['feedback'];
+
+            $success = $applicant_feedback->updateApplicantFeedback($applicant);
+
+            if ($success == true) {
+                return redirect('feedback');
+            }
+        }
+        else{
+            echo "You didn't fill out the required materials";
+        }
+    }
 }
