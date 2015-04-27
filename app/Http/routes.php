@@ -21,6 +21,7 @@ Route::get('/rank', 'RankController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/feedback', 'FeedbackController@index');
+Route::post('/feedback', 'FeedbackController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
