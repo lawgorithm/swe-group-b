@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class RankController extends Controller {
     protected $check;
@@ -29,6 +30,13 @@ class RankController extends Controller {
 	{
         $courses = Course::all()->toArray();
 
-        return view('rank', ['courses' => $courses]);
+        $db = new DB();
+        $applied = $db::table('users')
+                    ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
+                    ->where('applicantcourse.action', '=', '001')
+                    ->select('*')
+                    ->get();
+
+        return view('rank', ['courses' => $courses, 'applied' => $applied]);
 	}
 }
