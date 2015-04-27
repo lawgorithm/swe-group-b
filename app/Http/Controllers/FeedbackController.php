@@ -41,7 +41,7 @@ class FeedbackController extends Controller {
     public function index()
     {
         $applicants = new Applicant();
-        $applicants = $applicants->getApplicantsByCourseId('CS1050');
+        $applicants = $applicants->getApplicantsByCourseId('CS2050');
 
         return view('feedback')->with('applicants', $applicants);
     }

@@ -32,11 +32,11 @@
         <div id="students">
                 <span class="courseapplicantsheader">Applicants for 'course':</span>
                 <hr class="fancy-line"/>
-            @foreach($applicants as $applicant)
                 <select name="students" multiple="multiple" class="multiple custom-mult">
-                    <option id="{{$applicant->name}}" class="applicant" name="{{$applicant->name}}">{{$applicant->name}}</option>
+                    @foreach($applicants as $applicant)
+                        <option id="{{$applicant->name}}" class="applicant" name="{{$applicant->name}}">{{$applicant->name}}</option>
+                    @endforeach
                 </select>
-            @endforeach
         </div>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
