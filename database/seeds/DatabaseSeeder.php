@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder {
 
 }
 
+#Role(SSO, Role)
 class RoleTableSeeder extends Seeder {
 
     public function run()
@@ -41,7 +42,7 @@ class RoleTableSeeder extends Seeder {
         App\Role::create(['sso' => 'lmwv2c', 'user_role' => 'applicant']);
         App\Role::create(['sso' => 'jn9qc', 'user_role' => 'applicant']);
         App\Role::create(['sso' => 'rmixv8', 'user_role' => 'applicant']);
-	App\Role::create(['sso' => 'jpvc4', 'user_role' => 'applicant']);
+	    App\Role::create(['sso' => 'jpvc4', 'user_role' => 'applicant']);
 
         App\Role::create(['sso' => 'scottgs', 'user_role' => 'instructor']);
         App\Role::create(['sso' => 'klaricm', 'user_role' => 'instructor']);
@@ -58,6 +59,7 @@ class RoleTableSeeder extends Seeder {
 
 }
 
+#User(FullName, SSO, Email, Password)
 class UserTableSeeder extends Seeder {
 
     public function run()
@@ -74,6 +76,7 @@ class UserTableSeeder extends Seeder {
     }
 }
 
+#Course(CourseID, CourseName, Instructor)
 class CourseTableSeeder extends Seeder {
 
     public function run()
@@ -96,6 +99,7 @@ class CourseTableSeeder extends Seeder {
 
 }
 
+#Applicant(SSO, FullName, Phone, Email, GPA, GradDate, Program, WorkHistory, SpeechScore, SpeechDate)
 class ApplicantTableSeeder extends Seeder {
 
 	public function run ()
@@ -112,6 +116,7 @@ class ApplicantTableSeeder extends Seeder {
 	
 }
 
+#ApplicantCourse(SSO, CourseID, Action, Rank, Feedback)
 class ApplicantCourseTableSeeder extends Seeder
 {
 
@@ -171,6 +176,7 @@ class ApplicantCourseTableSeeder extends Seeder
     }
 }
 
+#Instructor(SSO, FullName)
 Class InstructorTableSeeder extends Seeder{
 
     public function run(){

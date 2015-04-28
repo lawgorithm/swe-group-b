@@ -16,7 +16,7 @@ class CreatePhaseTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->timestamp('open');
+			$table->timestamp('open');#Temporal states of events
 			$table->timestamp('transition');
 			$table->timestamp('close');
 		});
