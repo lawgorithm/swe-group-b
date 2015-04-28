@@ -16,9 +16,12 @@ class CreatePhaseTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+			$table->string('author', 20);
 			$table->timestamp('open');
 			$table->timestamp('transition');
 			$table->timestamp('close');
+
+			$table->foreign('author')->references('sso')->on('users')->onDelete('cascade');
 		});
 	}
 

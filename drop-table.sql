@@ -1,1 +1,11 @@
-drop table if exists role, migrations, users, course, applicant, applicantcourse, applicantoffer, migrations, password_resets, instructor cascade;
+drop table if exists role cascade;
+drop table if exists migrations cascade;
+drop table if exists users cascade;
+drop table if exists course cascade;
+drop table if exists applicant cascade;
+drop table if exists applicantoffer cascade;
+drop table if exists applicantcourse cascade;
+drop table if exists migrations cascade;
+drop table if exists password_resets cascade;
+drop table if exists instructor cascade;
+drop table if exists phase cascade;
