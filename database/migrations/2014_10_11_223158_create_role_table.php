@@ -16,7 +16,7 @@ class CreateRoleTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-            $table->string('sso', 20)->unique();
+            $table->string('sso', 20)->unique();#SSO String
             $table->string('user_role', 10);//applicant, instructor or admin(advisor)
 		});
 	}

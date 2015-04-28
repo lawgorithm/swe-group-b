@@ -20,13 +20,9 @@
         <h3 class="course_header">Applicant Ranking</h3>
 
         <ul id="sortable">
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 1</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 2</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 3</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 4</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 5</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 6</li>
-            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Applicant 7</li>
+            @foreach($applied as $apply)
+                <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{$apply->name}}</li>
+            @endforeach
         </ul>
         </br>
         <button id="course_button">Submit</button>

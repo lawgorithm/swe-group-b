@@ -15,17 +15,17 @@ class CreateApplicantTable extends Migration {
 		Schema::create('applicant', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
-			$table->string('sso', 20)->unique();
-			$table->string('name', 40);
-			$table->string('phone', 20);
-			$table->string('email', 40);
-			$table->string('gpa', 4)->nullable();
-			$table->string('graddate', 20);
-			$table->string('program', 20);
-			$table->string('previouswork', 140)->nullable();
-			$table->integer('speakscore')->nullable();
-			$table->string('speakdate')->nullable();
+			$table->timestamps();#Event
+			$table->string('sso', 20)->unique();#Username String
+			$table->string('name', 40);#FirstName LastName String
+			$table->string('phone', 20);#(555)555-5555
+			$table->string('email', 40);#email@test.com
+			$table->string('gpa', 4)->nullable();#GPA hundreths precision
+			$table->string('graddate', 20);#Summer 2015
+			$table->string('program', 20);#BS CS
+			$table->string('previouswork', 140)->nullable();#Optional work history
+			$table->integer('speakscore')->nullable();#Optional speech score for non-native english speakers
+			$table->string('speakdate')->nullable();#Optional date of speech test
 
 		});
 	}
