@@ -11,7 +11,7 @@
 
         <ul id="list_course">
             @foreach($courses as $course)
-                <li class="single_course"><strong>{{$course['coursename']}}</strong></li>
+                <a href="{{action('RankController@show', $course['courseid'])}} "><li class="single_course"><strong>{{$course['coursename']}}</strong></li></a>
             @endforeach
 
         </ul>

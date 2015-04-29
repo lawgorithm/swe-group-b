@@ -39,4 +39,19 @@ class RankController extends Controller {
 
         return view('rank', ['courses' => $courses, 'applied' => $applied]);
 	}
+
+    public function show($id){
+
+        $courses = Course::all()->toArray();
+
+        $db = new DB();
+        $applied = $db::table('users')
+            ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
+            ->where('applicantcourse.action', '=', '001')
+            ->where('applicantcourse.courseid', '=', $id)
+            ->select('*')
+            ->get();
+
+        return view('rank', ['courses' => $courses, 'applied' => $applied]);
+    }
 }
