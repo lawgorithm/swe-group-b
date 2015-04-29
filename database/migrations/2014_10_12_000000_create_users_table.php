@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');#fetch new user
 			$table->timestamps();
-			$table->string('sso', 20);#First and Last Name
+			$table->string('sso', 20)->unique();#First and Last Name
 			$table->string('name', 40);
 			$table->string('email')->unique();#Single account associated with each email
 			$table->string('password', 60);
