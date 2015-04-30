@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Course;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -31,13 +32,8 @@ class RankController extends Controller {
         $courses = Course::all()->toArray();
 
         $db = new DB();
-        $applied = $db::table('users')
-                    ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
-                    ->where('applicantcourse.action', '=', '001')
-                    ->select('*')
-                    ->get();
 
-        return view('rank', ['courses' => $courses, 'applied' => $applied]);
+        return view('rank', ['courses' => $courses]);
 	}
 
     public function show($id){
@@ -47,9 +43,11 @@ class RankController extends Controller {
         $db = new DB();
         $applied = $db::table('users')
             ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
+            ->join('applicant', 'users.sso', '=', 'applicant.sso')
             ->where('applicantcourse.action', '=', '001')
             ->where('applicantcourse.courseid', '=', $id)
             ->select('*')
+            ->orderBy('applicantcourse.rank', 'asc')
             ->get();
 
         return view('rank', ['courses' => $courses, 'applied' => $applied]);
