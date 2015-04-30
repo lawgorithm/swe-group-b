@@ -13,20 +13,16 @@ class RedirectOnRole {
 	 */
 	public function handle($request, Closure $next)
 	{
-        if ($request->user()->isApplicant() && !$request->is('form')){
-
-            return redirect()->to('/home');
+        if ($request->user()->isApplicant() && $request->is('form')){
+            return $next($request);
         }
-        else if ($request->user()->isInstructor() && !$request->is('feedback')){
-
-            return redirect()->to('/home');
+        else if ($request->user()->isInstructor() && $request->is('feedback')){
+            return $next($request);
         }
-        else if ($request->user()->isAdmin() && !$request->is('rank')){
-
-            return redirect()->to('/home');
+        else if ($request->user()->isAdmin() && ($request->is('rank') || ($request->segment(2)) != NULL)){
+            return $next($request);
         }
-
-		return $next($request);
+        return redirect()->to('/home');
 	}
 
 }

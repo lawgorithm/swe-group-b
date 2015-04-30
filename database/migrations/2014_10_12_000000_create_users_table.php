@@ -14,11 +14,11 @@ class CreateUsersTable extends Migration {
 	{
 		Schema::create('users', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id');#fetch new user
 			$table->timestamps();
-			$table->string('sso', 20);
+			$table->string('sso', 20)->unique();#First and Last Name
 			$table->string('name', 40);
-			$table->string('email')->unique();
+			$table->string('email')->unique();#Single account associated with each email
 			$table->string('password', 60);
 			$table->rememberToken();
 			$table->foreign('sso')->references('sso')->on('role')->onDelete('cascade');

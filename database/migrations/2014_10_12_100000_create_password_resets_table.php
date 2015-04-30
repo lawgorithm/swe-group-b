@@ -16,7 +16,7 @@ class CreatePasswordResetsTable extends Migration {
 		{
 			
 			$table->string('email')->index();
-			$table->string('token')->index();
+			$table->string('token')->index();#Password reset ability
 			$table->timestamp('created_at');
 		});
 	}

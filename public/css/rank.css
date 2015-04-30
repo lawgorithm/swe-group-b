@@ -5,7 +5,6 @@ body {
 
 #course_list {
     height: 500px;
-    overflow: scroll;
     position: absolute;
     width: 30%;
     margin: auto;
@@ -33,14 +32,16 @@ body {
 
 .course_header {
     padding-bottom: 20px;
-    position: fixed;
+    position: absolute;
 
 }
 #list_course {
     list-style-type: none;
+    overflow: scroll;
+    height: 430px;
     margin: 0;
+    margin-top: 50px;
     padding: 0;
-    padding-top: 50px;
     font-family: 'Raleway';
     font-size: 28px;
     color: #0073ea;
@@ -84,3 +85,4 @@ body {
     margin: 15px 25px 0px 0px;
     font-size: 17px;
 }
+
