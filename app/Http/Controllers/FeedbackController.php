@@ -39,29 +39,36 @@ class FeedbackController extends Controller {
      *
      * @return Response
      */
-    public function index($id)
+    public function index()
     {
         $courses = new Course();
         $courses = $courses->getAllCourses();
-        $applicants = new Applicant();
-        $applicants = $applicants->getApplicantsByCourseId($id);
 
-            return view('feedback', ['courses' => $courses], ['applicants' => $applicants]);
+        return view('feedback', ['courses' => $courses]);
 
     }
 
+    public function pickCourse(){
+        $courses = new Course();
+        $courses = $courses->getAllCourses();
 
-    public function store(){
-        //TODO
-        var_dump($_POST); die();
+        return view('course', ['courses' => $courses]);
+    }
+
+    public function redirectCourse(){
+        $courseId = $_POST['course-list'];
+        return redirect("feedback/$courseId");
     }
 
     public function showApplicants($id){
-        $courses = new Course();
-        $courses = $courses->getAllCourses();
         $applicants = new Applicant();
         $applicants = $applicants->getApplicantsByCourseId($id);
 
-        return view('feedback', ['courses' => $courses], ['applicants' => $applicants]);
+        return view('feedback', ['applicants' => $applicants]);
     }
+
+    public function store(){
+        var_dump($_POST); die();
+    }
+
 }

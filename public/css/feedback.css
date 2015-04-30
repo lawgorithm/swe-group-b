@@ -15,9 +15,8 @@
 #courses{
     min-height: 150px;
     position: relative;
-    width: 32%;
+    width: 30%;
     margin: auto;
-    float: right;
     padding: 15px;
     border: 1px solid rgba(0,0,0,.1723);
     border-radius: 4px;

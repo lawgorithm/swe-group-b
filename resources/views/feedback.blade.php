@@ -29,18 +29,6 @@
                 </div>
             </div>
         </div>
-        <div id="courses">
-                <span class="courseapplicantsheader">Courses:</span>
-                <hr class="fancy-line"/>
-                <select name="course-list" class="form-control applicant-list">
-                    <option id="default" class="courses"></option>
-                    @foreach($courses as $course)
-                        <option id="{{$course->courseid}}" class="courses" name="{{$course->courseid}}">{{$course->courseid}}</option>
-                    @endforeach
-                </select>
-        </div>
-        <br />
-        @if(!empty($applicants))
         <div id="students">
                 <span class="courseapplicantsheader">Applicants</span>
                 <hr class="fancy-line"/>
@@ -50,7 +38,6 @@
                     @endforeach
                 </select>
         </div>
-        @endif
         @if(!empty($accepted))
         <div id="accepted">
             <span class="courseapplicantsheader" style="padding-left: 120px !important;">Accepted:</span>

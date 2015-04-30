@@ -22,7 +22,8 @@ class CreateApplicantCourseTable extends Migration {
 			$table->string('feedback', 500)->nullable();#Instructor Feedback, if any
 			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');#If Applicant DNE then their applications to courses should be removed
 			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');#If Course DNE then applicants to course should be removed
-		});
+		    $table->boolean('recommendation')->nullable(); #This is the teachers recommendation by True for Recommended or False for Not Recommended
+        });
 	}
 
 	/**
