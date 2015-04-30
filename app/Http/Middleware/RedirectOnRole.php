@@ -16,10 +16,10 @@ class RedirectOnRole {
         if ($request->user()->isApplicant() && $request->is('form')){
             return $next($request);
         }
-        else if ($request->user()->isInstructor() && ($request->is('feedback') || ($request->segment(2)) != NULL)){
+        else if ($request->user()->isInstructor() && ($request->is('feedback') || (($request->segment(1) == 'feedback') && ($request->segment(2)) != NULL))){
             return $next($request);
         }
-        else if ($request->user()->isAdmin() && ($request->is('rank') || ($request->segment(2)) != NULL)){
+        else if ($request->user()->isAdmin() && ($request->is('rank') || (($request->segment(1) == 'rank') && ($request->segment(2)) != NULL))){
             return $next($request);
         }
         return redirect()->to('/home');
