@@ -21,6 +21,7 @@ Route::get('/rank', 'RankController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/feedback', 'FeedbackController@index');
+Route::get('/feedback/{id}', 'FeedbackController@showApplicants');
 Route::post('/feedback', 'FeedbackController@store');
 
 Route::controllers([

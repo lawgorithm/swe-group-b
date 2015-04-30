@@ -24,25 +24,45 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="deny">
                     Deny
                 </label>
-                <div class="form-actions feedback-button">
+                <div class="form-actions feedback-button" style="padding-top: 36px;">
                     <button type="submit" class="btn btn-primary">Save feedback</button>
                 </div>
             </div>
         </div>
-        <div id="students">
-                <span class="courseapplicantsheader">Applicants for 'course':</span>
+        <div id="courses">
+                <span class="courseapplicantsheader">Courses:</span>
                 <hr class="fancy-line"/>
-                <select name="courses" class="form-control applicant-list">
+                <select name="course-list" class="form-control applicant-list">
+                    <option id="default" class="courses"></option>
                     @foreach($courses as $course)
-                        <option id="{{$course->courseid}}" class="applicant" name="{{$course->courseid}}">{{$course->courseid}}</option>
+                        <option id="{{$course->courseid}}" class="courses" name="{{$course->courseid}}">{{$course->courseid}}</option>
                     @endforeach
                 </select>
-                <select name="students" class="form-control applicant-list">
+        </div>
+        <br />
+        @if(!empty($applicants))
+        <div id="students">
+                <span class="courseapplicantsheader">Applicants</span>
+                <hr class="fancy-line"/>
+                <select id="student-list" name="student-list" class="form-control applicant-list">
                     @foreach($applicants as $applicant)
                         <option id="{{$applicant->name}}" class="applicant" name="{{$applicant->name}}">{{$applicant->name}}</option>
                     @endforeach
                 </select>
         </div>
+        @endif
+        @if(!empty($accepted))
+        <div id="accepted">
+            <span class="courseapplicantsheader" style="padding-left: 120px !important;">Accepted:</span>
+            <hr class="fancy-line"/>
+            <ul class="list-group custom-list">
+                <li class="list-group-item list-group-item-success">Student 1</li>
+                <li class="list-group-item list-group-item-success">Student 2</li>
+                <li class="list-group-item list-group-item-success">Student 3</li>
+                <li class="list-group-item list-group-item-success">Studnet 4</li>
+            </ul>
+        </div>
+        @endif
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
 
@@ -55,7 +75,7 @@
                     <h4 class="modal-title" id="myModalLabel">Whoops!</h4>
                 </div>
                 <div class="modal-body">
-                    The following students did not receive any feedback.
+                    The following students either did not receive any feedback or were not accepted.
                     Are you sure you want to continue?
 
                     {{--@foreach($applicants as $applicant)--}}

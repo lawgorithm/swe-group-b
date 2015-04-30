@@ -39,36 +39,29 @@ class FeedbackController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function index($id)
     {
         $courses = new Course();
         $courses = $courses->getAllCourses();
         $applicants = new Applicant();
+        $applicants = $applicants->getApplicantsByCourseId($id);
 
-        $applicants = $applicants->getApplicantsByCourseId('CS1050');
+            return view('feedback', ['courses' => $courses], ['applicants' => $applicants]);
 
-
-        return view('feedback', ['applicants' => $applicants, 'courses' => $courses]);
     }
 
 
-    public function store(Request $request){
-        $applicant = new \stdClass();
-        $applicant_feedback = new Applicant_offer();
+    public function store(){
+        //TODO
+        var_dump($_POST); die();
+    }
 
-        if(isset($_POST)) {
-            $applicant->name = $_POST['students'];
-            $applicant->acceptedstatus = $_POST['optionsRadios'];
-            $applicant->feedback = $_POST['feedback'];
+    public function showApplicants($id){
+        $courses = new Course();
+        $courses = $courses->getAllCourses();
+        $applicants = new Applicant();
+        $applicants = $applicants->getApplicantsByCourseId($id);
 
-            $success = $applicant_feedback->updateApplicantFeedback($applicant);
-
-            if ($success == true) {
-                return redirect('feedback');
-            }
-        }
-        else{
-            echo "You didn't fill out the required materials";
-        }
+        return view('feedback', ['courses' => $courses], ['applicants' => $applicants]);
     }
 }

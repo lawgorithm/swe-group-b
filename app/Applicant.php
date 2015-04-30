@@ -31,7 +31,6 @@ class Applicant extends Model {
                             ->join('applicantcourse', 'applicant.sso', '=', 'applicantcourse.sso')
                             ->where('applicantcourse.courseid', '=', $courseId)
                             ->where('applicantcourse.action', '=', '001')
-                            ->select('applicant.name', 'applicant.sso')
                             ->get();
 
         return $applicants;

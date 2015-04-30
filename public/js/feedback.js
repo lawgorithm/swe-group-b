@@ -1,8 +1,4 @@
-/*$(".applicant-list:option").select(function(){
-    $("student-name").text($(this).attr("name"));
-});*/
-
-$( "select" ).change(function() {
+$( "#student-list" ).change(function() {
     var str = "";
     $( "select option:selected" ).each(function() {
       str += $( this ).text() + " ";
@@ -10,3 +6,7 @@ $( "select" ).change(function() {
     $( "#student-name" ).text( str );
   })
   .trigger( "change" );
+
+$('[name="course-list"]').change(function() {
+    $(this).closest('form').submit();
+});
