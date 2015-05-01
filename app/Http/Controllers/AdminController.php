@@ -4,9 +4,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 
 class AdminController extends Controller {
 
@@ -23,7 +25,6 @@ class AdminController extends Controller {
         return view ('admin/home');
     }
 
-	//
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -59,6 +60,19 @@ class AdminController extends Controller {
             ->get();
 
         return view('admin/rank', ['courses' => $courses, 'applied' => $applied]);
+    }
+
+    public function settings()
+    {
+        return view('admin/settings');
+    }
+
+    public function phaseStore()
+    {
+        $input = Request::all();
+        $input['author'] = \Auth::user()->sso;
+        // return "It worked " . serialize($input) . "!";
+        return Response::json($input);
     }
 
 }

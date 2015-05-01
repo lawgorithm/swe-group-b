@@ -24,6 +24,7 @@ Route::get('admin/home', 'AdminController@home');
 Route::get('admin/rank', 'AdminController@rank');
 Route::get('admin/rank/{id}', 'AdminController@rankShow');
 Route::get('admin/settings', 'AdminController@settings');
+Route::post('admin/settings', 'AdminController@phaseStore');
 
 Route::get('instructor', 'InstructorController@index');
 Route::get('instructor/home', 'InstructorController@home');
