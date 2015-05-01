@@ -18,7 +18,7 @@ class CreateApplicantofferTable extends Migration {
 			$table->timestamps();#Event
 			$table->string('sso', 20);#SSO String
 			$table->string('courseid', 10);#CS 4320
-			$table->boolean('acceptstatus');#HasAccepted
+			$table->integer('rank');
 			$table->foreign('sso')->references('sso')->on('applicant')->onDelete('cascade');#If Applicant DNE, then Applicant Offers should be removed
 			$table->foreign('courseid')->references('courseid')->on('course')->onDelete('cascade');#If Course DNE, then Applicant Offers should be removed
 		});
