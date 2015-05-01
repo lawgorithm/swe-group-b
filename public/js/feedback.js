@@ -22,7 +22,7 @@ $("document").ready(function() {
         var course = x.options[x.selectedIndex].dataset.courseid;
         var username = x.options[x.selectedIndex].dataset.username;
         var feedback = document.getElementById("textArea").value;
-        var url = "http://swe.dev/feedback/" + course;
+        var url = "http://swe.dev/instructor/feedback/" + course;
 
         var option;
         if (document.getElementById("recommend").checked) {

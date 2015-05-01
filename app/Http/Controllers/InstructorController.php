@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 
 class InstructorController extends Controller {
 
+    private $err = false;
     /*
     |--------------------------------------------------------------------------
     | Instructor Controller
@@ -36,20 +37,15 @@ class InstructorController extends Controller {
 
     public function index()
     {
-    	return view('instructor/home');
+        $courses = new Course();
+        $courses = $courses->getAllCourses();
+
+        return view('course', ['courses' => $courses]);
     }
 
     public function home()
     {
     	return view('instructor/home');
-    }
-
-    public function pickCourse()
-    {
-        $courses = new Course();
-        $courses = $courses->getAllCourses();
-
-        return view('course', ['courses' => $courses]);
     }
 
     public function redirectCourse()
@@ -73,31 +69,29 @@ class InstructorController extends Controller {
                 'msg' => 'Unauthorized attempt to create setting'
             ));
         }
+
+        $appCourse = new Applicant_Course();
         $sso = Input::get('sso');
         $courseid = Input::get('courseid');
         $feedback = Input::get('feedback');
         $options = Input::get('option');
 
-        $err = $this->feedback_form_validate($sso);
-        ($err == false) ? array_push($applicant, $sso) : $errmsg = 'Applicant pawprint was not found';
+        $this->check_for_errors($sso, $courseid, $feedback, $options);
 
-        $err = $this->feedback_form_validate($courseid);
-        ($err == false) ? array_push($applicant, $courseid) : $errmsg = 'Applicant course was not found';
+        if($this->err == false) {
+            $applicant = $this->applicantInfo_toArray($sso, $courseid, $feedback, $options);
+            $appCourse->updateApplicantFeedback($applicant);
 
-        $err = $this->feedback_form_validate($feedback);
-        ($err == false) ? array_push($applicant, $feedback) : $errmsg = 'Applicant feedback was not given';
-
-        $err = $this->feedback_form_validate($options);
-        ($err == false) ? array_push($applicant, $options) : $errmsg = 'Applicant option was not selected';
-
-        echo "<pre>";
-        var_dump($applicant);
-        die();
-
-        $response = array(
-            'status' => 'success',
-            'msg' => 'Setting created successfully',
-        );
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Feedback given successfully',
+            );
+        } else {
+            $response = array(
+                'status' => 'failure',
+                'msg' => 'Feedback given unsuccessful'
+            );
+        }
 
         return Response::json($response);
     }
@@ -110,5 +104,25 @@ class InstructorController extends Controller {
             $err = true;
         }
         return $err;
+    }
+
+    public function check_for_errors($sso, $courseid, $feedback, $options)
+    {
+        $this->err = $this->feedback_form_validate($sso);
+        $this->err = $this->feedback_form_validate($courseid);
+        $this->err = $this->feedback_form_validate($feedback);
+        $this->err = $this->feedback_form_validate($options);
+    }
+
+    public function applicantInfo_toArray($sso, $courseid, $feedback, $options)
+    {
+        $applicant = array();
+
+        array_push($applicant, $sso);
+        array_push($applicant, $courseid);
+        array_push($applicant, $feedback);
+        array_push($applicant, $options);
+
+        return $applicant;
     }
 }

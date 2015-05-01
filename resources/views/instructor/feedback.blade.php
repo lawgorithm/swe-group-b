@@ -20,11 +20,11 @@
             <br />
             <div style="padding-left: 25px;">
                 <label class="radio">
-                <input type="radio" name="recommendation" id="recommend" value="True" checked>
+                <input type="radio" name="recommendation" id="recommend" value="1" checked>
                         Recommend
                 </label>
                 <label class="radio">
-                <input type="radio" name="recommendation" id="norecommend" value="False">
+                <input type="radio" name="recommendation" id="norecommend" value="-1">
                     Do Not Recommend
                 </label>
                 <div class="form-actions feedback-button">
