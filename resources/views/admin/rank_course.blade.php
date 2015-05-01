@@ -2,9 +2,11 @@
 
 @section('rank_course')
     <h3 class="course_header">Applicant Ranking for {{$cid}}</h3>
+    <meta name="csrf-token" content="<?PHP echo csrf_token() ?>">
+    <meta name="courseid" content="{{$cid}}">
     <ul id="sortable">
         @foreach($applied as $apply)
-            <li class="ui-state-default" value="{{$apply->rank}}|{{$apply->sso}}"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{$apply->name}}</li>
+            <li class="ui-state-default" id="sort-{{$apply->sso}}" value="{{$apply->rank}}|{{$apply->sso}}"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{$apply->name}}</li>
         @endforeach
     </ul>
     <br>
