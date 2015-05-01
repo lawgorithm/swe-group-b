@@ -117,7 +117,7 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	public function redirectPath()
 	{
-		if (property_exists($this, 'redirectPath')dd )
+		if (property_exists($this, 'redirectPath'))
 		{
 			return $this->redirectPath;
 		}
