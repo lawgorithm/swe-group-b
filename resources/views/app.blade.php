@@ -18,32 +18,19 @@
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-					<a class="logo" href="/">
-						Mizzou TA Application
-					</a>
+					<a class="logo" href="/">Mizzou TA Application</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-                    <?php
-
-                        if(!\Auth::check()) {
-                            echo '<li><a href="/auth/register">Register</a></li>';
-                            echo '<li><a href="/auth/login">Sign In</a></li>';
-                        }
-                        else {
-                            if (\Auth::user()->isApplicant()){
-                                echo '<li><a href="/form">Apply!</a></li>';
-                            }
-                            if (\Auth::user()->isAdmin()){
-                                echo '<li><a href="/rank">Rank</a></li>';
-                            }
-                            if (\Auth::user()->isInstructor()){
-                                echo '<li><a href="/feedback">Feedback</a></li>';
-                            }
-                            echo '<li><a href="/auth/logout">Logout</a></li>';
-                        }
-
-                    ?>
+				@yield('links')
+                    @if (!\Auth::check())
+                            <li><a href="/auth/register">Register</a></li>
+                            <li><a href="/auth/login">Sign In</a></li>
+                    @else
+                    	
+                        <li><a href="/auth/logout">Logout</a></li>
+                    @endif
+                
 				</ul>
 			</div>
 		</div>

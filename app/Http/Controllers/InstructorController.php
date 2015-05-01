@@ -10,14 +10,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use MyProject\Proxies\__CG__\OtherProject\Proxies\__CG__\stdClass;
 
-class FeedbackController extends Controller {
-    private $tempFeedback = array();
+class InstructorController extends Controller {
+
+	private $tempFeedback = array();
     /*
     |--------------------------------------------------------------------------
-    | Feedback Controller
+    | Instructor Controller
     |--------------------------------------------------------------------------
     |
-    | Displays feedback fields for instructors.
+    |
     |
     |
     |
@@ -34,40 +35,40 @@ class FeedbackController extends Controller {
         $this->middleware('role');
     }
 
-    /**
-     * Show the application form page.
-     *
-     * @return Response
-     */
     public function index()
     {
-        $courses = new Course();
-        $courses = $courses->getAllCourses();
-
-        return view('feedback', ['courses' => $courses]);
-
+    	return view('instructor/home');
     }
 
-    public function pickCourse(){
+    public function home()
+    {
+    	return view('instructor/home');
+    }
+
+    public function pickCourse()
+    {
         $courses = new Course();
         $courses = $courses->getAllCourses();
 
         return view('course', ['courses' => $courses]);
     }
 
-    public function redirectCourse(){
+    public function redirectCourse()
+    {
         $courseId = $_POST['course-list'];
-        return redirect("feedback/$courseId");
+        return redirect("instructor/feedback/$courseId");
     }
 
-    public function showApplicants($id){
+    public function showApplicants($id)
+    {
         $applicants = new Applicant();
         $applicants = $applicants->getApplicantsByCourseId($id);
 
-        return view('feedback', ['applicants' => $applicants]);
+        return view('instructor/feedback', ['applicants' => $applicants]);
     }
 
-    public function store(){
+    public function feedbackStore()
+    {
         var_dump($_POST); die();
     }
 
