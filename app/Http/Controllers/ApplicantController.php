@@ -88,7 +88,8 @@ class ApplicantController extends Controller {
             Applicant_Course::create([
                 'sso' => $user['sso'],
                 'courseid' => $like,
-                'action' => "001"
+                'action' => "001",
+                'recommendation' => 0
             ]);
         }
 

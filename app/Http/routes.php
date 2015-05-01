@@ -23,6 +23,8 @@ Route::get('admin', 'AdminController@index');
 Route::get('admin/home', 'AdminController@home');
 Route::get('admin/rank', 'AdminController@rank');
 Route::get('admin/rank/{id}', 'AdminController@rankShow');
+//Route::post('admin/rank', 'AdminController@rankStore');
+Route::get('admin/submit/{id}', 'AdminController@submit');
 Route::get('admin/settings', 'AdminController@settings');
 
 Route::get('instructor', 'InstructorController@index');
