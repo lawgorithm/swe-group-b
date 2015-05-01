@@ -1,5 +1,3 @@
-@extends('app')
-
 @section('headers')
     <link href="/css/home.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html"/>
 @endsection

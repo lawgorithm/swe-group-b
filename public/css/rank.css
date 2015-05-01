@@ -17,7 +17,7 @@ body {
 
 }
 #course_ranking {
-    min-height: 500px;
+    height: 500px;
     position: relative;
     width: 60%;
     margin:  auto;
@@ -85,4 +85,32 @@ body {
     margin: 15px 25px 0px 0px;
     font-size: 17px;
 }
+
+
+.ui-tooltip {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 1;
+
+}
+.ui-tooltip-content {
+    position: relative;
+    padding: 1em;
+}
+.ui-tooltip-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+.right .ui-tooltip-content::after {
+    top: 18px;
+    left: -15px;
+    border-color: transparent #666;
+    border-width: 15px 15px 15px 0;
+}
+
 

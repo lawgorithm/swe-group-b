@@ -1,11 +1,11 @@
-@extends('app')
+@extends('applicant/applicant')
 
 @section('headers')
 <link href="/css/form.css" rel="stylesheet" />
 @endsection
 
 @section('content')
-<form id="msForm" action="/form" method="POST">
+<form id="msForm" action="form" method="POST">
   <fieldset id="fs1">
     <div class="form-group">
 

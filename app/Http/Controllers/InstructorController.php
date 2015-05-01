@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Input;
 
-class FeedbackController extends Controller {
+class InstructorController extends Controller {
+
     /*
     |--------------------------------------------------------------------------
-    | Feedback Controller
+    | Instructor Controller
     |--------------------------------------------------------------------------
     |
-    | Displays feedback fields for instructors.
+    |
     |
     |
     |
@@ -26,49 +27,56 @@ class FeedbackController extends Controller {
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('role');
     }
 
-    /**
-     * Show the application form page.
-     *
-     * @return Response
-     */
     public function index()
+    {
+    	return view('instructor/home');
+    }
+
+    public function home()
+    {
+    	return view('instructor/home');
+    }
+
+    public function pickCourse()
     {
         $courses = new Course();
         $courses = $courses->getAllCourses();
 
         return view('course', ['courses' => $courses]);
-
     }
 
-    public function redirectCourse(){
+    public function redirectCourse()
+    {
         $courseId = $_POST['course-list'];
-        return redirect("feedback/$courseId");
+        return redirect("instructor/feedback/$courseId");
     }
 
-    public function showApplicants($id){
+    public function showApplicants($id)
+    {
         $applicants = new Applicant();
         $applicants = $applicants->getApplicantsByCourseId($id);
 
-        return view('feedback', ['applicants' => $applicants]);
+        return view('instructor/feedback', ['applicants' => $applicants]);
     }
 
-    public function store(Request $request)
+    public function feedbackStore()
     {
-        if ( Session::token() !== Input::get( '_token' ) ) {
-            return Response::json( array(
+        if (Session::token() !== Input::get('_token')) {
+            return Response::json(array(
                 'msg' => 'Unauthorized attempt to create setting'
-            ) );
+            ));
         }
-        $sso = Input::get( 'sso' );
-        $courseid = Input::get( 'courseid' );
-        $feedback = Input::get( 'feedback' );
-        $options = Input::get( 'option' );
+        $sso = Input::get('sso');
+        $courseid = Input::get('courseid');
+        $feedback = Input::get('feedback');
+        $options = Input::get('option');
 
         $err = $this->feedback_form_validate($sso);
         ($err == false) ? array_push($applicant, $sso) : $errmsg = 'Applicant pawprint was not found';
@@ -82,14 +90,16 @@ class FeedbackController extends Controller {
         $err = $this->feedback_form_validate($options);
         ($err == false) ? array_push($applicant, $options) : $errmsg = 'Applicant option was not selected';
 
-        echo"<pre>"; var_dump($applicant); die();
+        echo "<pre>";
+        var_dump($applicant);
+        die();
 
         $response = array(
             'status' => 'success',
             'msg' => 'Setting created successfully',
         );
 
-        return Response::json( $response );
+        return Response::json($response);
     }
 
     public function feedback_form_validate($data){

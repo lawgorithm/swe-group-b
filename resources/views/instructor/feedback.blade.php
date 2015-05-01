@@ -1,4 +1,4 @@
-@extends('app')
+@extends('instructor/instructor')
 
 @section('headers')
     <link href="/css/feedback.css" rel="stylesheet" />

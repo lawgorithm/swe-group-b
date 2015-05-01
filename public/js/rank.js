@@ -10,8 +10,25 @@ $(function() {
         });
 });
 $(function() {
-    $( "ul#cl" )
-        .click(function( event ) {
+    $( ".ui-state-default" ).tooltip({
+        items: "li",
+        show: {
+            delay: 700
+        },
+        tooltipClass: "right",
+        position:{
+            my: "left+250 top-32",
+            at: "left"
+        },
+        content: function() {
+            var element = $( this );
+            var val = element.attr('value');
+            console.log(val);
+            var vals = val.split("|");
+            val = vals[1];
+            console.log(val);
+            return $("#info-" + val + ".hidden").html();
+        }
 
-        });
+    });
 });
