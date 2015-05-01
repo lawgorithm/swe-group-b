@@ -25,9 +25,8 @@ Route::get('admin/rank', 'AdminController@rank');
 Route::get('admin/rank/{id}', 'AdminController@rankShow');
 Route::get('admin/settings', 'AdminController@settings');
 
-Route::get('instructor', 'InstructorController@index');
 Route::get('instructor/home', 'InstructorController@home');
-Route::get('instructor/feedback', 'InstructorController@pickCourse');
+Route::get('instructor/feedback', 'InstructorController@index');
 Route::post('instructor/feedback', 'InstructorController@redirectCourse');
 Route::get('instructor/feedback/{id}', 'InstructorController@showApplicants');
 Route::post('instructor/feedback/{id}', 'InstructorController@feedbackStore');

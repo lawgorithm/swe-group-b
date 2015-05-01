@@ -11,20 +11,19 @@ class Applicant_Course extends Model {
     protected $fillable = [
         'sso',
         'courseid',
-        'action'
+        'action',
+        'feedback',
+        'recommendation'
     ];
     
     public $incrementing = false;
 
     public function updateApplicantFeedback($applicant)
     {
-        $success = true;
-        return $success;
-        //var_dump($applicant); die();
-        $success = DB::table('Applicant_offer')
-            ->where('Applicant_offer.sso', '=', $applicant->sso)
-            ->where('Applicant_offer.courseid', '=', $applicant->courseid)
-            ->update(['feedback' => $applicant->feedback, 'recommendation' => $applicant->optionsRadios]);
+        $appCourse = Applicant_Course::where('sso', '=', $applicant[0])->where('courseid', '=', $applicant[1])->firstOrFail();
+        $appCourse->feedback = $applicant[2];
+        $appCourse->recommendation = $applicant[3];
+        $appCourse->save();
     }
 
 }
