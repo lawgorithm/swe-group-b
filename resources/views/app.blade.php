@@ -22,17 +22,12 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
+				@yield('links')
                     @if (!\Auth::check())
-                        <li><a href="/auth/register">Register</a></li>
-                        <li><a href="/auth/login">Sign In</a></li>
+                            <li><a href="/auth/register">Register</a></li>
+                            <li><a href="/auth/login">Sign In</a></li>
                     @else
-                        @if (\Auth::user()->isApplicant())
-                            <li><a href="/form">Apply!</a></li>
-                        @elseif (Auth::user()->isAdmin())
-                            <li><a href="/rank">Rank</a></li>
-                        @elseif (\Auth::user()->isInstructor())
-                            <li><a href="/feedback">Feedback</a></li>
-                        @endif
+                    	
                         <li><a href="/auth/logout">Logout</a></li>
                     @endif
 				</ul>

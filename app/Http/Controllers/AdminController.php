@@ -8,35 +8,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class RankController extends Controller {
+class AdminController extends Controller {
+
     protected $check;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('role');
     }
 
-    /**
+    public function index()
+    {
+        return view ('admin/home');
+    }
+
+	//
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function rank()
 	{
         $courses = Course::all()->toArray();
 
         $db = new DB();
 
-        return view('rank', ['courses' => $courses]);
+        return view('admin/rank', ['courses' => $courses]);
 	}
 
-    public function show($id){
+    public function home()
+    {
+
+        return view ('admin/home');
+    }
+
+	public function rankShow($id){
 
         $courses = Course::all()->toArray();
 
@@ -50,6 +58,7 @@ class RankController extends Controller {
             ->orderBy('applicantcourse.rank', 'asc')
             ->get();
 
-        return view('rank', ['courses' => $courses, 'applied' => $applied]);
+        return view('admin/rank', ['courses' => $courses, 'applied' => $applied]);
     }
+
 }

@@ -1,65 +1,44 @@
 <?php namespace App\Http\Controllers;
 
+//use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
 //Namespace for accepting requests
 use Illuminate\Support\Facades\Request;
 use App\Applicant;
 use App\Course;
 use App\Applicant_Course;
 
-class FormController extends Controller {
-    protected $check;
-	/*
-	|--------------------------------------------------------------------------
-	| Form Controller
-	|--------------------------------------------------------------------------
-	|
-	| Displays form fields for users.
-	|
-	|
-	|
-	*/
+//use Illuminate\Http\Request;
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+class ApplicantController extends Controller {
+
 	public function __construct()
-	{
-		$this->middleware('auth');
-        $this->middleware('role');
-	}
-
-	/**
-	 * Show the application form page.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        $courses = Course::all()->toArray();
-
-        return view('form', ['courses' => $courses]);
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(Request $request)
     {
-        $input = Request::all();
+        $this->middleware('auth');
+        $this->middleware('role');
+    }
+
+    public function index()
+    {
+    	return view('applicant/home');
+    }
+
+    public function home()
+    {
+    	return view('applicant/home');
+    }
+
+    public function form()
+    {
+    	 $courses = Course::all()->toArray();
+
+        return view('applicant/form', ['courses' => $courses]);
+    }
+
+    public function formStore()
+    {
+    	$input = Request::all();
 
         $user = \Auth::user()->toArray();
 
@@ -114,49 +93,6 @@ class FormController extends Controller {
         }
 
         return "It worked " . serialize($input) . "!";
-	}
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 }
