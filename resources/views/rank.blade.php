@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('header')
+    <link href="/css/rank.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html"/>
+@endsection
+
 @section('content')
 
     <div id="course_list">
