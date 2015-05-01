@@ -101,4 +101,18 @@ class AdminController extends Controller {
         }
         return view('admin/rank_submit', ['courses' => $courses]);
     }
+    public function save(Request $request)
+    {
+        $ids = $request->ids;
+        $courseid = $request->courseid;
+
+        $count=1;
+        foreach ($ids as $id) {
+            Applicant_Course::where('courseid', '=', $courseid)
+                            ->where('sso', '=', $id)
+                            ->where('action', '=', '001')
+                            ->update(['rank' => $count]);
+            $count++;
+        }
+    }
 }
