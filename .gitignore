@@ -6,3 +6,6 @@
 .idea/workspace.xml
 !/.gitignore
 .DS_Store
+
+
+!/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php
