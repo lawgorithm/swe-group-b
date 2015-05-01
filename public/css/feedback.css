@@ -114,5 +114,11 @@ hr.fancy-line, hr.fancy-line:before {
 }
 .custom-list{
     overflow: scroll;
-    max-height: 75px;
+    max-height: 150px;
 }
+
+.cstm-btn{
+    float: right;
+    min-height: 15px;
+}
+

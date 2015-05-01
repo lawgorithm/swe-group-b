@@ -16,13 +16,15 @@ class Applicant_Course extends Model {
     
     public $incrementing = false;
 
-    public function updateApplicantFeedback($applicants)
+    public function updateApplicantFeedback($applicant)
     {
         $success = true;
         return $success;
-//        $success = DB::table('Applicant_offer')->update(
-//            ['rank' => $applicants->rank, 'feedback' => $applicants->feedback]
-//        );
+        //var_dump($applicant); die();
+        $success = DB::table('Applicant_offer')
+            ->where('Applicant_offer.sso', '=', $applicant->sso)
+            ->where('Applicant_offer.courseid', '=', $applicant->courseid)
+            ->update(['feedback' => $applicant->feedback, 'recommendation' => $applicant->optionsRadios]);
     }
 
 }
