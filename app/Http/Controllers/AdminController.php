@@ -146,8 +146,14 @@ class AdminController extends Controller {
     {
         $input = Request::all();
         $input['author'] = \Auth::user()->sso;
-        // return "It worked " . serialize($input) . "!";
+
+        $phase = Phase::create($input);
+
+        $phase->save();
+
         return Response::json($input);
     }
+
+    
 
 }
