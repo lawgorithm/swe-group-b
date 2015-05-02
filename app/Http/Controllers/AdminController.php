@@ -178,7 +178,11 @@ class AdminController extends Controller {
 
         $phase->save();
 
-        return Response::json($input);
+        $phase = Phase::all()->last()->toArray();
+        $data = $this->getPhaseSentences($phase);
+
+        //return Response::json($input);
+        return view('admin/settings', $data);
     }
 
 
