@@ -43,7 +43,9 @@ class InstructorController extends Controller {
 
     public function home()
     {
-    	return view('instructor/home');
+        $instructorName = \Auth::user()->name;
+
+    	return view('instructor/home', ['instructorName' => $instructorName]);
     }
 
     public function redirectCourse()
