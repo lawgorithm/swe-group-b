@@ -5,19 +5,21 @@
 @endsection
 
 @section('content')
-
-    <div id="course_list">
-        <h3 class="course_header">List of Courses</h3>
-
-        <ul id="list_course">
-            @foreach($courses as $course)
-                <a href="{{action('AdminController@rankShow', $course['courseid'])}} "><li class="single_course"><strong>{{$course['coursename']}}</strong></li></a>
-            @endforeach
-        </ul>
-    </div>
-    <div id="course_ranking">
-        @yield('rank_course')
-        @yield('rank_home')
+    <div id="main">
+        <div id="course_list">
+            <h3 class="course_header">Courses Not Submitted</h3>
+            <ul id="list_course">
+                @foreach($courses as $course)
+                    @if (!\App\Course::checkIfCourseComplete($course['courseid']))
+                        <a href="{{action('AdminController@rankShow', $course['courseid'])}} "><li class="single_course">{{$course['courseid']}}</li></a>
+                    @endif
+                @endforeach
+            </ul>
+        </div>
+        <div id="course_ranking">
+            @yield('rank_course')
+            @yield('rank_home')
+        </div>
     </div>
 
 @endsection

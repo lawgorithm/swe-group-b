@@ -103,15 +103,17 @@ class AdminController extends Controller {
     {
         $offers = Applicant_Course::where('courseid', '=', $id)
             ->where('action', '=', '001')
-            ->orderBy('rank')
+            ->orderBy('rank', 'asc')
             ->get();
 
+        $count = 1;
         foreach ($offers as $offer) {
             Applicant_offer::create([
                 'sso' => $offer->sso,
                 'courseid' => $offer->courseid,
-                'rank' => $offer->rank
+                'rank' => $count
             ]);
+            $count++;
         }
         return redirect('admin/rank');
     }
