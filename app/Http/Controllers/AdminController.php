@@ -23,6 +23,7 @@ class AdminController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
+        $this->middleware('time');
     }
 
     /**
@@ -97,8 +98,6 @@ class AdminController extends Controller {
      */
     public function submit($id)
     {
-        $courses = Course::all()->toArray();
-
         $offers = Applicant_Course::where('courseid', '=', $id)
             ->where('action', '=', '001')
             ->orderBy('rank')
@@ -111,7 +110,7 @@ class AdminController extends Controller {
                 'rank' => $offer->rank
             ]);
         }
-        return view('admin/rank_home', ['courses' => $courses]);
+        return redirect('admin/rank');
     }
 
     /**
