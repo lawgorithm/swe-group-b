@@ -65,6 +65,8 @@ class AdminController extends Controller {
      */
     public function rankShow($id)
     {
+        if (Course::checkIfCourseComplete($id))
+            return redirect()->back();
 
         $courses = Course::all()->toArray();
 
@@ -72,7 +74,6 @@ class AdminController extends Controller {
         $applied = $db::table('users')
             ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
             ->join('applicant', 'users.sso', '=', 'applicant.sso')
-            ->where('applicantcourse.action', '=', '001')
             ->where('applicantcourse.courseid', '=', $id)
             ->select('*')
             ->orderBy('applicantcourse.rank', 'asc')
@@ -83,6 +84,13 @@ class AdminController extends Controller {
         return view('admin/rank_course', ['courses' => $courses, 'applied' => $applied, 'cid' => $id]);
     }
 
+    /**
+     * function to submit rank and create offer field
+     * called on submit button click
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
     public function submit($id)
     {
         $courses = Course::all()->toArray();
@@ -99,8 +107,15 @@ class AdminController extends Controller {
                 'rank' => $offer->rank
             ]);
         }
-        return view('admin/rank_submit', ['courses' => $courses]);
+        return view('admin/rank_home', ['courses' => $courses]);
     }
+
+    /**
+     * function to update rank for course
+     * called whenever order is changed
+     *
+     * @param Request $request
+     */
     public function save(Request $request)
     {
         $ids = $request->ids;
