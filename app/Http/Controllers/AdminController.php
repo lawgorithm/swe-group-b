@@ -74,6 +74,7 @@ class AdminController extends Controller {
         $applied = $db::table('users')
             ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
             ->join('applicant', 'users.sso', '=', 'applicant.sso')
+            ->where('applicantcourse.action', '=', '001')
             ->where('applicantcourse.courseid', '=', $id)
             ->select('*')
             ->orderBy('applicantcourse.rank', 'asc')
