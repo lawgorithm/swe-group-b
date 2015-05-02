@@ -70,8 +70,8 @@ class UserTableSeeder extends Seeder {
     {
         DB::table('users')->delete();
 
-        App\User::create(['name' => 'Master Hand', 'sso' => 'masterhand', 'email' => 'masterhand@missouri.edu', 'password' => Hash::make('secret')]);
-        App\User::create(['name' => 'CQ9NJ', 'sso' => 'cq9nj', 'cq9nj@missouri.edu', 'password' => Hash::make('secret')]);
+        //App\User::create(['name' => 'Master Hand', 'sso' => 'masterhand', 'email' => 'masterhand@missouri.edu', 'password' => Hash::make('secret')]);
+        //App\User::create(['name' => 'CQ9NJ', 'sso' => 'cq9nj', 'cq9nj@missouri.edu', 'password' => Hash::make('secret')]);
 
         App\User::create(['name' => 'Lawrence Williams', 'sso' => 'lmwv2c', 'email' => 'lmwv2c@mail.missouri.edu', 'password' => Hash::make('secret')]);
         App\User::create(['name' => 'Jackson Nowotny', 'sso' => 'jn9qc', 'email' => 'jn9qc@mail.missouri.edu', 'password' => Hash::make('secret')]);
@@ -82,7 +82,7 @@ class UserTableSeeder extends Seeder {
 	    App\User::create(['name' => 'Jake Parham', 'sso' => 'jpvc4', 'email' => 'jpvc4@mail.missouri.edu', 'password' => Hash::make('secret')]);
         App\User::create(['name' => 'Brendon Tiszka', 'sso' => 'bjt2p3', 'email' => 'bjt2p3@mail.missouri.edu', 'password' => Hash::make('secret')]);
 	    App\User::create(['name' => 'John Smith', 'sso' => 'abc123', 'email' => 'fake@fake.fake', 'password' => Hash::make('secret')]);
-	    App\User::create(['name' => 'Richard Nixon', 'sso' => 'zxy987', 'email' => 'jowels@president.fake', 'password' => Hash::make('secret')]);
+	    //App\User::create(['name' => 'Richard Nixon', 'sso' => 'zxy987', 'email' => 'jowels@president.fake', 'password' => Hash::make('secret')]);
 	    App\User::create(['name' => 'Andrew Jackson', 'sso' => 'fewft3', 'email' => 'banks@president.fake', 'password' => Hash::make('secret')]);
 	    App\User::create(['name' => 'Rene Magritte', 'sso' => 'jfj675', 'email' => 'paint@art.null', 'password' => Hash::make('secret')]);
 	    App\User::create(['name' => 'Bob Ross', 'sso' => 'bobros', 'email' => 'paint@art.happylittletrees', 'password' => Hash::make('secret')]);

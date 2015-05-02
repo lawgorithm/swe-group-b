@@ -26,6 +26,7 @@ div.alert {
 		<p>We will <strong>begin collecting applications</strong> on <u>{{$open}}</u>.</p>
 		<p><u>{{$transition}}</u> is the <strong>deadline for student submissions</strong>.</p>
 		<p><u>{{$close}}</u> is the <strong>deadline for instructor feedback</strong>.</p>
+		<p><small>Set By: {{$author}}</small></p>
 	</div>
 	@else
 	<div class="alert alert-warning text-center" role="alert">
