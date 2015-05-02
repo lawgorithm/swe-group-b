@@ -73,11 +73,11 @@ class InstructorController extends Controller {
         }
 
         $appCourse = new Applicant_Course();
-        $sso = Input::get('sso');
-        $courseid = Input::get('courseid');
-        $feedback = Input::get('feedback');
-        $options = Input::get('option');
-        $name = Input::get('username');
+        $sso = $this->feedback_form_sanitizer(Input::get('sso'));
+        $courseid = $this->feedback_form_sanitizer(Input::get('courseid'));
+        $feedback = $this->feedback_form_sanitizer(Input::get('feedback'));
+        $options = $this->feedback_form_sanitizer(Input::get('option'));
+        $name = $this->feedback_form_sanitizer(Input::get('username'));
 
         $ssoErr = $this->feedback_form_validate($sso);
         $cidErr = $this->feedback_form_validate($courseid);
@@ -90,12 +90,12 @@ class InstructorController extends Controller {
 
             $response = array(
                 'status' => 'success',
-                'msg' => $name,
+                'msg' => 'Update was successful',
             );
         } else {
             $response = array(
                 'status' => 'failure',
-                'msg' => 'Feedback field must be filled out!'
+                'msg' => 'Something went wrong updating this data'
             );
         }
 
@@ -110,6 +110,13 @@ class InstructorController extends Controller {
             $err = true;
         }
         return $err;
+    }
+
+    public function feedback_form_sanitizer($data){
+        $data = htmlspecialchars($data);
+        $data = pg_escape_string($data);
+
+        return $data;
     }
 
     public function applicantInfo_toArray($sso, $courseid, $feedback, $options)
