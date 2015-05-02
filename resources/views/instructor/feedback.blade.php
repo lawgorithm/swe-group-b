@@ -31,6 +31,7 @@
                 </label>
                 <div class="form-actions feedback-button">
                     <button type="button" class="btn btn-primary submit">Save feedback</button>
+
                 </div>
             </div>
         </div>
