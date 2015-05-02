@@ -4,7 +4,7 @@ $(function() {
 		if($("#gradOption").is(':selected')) {
 			$("#studentMajor").val("").hide();
 			$("#studentYear").val("").hide();
-			$("studentField").val("").hide();
+			$("#studentField").val("").hide();
 			$("#studentGPA").val("").hide();
 			$("#studentField").hide();
 			$("#gpaLabel").hide();

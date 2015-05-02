@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Request;
 use App\Applicant;
 use App\Course;
 use App\Applicant_Course;
+use Session;
+use Redirect;
 
 //use Illuminate\Http\Request;
 
@@ -42,15 +44,6 @@ class ApplicantController extends Controller {
 
         $user = \Auth::user()->toArray();
 
-        if ($input['studentStatus'] == 'Und') {
-            $program = $input['studentStatus'] . " " . $input['studentMajor'] . " "
-                . $input['studentField'] . " " . $input['studentYear'];
-            $GPA = $input['studentGPA'];
-        } else {
-            $program = $input['studentStatus'];
-            $GPA = null;
-        }
-
         $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : 0;
 
         $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
@@ -65,17 +58,39 @@ class ApplicantController extends Controller {
             }
         }    
 
+        $validArray = [
+            'phone' => $input['studentPhone'],
+            'gpa' => $input['studentGPA'],
+            'graddate' => $input['gradDate'],
+            'mode' => $input['studentStatus'],
+            'major' => $input['studentMajor'],
+            'field' => $input['studentField'],
+            'year' => $input['studentYear'],
+            'work' => $work,
+            'speakscore' => $speakscore,
+            'speakdate' => $speakdate,
+            'prevtaught' => $input['prevTaught'],
+            'currtaught' => $input['currTaught'],
+            'liketeach' => $input['likeTeach'],
+        ];
+
+        $badMessage = validInput( $validArray );
+        if ( $badMessage != "" ) {
+            Session::flash('Validation_Error', $badMessage);
+            return Redirect::to('applicant/form');
+        }
+
         Applicant::create([
             'sso' => $user['sso'],
             'name' => $user['name'],
             'email' => $user['email'],
-            'phone' => $input['studentPhone'],
-            'gpa' => $GPA,
-            'graddate' => $input['gradDate'],
-            'program' => $program,
-            'previouswork' => $work,
-            'speakscore' => $speakscore,
-            'speakdate' => $speakdate
+            'phone' => $validArray['phone'],
+            'gpa' => $validArray['gpa'],
+            'graddate' => $validArray['graddate'],
+            'program' => $validArray['program'],
+            'previouswork' => $validArray['work'],
+            'speakscore' => $validArray['speakscore'],
+            'speakdate' => $validArray['speakdate']
         ]);
 
         foreach ($input['prevTaught'] as $prev) {
