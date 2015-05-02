@@ -35,4 +35,18 @@ class Applicant extends Model {
 
         return $applicants;
     }
+
+    public function getRecommendedByCourseId($courseId){
+        $recommended = new Applicant();
+        $db = new DB();
+
+        $recommended = $db::table('applicant')
+            ->join('applicantcourse', 'applicant.sso', '=', 'applicantcourse.sso')
+            ->where('applicantcourse.courseid', '=', $courseId)
+            ->where('applicantcourse.recommendation', '=', 1)
+            ->select('applicant.name')
+            ->get();
+
+        return $recommended;
+    }
 }

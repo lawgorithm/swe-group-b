@@ -1,6 +1,8 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 
 class Applicant_Course extends Model {
 
@@ -25,5 +27,4 @@ class Applicant_Course extends Model {
             ->update(['feedback' => $applicant[2], 'recommendation' => $applicant[3]]);
 
     }
-
 }

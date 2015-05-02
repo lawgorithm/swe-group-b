@@ -43,13 +43,17 @@
                 @endforeach
                 </select>
         </div>
+        @if(!empty($recommended))
         <div id="accepted">
             <span class="courseapplicantsheader">Recommended:</span>
             <hr class="fancy-line"/>
             <ul class="list-group custom-list">
-                    <li class="list-group-item list-group-item-success">fjkldaflk</li>
+                @foreach($recommended as $recommenededApplicant)
+                    <li class="list-group-item list-group-item-success">{{$recommenededApplicant->name}}
+                @endforeach
             </ul>
         </div>
+        @endif
         <input type="hidden" id="csrf_tok" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
 

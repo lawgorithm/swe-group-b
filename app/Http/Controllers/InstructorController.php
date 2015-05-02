@@ -55,9 +55,11 @@ class InstructorController extends Controller {
     public function showApplicants($id)
     {
         $applicants = new Applicant();
+        $recommended = new Applicant();
         $applicants = $applicants->getApplicantsByCourseId($id);
+        $recommended = $recommended->getRecommendedByCourseId($id);
 
-        return view('instructor/feedback', ['applicants' => $applicants]);
+        return view('instructor/feedback', ['applicants' => $applicants, 'recommended' => $recommended]);
     }
 
     public function feedbackStore()
