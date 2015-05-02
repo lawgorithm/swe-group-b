@@ -44,13 +44,10 @@
                 </select>
         </div>
         <div id="accepted">
-            <span class="courseapplicantsheader">Accepted:</span>
+            <span class="courseapplicantsheader">Recommended:</span>
             <hr class="fancy-line"/>
             <ul class="list-group custom-list">
-                <li class="list-group-item list-group-item-success">Student 1</li>
-                <li class="list-group-item list-group-item-success">Student 2</li>
-                <li class="list-group-item list-group-item-success">Student 3</li>
-                <li class="list-group-item list-group-item-success">Studnet 4</li>
+                    <li class="list-group-item list-group-item-success">fjkldaflk</li>
             </ul>
         </div>
         <input type="hidden" id="csrf_tok" name="_token" value="<?php echo csrf_token(); ?>">

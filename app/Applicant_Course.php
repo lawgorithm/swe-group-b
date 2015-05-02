@@ -20,10 +20,10 @@ class Applicant_Course extends Model {
 
     public function updateApplicantFeedback($applicant)
     {
-        $appCourse = Applicant_Course::where('sso', '=', $applicant[0])->where('courseid', '=', $applicant[1])->firstOrFail();
-        $appCourse->feedback = $applicant[2];
-        $appCourse->recommendation = $applicant[3];
-        $appCourse->save();
+        $appCourse = \App\Applicant_Course::where('sso', '=', $applicant[0])
+            ->where('courseid', '=', $applicant[1])
+            ->update(['feedback' => $applicant[2], 'recommendation' => $applicant[3]]);
+
     }
 
 }

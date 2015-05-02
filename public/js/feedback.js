@@ -46,7 +46,8 @@ $("document").ready(function() {
             url: url,
             data: applicant,
             success: function (data) {
-                console.log(data);
+                if(data.status != 'failure') {location.reload(true);}
+                else {window.alert(data.msg);}
             }
         }, "json");
     });
