@@ -1,14 +1,17 @@
-INSERT INTO applicant VALUES ('abc123','Smith','John','5735551234','fake@fake.fake','3.59','12/2016', 'undergrad', '100');
-INSERT INTO applicant VALUES ('zyx987','Nixon','Richard','8885554321','jowels@president.fake','2.10','05/2016', 'undergrad','60');
-INSERT INTO applicant VALUES ('fewft3','Jackson','Andrew','5735558888','banks@president.fake','3.73','05/2016', 'graduate','80');
-INSERT INTO applicant VALUES ('wer443','Jordan','Michael','8085555678','winning@basket.ball','3.55','12/2016','graduate','75');
-INSERT INTO applicant VALUES ('jfj675','Magritte','Rene','1235551234','paint@art.null','2.05','05/2016','undergrad','60');
+INSERT INTO applicant VALUES ('abc123','John Smith','5735551234','fake@fake.fake','3.59','12/2016', 'undergrad','Missing Person','100','12/2015');
+INSERT INTO applicant VALUES ('zyx987','Richard Nixon','8885554321','jowels@president.fake','2.10','05/2016','undergrad','Ok president','60','12/2015');
+INSERT INTO applicant VALUES ('fewft3','Andrew Jackson','5735558888','banks@president.fake','3.73','05/2016', 'graduate','Ok president, issues with banks','80','12/2015');
+INSERT INTO applicant VALUES ('wer443','Michael Jordan','8085555678','winning@basket.ball','3.55','12/2016','graduate','Bulls','75','12/2015');
+INSERT INTO applicant VALUES ('jfj675','Rene Magritte','1235551234','paint@art.null','2.05','05/2016','undergrad','Art','60','12/2015');
+INSERT INTO applicant VALUES ('bobros','Bob Ross','3145555555','paint@art.happylittletrees','2.00','05/2016','undergrad','Happy little art','65','12/2015');
+INSERT INTO applicant VALUES ('disney','Walt Disney','8125555555','mickey@mouse.disney','3.56','05/2016','graduate','Might have been prejudiced');
+INSERT INTO applicant VALUES ('gwbush','George W Bush','1235555555','misunderestimate@president.fake','1.80','12/2016','undergrad','Theres not even a cabinet in here');
 
-INSERT INTO instructor VALUES ('scottgs','Scott','Grant');
-INSERT INTO instructor VALUES ('klaricm','Klaric','Matthew');
-INSERT INTO instructor VALUES ('dickinsonm','Dickinson','Matthew');
-INSERT INTO instructor VALUES ('guilliamsd','Guilliams','Joe');
-INSERT INTO instructor VALUES ('chadhar','Chadha','Rohit');
+INSERT INTO instructor VALUES ('scottgs','Grant Scott');
+INSERT INTO instructor VALUES ('klaricm','Matthew Klaric');
+INSERT INTO instructor VALUES ('dickinsonm','Matthew Dickinson');
+INSERT INTO instructor VALUES ('guilliamsd','Joe Guilliams');
+INSERT INTO instructor VALUES ('chadhar','Rohit Chadha');
 
 
 INSERT INTO course VALUES ('CS1000','Introduction to Computer Science','klaricm');
@@ -130,12 +133,68 @@ INSERT INTO course VALUES ('CS8990','Research-Masters Thesis Computer Science','
 INSERT INTO course VALUES ('CS9001','Advanced Topics in Computer Science - PhD','scottgs');
 INSERT INTO course VALUES ('CS9990','Research-Doctoral Dissertation Computer Science','guilliamsd');
 
-INSERT INTO applicantcourse VALUES ('wer443','CS1050','1','0','A');
-INSERT INTO applicantcourse VALUES ('wer443','CS3050','1','0','A');
-INSERT INTO applicantcourse VALUES ('zyx987','CS2050','1','0','A');
-INSERT INTO applicantcourse VALUES ('jfj675','CS2050','2','0','A');
-INSERT INTO applicantcourse VALUES ('abc123','CS4320','1','0','A');
-INSERT INTO applicantcourse VALUES ('zyx987','CS4320','2','0','A');
+INSERT INTO applicantcourse VALUES ('wer443','CS1050','no','1','foo');
+INSERT INTO applicantcourse VALUES ('wer443','CS3050','1','bar');
+INSERT INTO applicantcourse VALUES ('zyx987','CS2050','1','baz');
+INSERT INTO applicantcourse VALUES ('jfj675','CS2050','2','blah');
+INSERT INTO applicantcourse VALUES ('abc123','CS4320','1','blah blah');
+INSERT INTO applicantcourse VALUES ('zyx987','CS4320','2','blah blah blah');
 
-INSERT INTO section VALUES ('A','Monday Morning','0','CS4320','Mon 8AM');
+/*INSERT INTO applicantoffer VALUES ('wer443','CS1050');
+INSERT INTO applicantoffer VALUES ('zyx987');
+INSERT INTO applicantoffer VALUES ('jfj675');
+INSERT INTO applicantoffer VALUES ('abc123');
+INSERT INTO applicantoffer VALUES ('fewft3');
+INSERT INTO applicantoffer VALUES ('bobros');
+INSERT INTO applicantoffer VALUES ('disney');
+INSERT INTO applicantoffer VALUES ('');
+
+NOT IN USE UNTIL OFFERS ARE MADE
+*/
+
+
+
+/*INSERT INTO section VALUES ('A','Monday Morning','0','CS4320','Mon 8AM');
 INSERT INTO section VALUES ('B','Monday Morning','0','CS4320','Mon 2PM');
+
+DONE AWAY W/ SEC TABLE, PROFESSORS KNOW HOW MANY TA'S TO ACCEPT
+*/
+
+INSERT INTO role VALUES ('wer443','applicant');
+INSERT INTO role VALUES ('zyx987','applicant');
+INSERT INTO role VALUES ('jfj675','applicant');
+INSERT INTO role VALUES ('abc123','applicant');
+INSERT INTO role VALUES ('fewft3','applicant');
+INSERT INTO role VALUES ('bobros','applicant');
+INSERT INTO role VALUES ('disney','applicant');
+INSERT INTO role VALUES ('scottgs','instructor');
+INSERT INTO role VALUES ('klaricm','instructor');
+INSERT INTO role VALUES ('dickinsonm','instructor');
+INSERT INTO role VALUES ('guilliamsd','instructor');
+INSERT INTO role VALUES ('chadhar','instructor');
+
+INSERT INTO users VALUES ('abc123','John Smith','5735551234','fake@fake.fake','password');
+INSERT INTO users VALUES ('zyx987','Richard Nixon','8885554321','jowels@president.fake','password');
+INSERT INTO users VALUES ('fewft3','Andrew Jackson','5735558888','banks@president.fake','password');
+INSERT INTO users VALUES ('wer443','Michael Jordan','8085555678','winning@basket.ball','password');
+INSERT INTO users VALUES ('jfj675','Rene Magritte','1235551234','paint@art.null','password');
+INSERT INTO users VALUES ('bobros','Bob Ross','3145555555','paint@art.happylittletrees','password');
+INSERT INTO users VALUES ('disney','Walt Disney','mickey@mouse.disney','password');
+INSERT INTO users VALUES ('scottgs','Grant Scott','scottgs@missouri.edu','password');
+INSERT INTO users VALUES ('klaricm','Matthew Klaric','klaricm@missouri.edu','password');
+INSERT INTO users VALUES ('dickinsonm','Matthew Dickinson','dickinsonm@missouri.edu'),'password';
+INSERT INTO users VALUES ('guilliamsd','Joe Guilliams','guilliamsd@missouri.edu','password');
+INSERT INTO users VALUES ('chadhar','Rohit Chadha','chadhar@missouri.edu','password');
+
+INSERT INTO password_resets VALUES ('fake@fake.fake','pass');
+INSERT INTO password_resets VALUES ('jowels@president.fake','pass');
+INSERT INTO password_resets VALUES ('banks@president.fake','pass');
+INSERT INTO password_resets VALUES ('winning@basket.ball','pass');
+INSERT INTO password_resets VALUES ('paint@art.null','pass');
+INSERT INTO password_resets VALUES ('paint@art.happylittletrees');
+INSERT INTO password_resets VALUES ('mickey@mouse.disney','pass');
+INSERT INTO password_resets VALUES ('scottgs@missouri.edu','pass');
+INSERT INTO password_resets VALUES ('klaricm@missouri.edu','pass');
+INSERT INTO password_resets VALUES ('dickinsonm@missouri.edu','pass');
+INSERT INTO password_resets VALUES ('guilliamsd@missouri.edu','pass');
+INSERT INTO password_resets VALUES ('chadhar@missouri.edu','pass');
