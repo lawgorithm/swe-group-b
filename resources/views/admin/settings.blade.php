@@ -1,24 +1,35 @@
 @extends('admin/admin')
-
-@section('header')
-<!-- <link href="maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" /> -->
+@section('headers')
+<style>
+.natural-dates {
+	font-size: 24px;
+}
+div {
+	font-size: 18px;
+}
+.natural-dates p {
+	margin: 15px;
+}
+.settings-form {
+	
+	text-align: center;
+}
+</style>
 @endsection
-
 @section('content')
-
 <div class="container">
-{!! BootForm::open() !!}
-  {!! BootForm::date('Open', 'open') !!}
-  {!! BootForm::date('Transition', 'transition') !!}
-  {!! BootForm::date('Close', 'close') !!}
-  {!! BootForm::submit('Submit') !!}
-{!! BootForm::close() !!}
+	<div class="alert alert-info text-center natural-dates" role="alert">
+		<p>We will <strong>begin collecting applications</strong> on <u>{{$open}}</u>.</p>
+		<p><u>{{$transition}}</u> is the <strong>deadline for student submissions</strong>.</p>
+		<p><u>{{$close}}</u> is the <strong>deadline for instructor feedback</strong>.</p>
+	</div>
+	<div class="settings-form">
+		{!! BootForm::open() !!}
+		{!! BootForm::date('Begin Collecting Applications', 'open') !!}
+		{!! BootForm::date('Application Submission Deadline', 'transition') !!}
+		{!! BootForm::date('Instructor Feedback Deadline', 'close') !!}
+		{!! BootForm::submit('Submit') !!}
+		{!! BootForm::close() !!}
+	</div>
 </div>
-
 @endsection
-
-@section('scripts')
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-@endsection
-
