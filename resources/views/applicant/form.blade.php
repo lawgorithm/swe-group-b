@@ -46,9 +46,13 @@
         </select>
       </div>
 
-      <label for="work">*Other places you work</label>
-      <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
-            
+      <div class="form-inline">
+        <label for="work">*Other places you work</label>
+        <br />
+        <input type="text" class="form-control" id="work" name="studentWork[]" style="width: 110px" placeholder="Google">
+        <div class="btn btn-success" id="moreJobs">+</div>
+      </div>
+               
       <div class="form-inline">
         <label for="opt">*SPEAK/OPT score</label>
         <input type="text" class="form-control" style="width: 80px; margin-right: 20px;" id="opt" name="studentOpt" placeholder="4">

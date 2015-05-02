@@ -55,7 +55,15 @@ class ApplicantController extends Controller {
 
         $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
 
-        $work = ($input['studentWork'] != "") ? $input['studentWork'] : null;
+        $work = (count($input['studentWork']) > 0) ? "" : null;
+
+        foreach ($input['studentWork'] as $studentWork) {
+            if ( strlen($work) > 0 ) {
+                $work = $work . ',' . $studentWork;
+            } else {
+                $work = $studentWork;
+            }
+        }    
 
         Applicant::create([
             'sso' => $user['sso'],
