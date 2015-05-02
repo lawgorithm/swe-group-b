@@ -120,10 +120,12 @@ class AdminController extends Controller {
      *
      * @param Request $request
      */
-    public function save(Request $request)
+    public function save()
     {
-        $ids = $request->ids;
-        $courseid = $request->courseid;
+        $input = Request::all();
+
+        $ids = $input['ids'];
+        $courseid = $input['courseid'];
 
         $count=1;
         foreach ($ids as $id) {
