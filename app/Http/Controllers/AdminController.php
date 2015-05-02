@@ -6,11 +6,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
+use App\Phase;
 //use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Carbon\Carbon;
 
 class AdminController extends Controller {
 
@@ -139,15 +141,48 @@ class AdminController extends Controller {
 
     public function settings()
     {
-        return view('admin/settings');
+        //$data = Phase::all()->last()->toArray();
+
+        $count = Phase::all()->count();
+
+        if ((Phase::all()->count()) < 1) {
+            $data = [];
+            $data['phaseIsSet'] = false;
+        }
+        else {
+            $phase = Phase::all()->last()->toArray();
+            $data = $this->getPhaseSentences($phase);
+
+        }        
+        
+        return view('admin/settings', $data);
+    }
+
+    public function getPhaseSentences($data)
+    {
+        $fs = 'l, F jS';
+
+        $phase = [];
+        $phase['phaseIsSet'] = true;
+        $phase['open'] = Carbon::parse($data['open'])->format($fs);
+        $phase['transition'] = Carbon::parse($data['transition'])->format($fs);
+        $phase['close'] = Carbon::parse($data['close'])->format($fs);
+
+        return $phase;
     }
 
     public function phaseStore()
     {
         $input = Request::all();
         $input['author'] = \Auth::user()->sso;
-        // return "It worked " . serialize($input) . "!";
+
+        $phase = Phase::create($input);
+
+        $phase->save();
+
         return Response::json($input);
     }
+
+
 
 }
