@@ -167,6 +167,7 @@ class AdminController extends Controller {
         $phase['open'] = Carbon::parse($data['open'])->format($fs);
         $phase['transition'] = Carbon::parse($data['transition'])->format($fs);
         $phase['close'] = Carbon::parse($data['close'])->format($fs);
+        $phase['author'] = $data['author'];
 
         return $phase;
     }
