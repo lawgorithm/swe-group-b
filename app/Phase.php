@@ -17,4 +17,10 @@ class Phase extends Model {
         'close'
     ];
 
+    public static function getPhaseData()
+    {
+        return Phase::all()->last()->toArray();
+
+    }
+
 }
