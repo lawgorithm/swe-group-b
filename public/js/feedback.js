@@ -47,7 +47,10 @@ $("document").ready(function() {
             data: applicant,
             success: function (data) {
                 if(data.status != 'failure') {location.reload(true);}
-                else {window.alert(data.msg);}
+                else {
+                    $( "div#display-error" ).addClass("isa_error");
+                    $( ".feedback-err" ).append( '<i class="fa fa-times-circle">' + data.msg + '</i>' );
+                }
             }
         }, "json");
     });

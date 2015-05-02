@@ -95,7 +95,7 @@ class InstructorController extends Controller {
         } else {
             $response = array(
                 'status' => 'failure',
-                'msg' => 'Feedback given unsuccessful'
+                'msg' => 'Feedback field must be filled out!'
             );
         }
 
