@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="welcome">
-           <div class="welcome-wrap">
+           <div class="container welcome-wrap">
                <h4 class="welcome-msg">Mizzou TA Application</h4>
                <div class="grid-3">
                     <div class="fmcircle_out">
@@ -28,19 +28,4 @@
         </div>
     </body>
 </html>
-
-<script>
-    $(window).on('resize', function(){
-
-        $('.welcome').each(function(){
-
-            var box = $(this);
-            var width = box.width();
-            var height = box.height();
-
-            box.find('.welcome-wrap').html(width+'x'+height+' (r: '+(width/height).toFixed(3)+')');
-
-        });
-    }).trigger('resize');
-</script>
 

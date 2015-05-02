@@ -1,3 +1,7 @@
 .welcome-message {
     font-family: 'Ubuntu', sans-serif;
 }
+
+.status-msg{
+    padding-left: 275px;
+}
