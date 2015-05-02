@@ -141,18 +141,34 @@ class AdminController extends Controller {
 
     public function settings()
     {
-        $data = Phase::all()->last()->toArray();
+        //$data = Phase::all()->last()->toArray();
 
+        $count = Phase::all()->count();
+
+        if ((Phase::all()->count()) < 1) {
+            $data = [];
+            $data['phaseIsSet'] = false;
+        }
+        else {
+            $phase = Phase::all()->last()->toArray();
+            $data = $this->getPhaseSentences($phase);
+
+        }        
+        
+        return view('admin/settings', $data);
+    }
+
+    public function getPhaseSentences($data)
+    {
         $fs = 'l, F jS';
 
         $phase = [];
+        $phase['phaseIsSet'] = true;
         $phase['open'] = Carbon::parse($data['open'])->format($fs);
         $phase['transition'] = Carbon::parse($data['transition'])->format($fs);
         $phase['close'] = Carbon::parse($data['close'])->format($fs);
-        
-        
 
-        return view('admin/settings', $phase);
+        return $phase;
     }
 
     public function phaseStore()
