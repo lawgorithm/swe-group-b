@@ -6,9 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 
 class AdminController extends Controller {
 
@@ -83,6 +85,7 @@ class AdminController extends Controller {
         return view('admin/rank_course', ['courses' => $courses, 'applied' => $applied, 'cid' => $id]);
     }
 
+
     public function submit($id)
     {
         $courses = Course::all()->toArray();
@@ -115,4 +118,18 @@ class AdminController extends Controller {
             $count++;
         }
     }
+
+    public function settings()
+    {
+        return view('admin/settings');
+    }
+
+    public function phaseStore()
+    {
+        $input = Request::all();
+        $input['author'] = \Auth::user()->sso;
+        // return "It worked " . serialize($input) . "!";
+        return Response::json($input);
+    }
+
 }

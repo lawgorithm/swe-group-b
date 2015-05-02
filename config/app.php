@@ -145,6 +145,12 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/*
+		 * Added By Lawgorithm
+		 * BootForms
+		 */
+		'AdamWathan\BootForms\BootFormsServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +198,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
 
 	],
 
