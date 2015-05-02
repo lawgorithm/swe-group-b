@@ -3,6 +3,7 @@
 @section('headers')
     <link href="/css/feedback.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
@@ -16,8 +17,9 @@
                 <strong class="student-name"></strong>
             </div>
             <hr class="fancy-line" />
-            <textarea name="feedback" id="textArea" rows="6" class="comment" placeholder="Comment here..."></textarea>
+            <textarea name="feedback" id="textArea" rows="6" class="comment" placeholder="Comment here..." required></textarea>
             <br />
+            <div id="display-error" class="feedback-err"></div>
             <div style="padding-left: 25px;">
                 <label class="radio">
                 <input type="radio" name="recommendation" id="recommend" value="1" checked>
@@ -36,23 +38,22 @@
                 <span class="courseapplicantsheader">Applicants</span>
                 <hr class="fancy-line"/>
                 <select id="student-list" name="student-list" class="form-control applicant-list">
-                {{--*/ $count = 0 /*--}}
                 @foreach($applicants as $applicant)
-                        <option id="{{ $count }}" class="applicant" data-userid="{{$applicant->id}}" data-program="{{$applicant->program}}" data-graddate="{{$applicant->graddate}}" data-feedback="{{$applicant->feedback}}" data-courseid="{{$applicant->courseid}}" data-gpa="{{$applicant->gpa}}" data-sso="{{$applicant->sso}}" data-username="{{$applicant->name}}">{{$applicant->name}}</option>
-                {{--*/ $count++ /*--}}
+                        <option class="applicant" data-userid="{{$applicant->id}}" data-program="{{$applicant->program}}" data-graddate="{{$applicant->graddate}}" data-feedback="{{$applicant->feedback}}" data-courseid="{{$applicant->courseid}}" data-gpa="{{$applicant->gpa}}" data-sso="{{$applicant->sso}}" data-username="{{$applicant->name}}">{{$applicant->name}}</option>
                 @endforeach
                 </select>
         </div>
+        @if(!empty($recommended))
         <div id="accepted">
-            <span class="courseapplicantsheader">Accepted:</span>
+            <span class="courseapplicantsheader">Recommended:</span>
             <hr class="fancy-line"/>
             <ul class="list-group custom-list">
-                <li class="list-group-item list-group-item-success">Student 1</li>
-                <li class="list-group-item list-group-item-success">Student 2</li>
-                <li class="list-group-item list-group-item-success">Student 3</li>
-                <li class="list-group-item list-group-item-success">Studnet 4</li>
+                @foreach($recommended as $recommenededApplicant)
+                    <li class="list-group-item list-group-item-success">{{$recommenededApplicant->name}}
+                @endforeach
             </ul>
         </div>
+        @endif
         <input type="hidden" id="csrf_tok" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
 

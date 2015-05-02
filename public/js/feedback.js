@@ -46,7 +46,11 @@ $("document").ready(function() {
             url: url,
             data: applicant,
             success: function (data) {
-                console.log(data);
+                if(data.status != 'failure') {location.reload(true);}
+                else {
+                    $( "div#display-error" ).addClass("isa_error");
+                    $( ".feedback-err" ).append( '<i class="fa fa-times-circle">' + data.msg + '</i>' );
+                }
             }
         }, "json");
     });

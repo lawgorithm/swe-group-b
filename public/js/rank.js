@@ -1,4 +1,6 @@
 $(function() {
+    $("p#submit_space").text("Changes Saved");
+    $("p#submit_space").fadeOut(1);
     $( "#sortable" ).sortable({
 
         stop: function( event, ui ) {
@@ -16,10 +18,11 @@ $(function() {
                 }
             )
             .done(function(data) {
-                //alert(data);
-            })
+                    $("p#submit_space").fadeIn(100);
+                    $("p#submit_space").fadeOut(2000);
+                })
             .fail(function() {
-                //alert( "error" );
+                alert( "error" );
             });
         }
     });

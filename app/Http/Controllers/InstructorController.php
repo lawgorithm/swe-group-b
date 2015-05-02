@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Input;
 
 class InstructorController extends Controller {
-
-    private $err = false;
     /*
     |--------------------------------------------------------------------------
     | Instructor Controller
@@ -45,7 +43,9 @@ class InstructorController extends Controller {
 
     public function home()
     {
-    	return view('instructor/home');
+        $instructorName = \Auth::user()->name;
+
+    	return view('instructor/home', ['instructorName' => $instructorName]);
     }
 
     public function redirectCourse()
@@ -57,9 +57,11 @@ class InstructorController extends Controller {
     public function showApplicants($id)
     {
         $applicants = new Applicant();
+        $recommended = new Applicant();
         $applicants = $applicants->getApplicantsByCourseId($id);
+        $recommended = $recommended->getRecommendedByCourseId($id);
 
-        return view('instructor/feedback', ['applicants' => $applicants]);
+        return view('instructor/feedback', ['applicants' => $applicants, 'recommended' => $recommended]);
     }
 
     public function feedbackStore()
@@ -75,21 +77,25 @@ class InstructorController extends Controller {
         $courseid = Input::get('courseid');
         $feedback = Input::get('feedback');
         $options = Input::get('option');
+        $name = Input::get('username');
 
-        $this->check_for_errors($sso, $courseid, $feedback, $options);
+        $ssoErr = $this->feedback_form_validate($sso);
+        $cidErr = $this->feedback_form_validate($courseid);
+        $fbkErr = $this->feedback_form_validate($feedback);
+        $optErr = $this->feedback_form_validate($options);
 
-        if($this->err == false) {
+        if($ssoErr == false && $cidErr == false && $fbkErr == false && $optErr == false) {
             $applicant = $this->applicantInfo_toArray($sso, $courseid, $feedback, $options);
             $appCourse->updateApplicantFeedback($applicant);
 
             $response = array(
                 'status' => 'success',
-                'msg' => 'Feedback given successfully',
+                'msg' => $name,
             );
         } else {
             $response = array(
                 'status' => 'failure',
-                'msg' => 'Feedback given unsuccessful'
+                'msg' => 'Feedback field must be filled out!'
             );
         }
 
@@ -99,19 +105,11 @@ class InstructorController extends Controller {
     public function feedback_form_validate($data){
 
         $err = false;
-        if(!isset($data))
+        if(empty($data))
         {
             $err = true;
         }
         return $err;
-    }
-
-    public function check_for_errors($sso, $courseid, $feedback, $options)
-    {
-        $this->err = $this->feedback_form_validate($sso);
-        $this->err = $this->feedback_form_validate($courseid);
-        $this->err = $this->feedback_form_validate($feedback);
-        $this->err = $this->feedback_form_validate($options);
     }
 
     public function applicantInfo_toArray($sso, $courseid, $feedback, $options)

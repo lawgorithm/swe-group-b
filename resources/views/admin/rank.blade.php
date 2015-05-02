@@ -17,7 +17,6 @@
     </div>
     <div id="course_ranking">
         @yield('rank_course')
-        @yield('rank_submit')
         @yield('rank_home')
     </div>
 

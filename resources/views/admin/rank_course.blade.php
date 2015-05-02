@@ -14,11 +14,16 @@
     <p id="submit_space"></p>
     @foreach($applied as $apply)
         <div class="hidden" id="info-{{$apply->sso}}" hidden>
+            <p>Name: {{$apply->name}}</p>
             <p>Email: {{$apply->email}}</p>
             <p>Phone: {{$apply->phone}}</p>
             <p>GPA: {{$apply->gpa}}</p>
             <p>Graduates: {{$apply->graddate}}</p>
             <p>Program: {{$apply->program}}</p>
+            @if (isset($apply->speakscore))
+                <p>Speak Score: {{$apply->speakscore}}
+                <p>Speak Date: {{$apply->speakdate}}</p>
+            @endif
             <p>Experience: {{$apply->previouswork}}</p>
             <p>Rank: {{$apply->rank}}</p>
             @if (isset($apply->feedback))

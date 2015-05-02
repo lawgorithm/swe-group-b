@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+<!-- I'll make this prettier later -->
+@if(Session::has('Validation_Error'))
+  <p>{{ Session::get('Validation_Error') }}</p>
+@endif
 <form id="msForm" action="form" method="POST">
   <fieldset id="fs1">
     <div class="form-group">
@@ -19,7 +23,7 @@
         </select>
 
         <label id="gpaLabel" for="studentGPA">Grade Point Average</label>
-        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.141">
+        <input type="text" class="form-control" id="studentGPA" name="studentGPA" placeholder="3.14">
       </div>
       <div class="submit-button">
         <button id="next1" class="btn btn-primary" style="float: right;">Next</button>
@@ -46,9 +50,13 @@
         </select>
       </div>
 
-      <label for="work">*Other places you work</label>
-      <input type="text" class="form-control" id="work" name="studentWork" placeholder="Google, Apple, Taco Bell">
-            
+      <div class="form-inline">
+        <label for="work">*Other places you work</label>
+        <br />
+        <input type="text" class="form-control" id="work" name="studentWork[]" style="width: 110px" placeholder="Google">
+        <div class="btn btn-success" id="moreJobs">+</div>
+      </div>
+               
       <div class="form-inline">
         <label for="opt">*SPEAK/OPT score</label>
         <input type="text" class="form-control" style="width: 80px; margin-right: 20px;" id="opt" name="studentOpt" placeholder="4">

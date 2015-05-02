@@ -1,9 +1,10 @@
 $(function() {
-	var moreTaught = 0, moreCurrent = 0, moreWant = 0;
+	var moreTaught = 0, moreCurrent = 0, moreWant = 0, moreJobs = 0;
 	$('#gradSelect').click(function(e) {
 		if($("#gradOption").is(':selected')) {
 			$("#studentMajor").val("").hide();
 			$("#studentYear").val("").hide();
+			$("#studentField").val("").hide();
 			$("#studentGPA").val("").hide();
 			$("#studentField").hide();
 			$("#gpaLabel").hide();
@@ -23,7 +24,7 @@ $(function() {
 	$("#moreTaught").click(function(e) {
 		var obj = $("#prevTaught").clone();
 
-		if (moreTaught < 15) {
+		if (moreTaught < 11) {
 			obj.insertBefore("#moreTaught");
 			moreTaught = moreTaught + 1;
 		}
@@ -47,6 +48,15 @@ $(function() {
 		}
 	});
 
+	$("#moreJobs").click(function(e) {
+		var obj = $("#work").clone();
+		obj.val("");
+
+		if (moreJobs < 4) {
+			obj.insertBefore("#moreJobs");
+			moreJobs = moreJobs + 1;
+		}
+	});
 
 	$("#next1").click(function(e) {
 		e.preventDefault();
@@ -70,7 +80,7 @@ $(function() {
 	var gpaInput = document.getElementById('studentGPA');
 	if (gpaInput) {
 		new Formatter(gpaInput, {
-			'pattern': '{{9}}.{{999}}'
+			'pattern': '{{9}}.{{99}}'
 		});
 	}
 
