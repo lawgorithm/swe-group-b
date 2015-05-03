@@ -19,9 +19,12 @@ use Illuminate\Support\Facades\Mail;
 use Laracasts\Flash\Flash;
 
 
-class AdminController extends Controller {
+class AdminController extends Controller
+{
 
     protected $check;
+    protected $phaseDefinition = ['Awaiting Configuration', 'Awaiting Opening', 'Collecting Applications', 'Collecting Feedback', 'Awaiting Ranking'];
+    protected $phaseFormat = 'l, F jS';
 
     /**
      * rank constructor: checks auth and role middleware
@@ -40,7 +43,7 @@ class AdminController extends Controller {
      */
     public function index()
     {
-        return view ('admin/home');
+        return view('admin/home');
     }
 
     /**
@@ -50,7 +53,7 @@ class AdminController extends Controller {
      */
     public function home()
     {
-        return view ('admin/home');
+        return view('admin/home');
     }
 
     /**
@@ -59,11 +62,11 @@ class AdminController extends Controller {
      * @return \Illuminate\View\View
      */
     public function rank()
-	{
+    {
         $courses = Course::all()->toArray();
 
         return view('admin/rank_home', ['courses' => $courses]);
-	}
+    }
 
 
     /**
@@ -83,7 +86,7 @@ class AdminController extends Controller {
 
         $db = new DB();
         $applied = $db::table('users')
-            ->join('applicantcourse', 'users.sso','=', 'applicantcourse.sso')
+            ->join('applicantcourse', 'users.sso', '=', 'applicantcourse.sso')
             ->join('applicant', 'users.sso', '=', 'applicant.sso')
             ->where('applicantcourse.action', '=', '001')
             ->where('applicantcourse.courseid', '=', $id)
@@ -121,15 +124,13 @@ class AdminController extends Controller {
             $count++;
         }
 
-        Flash::success('Rank Submitted for '. $id . '!');
+        Flash::success('Rank Submitted for ' . $id . '!');
         return redirect('admin/rank');
     }
 
     /**
      * function to update rank for course
      * called whenever order is changed
-     *
-     * @param Request $request
      */
     public function save()
     {
@@ -138,48 +139,63 @@ class AdminController extends Controller {
         $ids = $input['ids'];
         $courseid = $input['courseid'];
 
-        $count=1;
+        $count = 1;
         foreach ($ids as $id) {
             Applicant_Course::where('courseid', '=', $courseid)
-                            ->where('sso', '=', $id)
-                            ->where('action', '=', '001')
-                            ->update(['rank' => $count]);
+                ->where('sso', '=', $id)
+                ->where('action', '=', '001')
+                ->update(['rank' => $count]);
             $count++;
         }
     }
 
     public function settings()
     {
-        //$data = Phase::all()->last()->toArray();
-
-        $count = Phase::all()->count();
-
-        if ((Phase::all()->count()) < 1) {
-            $data = [];
-            $data['phaseIsSet'] = false;
-        }
-        else {
-            $phase = Phase::all()->last()->toArray();
-            $data = $this->getPhaseSentences($phase);
-
-        }        
-        
-        return view('admin/settings', $data);
+        return view('admin/settings', $this->getPhaseData());
     }
 
-    public function getPhaseSentences($data)
+    public function getPhaseData()
     {
-        $fs = 'l, F jS';
+        $data = [];
+        $data['phaseCode'] = $this->getPhaseCode();
+        $data['phaseDefinition'] = $this->phaseDefinition[$data['phaseCode']];
 
-        $phase = [];
-        $phase['phaseIsSet'] = true;
-        $phase['open'] = Carbon::parse($data['open'])->format($fs);
-        $phase['transition'] = Carbon::parse($data['transition'])->format($fs);
-        $phase['close'] = Carbon::parse($data['close'])->format($fs);
-        $phase['author'] = $data['author'];
+        if ($data['phaseCode'] !== 0) {
 
-        return $phase;
+            $hold = Phase::all()->last()->toArray();
+
+            $fs = $this->phaseFormat;
+
+            $data['open'] = Carbon::parse($hold['open'])->format($fs);
+            $data['transition'] = Carbon::parse($hold['transition'])->format($fs);
+            $data['close'] = Carbon::parse($hold['close'])->format($fs);
+            $data['author'] = $hold['author'];
+
+        }
+        return $data;
     }
+
+    public function getPhaseCode()
+    {
+        $hold = Phase::all();
+        $dt = Carbon::now('America/Chicago');
+
+        if ($hold->count() === 0) {
+            return 0;
+        }
+        $hold = $hold->last()->toArray();
+
+        if ($dt < $hold['open']) {
+            return 1;
+        } else if ($dt >= $hold['open'] && $dt < $hold['transition']) {
+            return 2;
+        } else if ($dt >= $hold['transition'] && $dt < $hold['close']) {
+            return 3;
+        } else if ($dt >= $hold['close']) {
+            return 4;
+        }
+    }
+
 
     public function phaseStore()
     {
@@ -189,22 +205,20 @@ class AdminController extends Controller {
         $phase = Phase::create($input);
 
         $phase->save();
-
-        $phase = Phase::all()->last()->toArray();
-        $data = $this->getPhaseSentences($phase);
-
-        //return Response::json($input);
-        return view('admin/settings', $data);
+        
+        return view('admin/settings', $this->getPhaseData());
     }
 
-    public function sendOffers(){
+    public function sendOffers()
+    {
         $topTen = new Applicant();
         $topTen = $topTen->getTopTenApplicantsByCourseId();
 
         return view('admin/offer', ['topTen' => $topTen]);
     }
 
-    public function sendEmail(){
+    public function sendEmail()
+    {
         if (Session::token() !== Input::get('_token')) {
             return Response::json(array(
                 'msg' => 'Unauthorized attempt to create setting'
@@ -215,12 +229,11 @@ class AdminController extends Controller {
         $email = htmlspecialchars($email);
         $email = pg_escape_string($email);
 
-        if(isset($email)) {
+        if (isset($email)) {
 
             $data = ['recipient' => $email];
 
-            Mail::send('emails.offer', $data, function($message) use ($data)
-            {
+            Mail::send('emails.offer', $data, function ($message) use ($data) {
                 $message->to($data['recipient'])->subject('TA Position Job Offer!');
             });
 
@@ -228,7 +241,7 @@ class AdminController extends Controller {
                 'status' => 'success',
                 'msg' => 'Email was sent successfully',
             );
-        } else{
+        } else {
             $response = array(
                 'status' => 'failure',
                 'msg' => 'Email was sent unsuccessfully',

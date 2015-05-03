@@ -11,6 +11,11 @@ div {
 .natural-dates p {
 	margin: 15px;
 }
+
+p.phase-statement {
+	text-align: center;
+}
+
 div.alert {
 	margin-bottom: 45px;
 }
@@ -21,8 +26,10 @@ div.alert {
 @endsection
 @section('content')
 <div class="container">
-	@if ($phaseIsSet)
+    <p class="phase-statement">We are currently in Phase {{$phaseCode}}: {{$phaseDefinition}}</p>
+	@if ($phaseCode !== 0)
 	<div class="alert alert-info text-center natural-dates" role="alert">
+
 		<p>We will <strong>begin collecting applications</strong> on <u>{{$open}}</u>.</p>
 		<p><u>{{$transition}}</u> is the <strong>deadline for student submissions</strong>.</p>
 		<p><u>{{$close}}</u> is the <strong>deadline for instructor feedback</strong>.</p>
