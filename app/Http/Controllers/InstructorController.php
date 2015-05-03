@@ -49,7 +49,6 @@ class InstructorController extends Controller {
         $instructorName = \Auth::user()->name;
         $phase = new Phase();
         $phase = $phase->getPhaseData();
-        var_dump(Carbon::now()); die();
 
         date_default_timezone_set('America/Chicago');
         $curDate = getdate();
