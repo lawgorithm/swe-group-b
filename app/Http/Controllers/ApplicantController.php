@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Request;
 use App\Applicant;
 use App\Course;
 use App\Applicant_Course;
+use App\Phase;
 use Session;
 use Redirect;
 
@@ -29,8 +30,33 @@ class ApplicantController extends Controller {
 
     public function home()
     {
-    	return view('applicant/home');
-    }
+        $applicantName = \Auth::user()->name;
+        $phase = new Phase();
+        $phase = $phase->getPhaseData();
+
+        date_default_timezone_set('America/Chicago');
+        $curDate = getdate();
+        $curDate = $curDate[0];
+
+        $phaseOpen = $phase["open"];
+        $phaseTransition = $phase["transition"];
+        $phaseClose = $phase["close"];
+
+        $phaseOpen = strtotime($phaseOpen);
+        $phaseTransition = strtotime($phaseTransition);
+        $phaseClose = strtotime($phaseClose);
+
+        $message = "Applications are now closed!";
+
+        if( $curDate >= $phaseOpen && $curDate < $phaseTransition ) {
+            $message = "Applications are open!";
+        } else if ( $curDate > $phaseTransition && $curDate < $phaseClose ) {
+            $message = "Applications are closed, Pending feedback.";
+        } else {
+            $message = "TA applications will open sometime I guess.";
+        }
+
+        return view('applicant/home', ['name' => $applicantName, 'message' => $message]);    }
 
     public function form()
     {
