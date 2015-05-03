@@ -16,7 +16,7 @@ class RedirectOnTime {
 	public function handle($request, Closure $next)
 	{
         $phase = Phase::getPhaseData();
-        if ($phase == NULL) redirect('applicant/home');
+        if ($phase == NULL) return redirect('applicant/home');
 
         if ($request->user()->isApplicant() && (($phase->open > Carbon::now()) || ($phase->transition < Carbon::now())))
         {
