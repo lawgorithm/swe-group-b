@@ -23,10 +23,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 				@yield('links')
-                    @if (!\Auth::check())
-                            <li><a href="/auth/login">Sign In</a></li>
-                    @else
-                    	
+                    @if (\Auth::check())
                         <li><a href="/auth/logout">Logout</a></li>
                     @endif
 				</ul>
