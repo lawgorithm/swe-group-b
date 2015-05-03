@@ -20,9 +20,9 @@ class RedirectOnTime {
         if ($phase == null)
         {
             Flash::info('No Times Set!');
-            return redirect('applicant/home');
+            $role = $request->user()->getRole();
+            return redirect($role . '/home');
         }
-
         if ($request->user()->isApplicant() && (($phase->open > Carbon::now('America/Chicago')) || ($phase->transition < Carbon::now('America/Chicago'))))
         {
             Flash::info('Applicant Window Closed!');
