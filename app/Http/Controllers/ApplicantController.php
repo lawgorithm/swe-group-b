@@ -19,6 +19,7 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
+        $this->middleware('time', ['except' => ['index', 'home']]);
     }
 
     public function index()

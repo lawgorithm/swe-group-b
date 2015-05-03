@@ -31,6 +31,7 @@ class InstructorController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
+        $this->middleware('time', ['except' => ['home']]);
     }
 
     public function index()

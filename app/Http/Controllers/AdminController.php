@@ -25,8 +25,7 @@ class AdminController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        //$this->middleware('time', ['only' => ['rank', 'rankShow', 'submit', 'save']]);
-
+        $this->middleware('time', ['only' => ['rank', 'rankShow', 'submit', 'save']]);
     }
 
     /**

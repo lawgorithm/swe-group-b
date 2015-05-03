@@ -16,16 +16,17 @@ class RedirectOnTime {
 	public function handle($request, Closure $next)
 	{
         $phase = Phase::getPhaseData();
+        if ($phase == NULL) redirect('applicant/home');
 
-        if ($request->user()->isApplicant() && ($phase->open > Carbon::now()) && ($phase->transition < Carbon::now()))
+        if ($request->user()->isApplicant() && (($phase->open > Carbon::now()) || ($phase->transition < Carbon::now())))
         {
             return redirect('applicant/home');
         }
-        if ($request->user()->isInstructor() && ($phase->transition > Carbon::now()) && ($phase->close < Carbon::now()))
+        if ($request->user()->isInstructor() && (($phase->transition > Carbon::now()) || ($phase->close < Carbon::now())))
         {
             return redirect('instructor/home');
         }
-        if ($request->user()->isAdmin() && ($phase->open > Carbon::now()) && ($phase->transition < Carbon::now()))
+        if ($request->user()->isAdmin() && ($phase->close > Carbon::now()) )
         {
             return redirect('admin/home');
         }
