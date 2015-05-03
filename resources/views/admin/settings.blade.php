@@ -2,8 +2,8 @@
 @section('headers')
     <style>
         .natural-dates {
-            font-size: 20px;
-            margin: 20px;
+            font-size: 18px;
+            margin: 15px;
             padding: 5px;
         }
         div {
@@ -19,9 +19,13 @@
 
         div.alert {
             margin-bottom: 45px;
+            margin-left: 25%;
+            margin-right: 25%;
         }
         .settings-form {
             text-align: center;
+            margin-left: 33%;
+            margin-right: 33%;
         }
     </style>
 @endsection
@@ -51,4 +55,6 @@
             {!! BootForm::close() !!}
         </div>
     </div>
+    <br>
+    <br>
 @endsection
