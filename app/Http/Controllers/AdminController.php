@@ -75,7 +75,7 @@ class AdminController extends Controller {
     public function rankShow($id)
     {
         if (Course::checkIfCourseComplete($id)) {
-            Flash::success('Course ' . $id . ' Rank Already Submitted!');
+            Flash::info('Course ' . $id . ' Rank Already Submitted!');
             return redirect()->back();
         }
 
