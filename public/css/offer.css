@@ -33,3 +33,14 @@
 .has-spinner.btn-large.active .spinner {
     width: 19px;
 }
+
+.offer-header{
+    padding-left: 450px;
+    padding-bottom: 25px;
+    margin: 5px 5px 5px 5px;
+}
+
+.table-row-container{
+    overflow: scroll;
+    max-height: 500px;
+}

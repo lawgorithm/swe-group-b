@@ -18,6 +18,8 @@ Route::get('applicant', 'ApplicantController@index');
 Route::get('applicant/home', 'ApplicantController@home');
 Route::get('applicant/form', 'ApplicantController@form');
 Route::post('applicant/form', 'ApplicantController@formStore');
+Route::get('applicant/accepted', 'ApplicantController@accepted');
+Route::post('applicant/accepted', 'ApplicantController@updateAccepted');
 
 Route::get('admin', 'AdminController@index');
 Route::get('admin/home', 'AdminController@home');

@@ -20,7 +20,7 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['index', 'home']]);
+        $this->middleware('time', ['except' => ['index', 'home', 'accepted']]);
     }
 
     public function index()
@@ -144,6 +144,20 @@ class ApplicantController extends Controller {
         }
 
         return "It worked " . serialize($input) . "!";
+    }
+
+    public function accepted(){
+        $sso = \Auth::user()->sso;
+
+        #TODO Make this pull all true offer sent fields where sso = user.sso;
+
+        var_dump($sso); die();
+        return view('applicant/accepted');
+    }
+
+    public function updateAccepted(){
+        #TODO Update users confirmation for TA positions
+        die();
     }
 
 }
