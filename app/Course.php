@@ -43,4 +43,10 @@ class Course extends Model {
             return false;
         return true;
     }
+
+    public static function getInstructor ($courseid) {
+
+        $inst= Course::where('courseid', '=', $courseid)->first()->instructor;
+        return User::where('sso', '=', $inst)->first()->name;
+    }
 }

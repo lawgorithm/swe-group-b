@@ -27,15 +27,16 @@
                 <p>Graduates: {{$apply->graddate}}</p>
                 <p>Program: {{$apply->program}}</p>
                 @if (isset($apply->speakscore))
-                    <p>Speak Score: {{$apply->speakscore}}
-                    <p>Speak Date: {{$apply->speakdate}}</p>
+                    <p>International Student</p>
+                    <p> Speak Score: {{$apply->speakscore}}
+                    <p> Speak Date: {{$apply->speakdate}}</p>
                 @endif
                 <p>Experience: {{$apply->previouswork}}</p>
                 @if (isset($apply->rank))
                     <p>Rank: {{$apply->rank}}</p>
                 @endif
                 @if (isset($apply->feedback))
-                    <p>Feedback: "{{$apply->feedback}}"</p>
+                    <p>Feedback by {{\App\Course::getInstructor($cid)}}: "{{$apply->feedback}}"</p>
                 @endif
                 @if ($apply->recommendation != 0)
                     <p>Recommended: {{$apply->recommendation}}</p>
