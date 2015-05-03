@@ -61,5 +61,15 @@ class AuthController extends Controller {
     {
         return redirect('/');
     }
+    
+    public function redirectPath()
+    {
+        if (property_exists($this, 'redirectPath'))
+        {
+            return $this->redirectPath;
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : 'applicant/home';
+    }
 
 }
