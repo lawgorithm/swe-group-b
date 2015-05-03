@@ -40,7 +40,8 @@ class Handler extends ExceptionHandler {
         if ($this->isHttpException($e))
             if ($e->getStatusCode() == 404) {
                 Flash::error('Bad URL!');
-                return redirect('applicant/home');
+                $role = $request->user()->getRole();
+                return redirect($role . '/home');
             }
         return parent::render($request, $e);
 	}
