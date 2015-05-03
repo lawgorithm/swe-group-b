@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Applicant;
-use Carbon\Carbon;
 use App\Applicant_Course;
+use Carbon\Carbon;
 use App\Course;
 use App\Phase;
 use App\Http\Requests;
@@ -49,6 +49,7 @@ class InstructorController extends Controller {
         $instructorName = \Auth::user()->name;
         $phase = new Phase();
         $phase = $phase->getPhaseData();
+        var_dump(Carbon::now()); die();
 
         date_default_timezone_set('America/Chicago');
         $curDate = getdate();
