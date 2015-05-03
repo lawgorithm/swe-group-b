@@ -17,10 +17,10 @@ class RedirectOnTime {
 	public function handle($request, Closure $next)
 	{
         $phase = Phase::getPhaseData();
-        if ($phase == NULL)
+        if ($phase == null)
         {
             Flash::info('No Times Set!');
-            return redirect('applicant/home')->flash;
+            return redirect('applicant/home');
         }
 
         if ($request->user()->isApplicant() && (($phase->open > Carbon::now('America/Chicago')) || ($phase->transition < Carbon::now('America/Chicago'))))
