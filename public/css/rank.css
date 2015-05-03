@@ -7,8 +7,8 @@ body {
     position: absolute;
     width: 92%;
     margin: auto;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 4%;
+    margin-right: 4%;
     padding: 20px;
     border: 1px solid rgba(0,0,0,.1723);
     border-radius: 4px;
@@ -18,9 +18,9 @@ body {
 #course_list {
     height: 500px;
     position: absolute;
-    width: 30%;
+    width: 25%;
     margin: auto;
-    margin-left: 10px;
+    margin-left: 2px;
     float: left;
     padding: 10px 23px 15px;
     border: 1px solid rgba(0,0,0,.1723);
@@ -31,9 +31,9 @@ body {
 #course_ranking {
     height: 500px;
     position: relative;
-    width: 65%;
+    width: 72%;
     margin:  auto;
-    margin-right: 10px;
+    margin-right: 2px;
     float: right;
     padding: 10px 23px 15px;
     border: 1px solid rgba(0,0,0,.1723);
@@ -111,6 +111,9 @@ body {
     border: none;
     padding: 0;
     opacity: 1;
+    font-weight: lighter;
+    font-family: Arial;
+    font-size: medium;
     /*background-color: rgba(223, 240, 216, 0.20); green
     background-color: rgba(242, 222, 222, 0.20); red
     background-color: rgba(252, 248, 227, 0.20); yellow

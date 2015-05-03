@@ -42,15 +42,15 @@ $(function() {
         },
         tooltipClass: "right",
         position: {
-            my: "left+250 top-32",
+            my: "left+50 top-32",
             at: "left"
         },
+        track: true,
        content: function() {
             var element = $( this );
             var val = element.attr('value');
             var vals = val.split("|");
             val = vals[1];
-           $(".ui-tooltip").css('background-color', 'rgba(223, 240, 216, 0.20)');
            return $("#info-" + val + ".hidden").html();
         }
 

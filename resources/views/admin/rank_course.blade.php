@@ -19,7 +19,7 @@
         <h5 id="submit_space" style="font-color: #dff0d8;"></h5>
         <a href="/admin/submit/{{$cid}}"><button id="course_button" >Submit</button></a>
         @foreach($applied as $apply)
-            <div class="hidden" id="info-{{$apply->sso}}" hidden>
+            <div class="hidden" id="info-{{$apply->sso}}" style="font-weight: 100;" hidden>
                 <span>Name: {{$apply->name}}</span><br>
                 <span>Email: {{$apply->email}}</span><br>
                 <span>Phone: {{$apply->phone}}</span><br>
@@ -58,4 +58,5 @@
             </div>
         @endforeach
     @endif
+
 @endsection
