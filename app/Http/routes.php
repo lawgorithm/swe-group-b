@@ -13,7 +13,6 @@
 
 Route::get('/', 'WelcomeController@index');
 
-
 Route::get('applicant', 'ApplicantController@index');
 Route::get('applicant/home', 'ApplicantController@home');
 Route::get('applicant/form', 'ApplicantController@form');
@@ -52,7 +51,7 @@ Route::controllers([
 // Route::get('/rank', 'RankController@index');
 // Route::get('/rank/{id}', 'RankController@show');
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
 // Route::get('/feedback', 'FeedbackController@pickCourse');
 // Route::post('/feedback', 'FeedbackController@redirectCourse');
