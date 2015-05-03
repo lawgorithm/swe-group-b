@@ -230,7 +230,7 @@ class Carbon extends DateTime
      *
      * @return static
      */
-    public static function now($tz = 'America/Chicago')
+    public static function now($tz = null)
     {
         return new static(null, $tz);
     }

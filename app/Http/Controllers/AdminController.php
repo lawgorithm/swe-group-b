@@ -3,6 +3,8 @@
 use App\Applicant_Course;
 use App\Applicant_offer;
 use App\Http\Requests;
+use Illuminate\Mail;
+
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
@@ -189,6 +191,40 @@ class AdminController extends Controller {
         return view('admin/settings', $data);
     }
 
+    public function email()
+    {
+//        Mail::send('emails.auth.mail', array('token'=>'SAMPLE'), function($message){
+//            $message = Swift_Message::newInstance();
+//            $email = $_POST['email']; $name = $_POST['name']; $subject = $_POST['subject']; $msg = $_POST['msg'];
+//
+//            $message = Swift_Message::newInstance()
+//                ->setFrom(array($email => $name))
+//                ->setTo(array('name@gmail.com' => 'Name'))
+//                ->setSubject($subject)
+//                ->setBody($msg);
+//
+//
+//
+//
+//            $transport = Swift_MailTransport::newInstance('smtp.gmail.com', 465, 'ssl');
+//
+//            $mailer = Swift_Mailer::newInstance($transport);
+//            //Send the message
+//            $result = $mailer->send($message);
+//            if($result){
+//
+//                var_dump('worked');
+//            }else{
+//                var_dump('Did not send mail');
+//            }
+//        }
 
+        Mail::send('jake.august.parham@gmail.com', array('token'=>'SAMPLE'), function($message)
+        {
+            $message->from( Input::get('email'), Input::get('name') );
+
+            $message->to('name@gmail.com', 'Name')->subject( Input::get('subject') );
+        });
+    }
 
 }
