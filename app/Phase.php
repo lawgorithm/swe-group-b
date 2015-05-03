@@ -21,5 +21,4 @@ class Phase extends Model {
     {
         return Phase::all()->last();
     }
-
 }

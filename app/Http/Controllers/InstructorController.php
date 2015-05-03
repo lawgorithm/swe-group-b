@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Applicant;
+use Carbon\Carbon;
 use App\Applicant_Course;
 use App\Course;
+use App\Phase;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -45,8 +47,39 @@ class InstructorController extends Controller {
     public function home()
     {
         $instructorName = \Auth::user()->name;
+        $phase = new Phase();
+        $phase = $phase->getPhaseData();
 
-    	return view('instructor/home', ['instructorName' => $instructorName]);
+        date_default_timezone_set('America/Chicago');
+        $curDate = getdate();
+        $curDate = $curDate[0];
+
+        $phaseOpen = $phase["open"];
+        $phaseTransition = $phase["transition"];
+        $phaseClose = $phase["close"];
+
+        $phaseOpen = strtotime($phaseOpen);
+        $phaseTransition = strtotime($phaseTransition);
+        $phaseClose = strtotime($phaseClose);
+
+
+        $msg = "This session is currently closed. Check back soon...";
+        $class = "isa_error";
+
+        if($curDate >= $phaseOpen && $curDate < $phaseTransition){
+            $msg = "Applicants are still applying!";
+            $class = "isa_info";
+        }
+        else if($curDate >= $phaseTransition && $curDate < $phaseClose){
+            $msg =  "Feedback is now open!";
+            $class = "isa_warning";
+        }
+        else if($curDate >= $phaseClose) {
+            $msg = "Feedback is now closed!";
+            $class = "isa_info";
+        }
+
+    	return view('instructor/home', ['instructorName' => $instructorName, 'timeMsg' => $msg, 'changeBackground' => $class]);
     }
 
     public function redirectCourse()
