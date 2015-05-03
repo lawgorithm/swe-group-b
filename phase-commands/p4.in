@@ -1,0 +1,1 @@
+App\Phase::create(['open' => Carbon\Carbon::now('America/Chicago')->subDays(60), 'transition' => Carbon\Carbon::now('America/Chicago')->subDays(40), 'close' => Carbon\Carbon::now('America/Chicago')->subDays(20), 'author' => 'masterhand']);
