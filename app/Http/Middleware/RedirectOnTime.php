@@ -19,7 +19,7 @@ class RedirectOnTime {
         $phase = Phase::getPhaseData();
         if ($phase == NULL)
         {
-            Flash::info('No Time Set!');
+            Flash::info('No Times Set!');
             return redirect('applicant/home')->flash;
         }
 
