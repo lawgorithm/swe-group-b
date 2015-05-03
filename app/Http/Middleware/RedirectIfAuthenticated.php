@@ -3,6 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated {
 
@@ -32,10 +33,13 @@ class RedirectIfAuthenticated {
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
-	{
+    {
+
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/applicant/home'));
+            $role = $request->user()->getRole();
+
+            return new RedirectResponse(url($role . '/home'));
 		}
 
 		return $next($request);
