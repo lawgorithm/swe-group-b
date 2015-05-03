@@ -1,0 +1,1 @@
+App\Phase::create(['open' => Carbon\Carbon::now()->subDays(6), 'transition' => Carbon\Carbon::now()->subDays(3), 'close' => Carbon\Carbon::now(), 'author' => 'masterhand']);

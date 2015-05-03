@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Applicant;
-use Carbon\Carbon;
 use App\Applicant_Course;
+use Carbon\Carbon;
 use App\Course;
 use App\Phase;
 use App\Http\Requests;
