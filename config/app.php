@@ -152,6 +152,12 @@ return [
 		 */
 		'AdamWathan\BootForms\BootFormsServiceProvider',
 
+        /*
+         * Adds easy flash
+         *
+         */
+        'Laracasts\Flash\FlashServiceProvider',
+
 	],
 
 	/*
@@ -200,7 +206,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
-
+        'Flash' => 'Laracasts\Flash\Flash',
 	],
 
 ];

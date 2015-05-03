@@ -111,6 +111,10 @@ body {
     border: none;
     padding: 0;
     opacity: 1;
+    /*background-color: rgba(223, 240, 216, 0.20); green
+    background-color: rgba(242, 222, 222, 0.20); red
+    background-color: rgba(252, 248, 227, 0.20); yellow
+    color: #000000;*/
 }
 .ui-tooltip-content {
     position: relative;
@@ -126,6 +130,7 @@ body {
 .right .ui-tooltip-content::after {
     top: 18px;
     left: -15px;
+    z-index: 1;
     border-color: transparent #666;
     border-width: 15px 15px 15px 0;
 }

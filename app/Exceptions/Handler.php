@@ -2,6 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Laracasts\Flash\Flash;
 
 class Handler extends ExceptionHandler {
 
@@ -37,8 +38,10 @@ class Handler extends ExceptionHandler {
 	public function render($request, Exception $e)
 	{
         if ($this->isHttpException($e))
-            if ($e->getStatusCode() == 404)
+            if ($e->getStatusCode() == 404) {
+                Flash::error('Bad URL!');
                 return redirect('applicant/home');
+            }
         return parent::render($request, $e);
 	}
 

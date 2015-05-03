@@ -50,7 +50,8 @@ $(function() {
             var val = element.attr('value');
             var vals = val.split("|");
             val = vals[1];
-            return $("#info-" + val + ".hidden").html();
+           $(".ui-tooltip").css('background-color', 'rgba(223, 240, 216, 0.20)');
+           return $("#info-" + val + ".hidden").html();
         }
 
     });
