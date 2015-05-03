@@ -151,12 +151,12 @@ class AdminController extends Controller
 
     public function settings()
     {
-
         return view('admin/settings', $this->getPhaseData());
     }
 
     public function getPhaseData()
     {
+        $data = [];
         $data['phaseCode'] = $this->getPhaseCode();
         $data['phaseDefinition'] = $this->phaseDefinition[$data['phaseCode']];
 
@@ -166,9 +166,6 @@ class AdminController extends Controller
 
             $fs = $this->phaseFormat;
 
-            $data = [];
-            $data['phaseCode'] = $this->getPhaseCode();
-            $data['phaseDefinition'] = $this->phaseDefinition[$data['phaseCode']];
             $data['open'] = Carbon::parse($hold['open'])->format($fs);
             $data['transition'] = Carbon::parse($hold['transition'])->format($fs);
             $data['close'] = Carbon::parse($hold['close'])->format($fs);
@@ -182,10 +179,10 @@ class AdminController extends Controller
     {
         $hold = Phase::all();
         $dt = Carbon::now('America/Chicago');
+
         if ($hold->count() === 0) {
             return 0;
         }
-
         $hold = $hold->last()->toArray();
 
         if ($dt < $hold['open']) {
@@ -197,7 +194,6 @@ class AdminController extends Controller
         } else if ($dt >= $hold['close']) {
             return 4;
         }
-
     }
 
 
@@ -209,12 +205,8 @@ class AdminController extends Controller
         $phase = Phase::create($input);
 
         $phase->save();
-
-        $phase = Phase::all()->last()->toArray();
-        $data = $this->getPhaseSentences($phase);
-
-
-        return view('admin/settings', $data);
+        
+        return view('admin/settings', $this->getPhaseData());
     }
 
     public function sendOffers()
