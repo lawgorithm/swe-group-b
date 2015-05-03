@@ -2,6 +2,9 @@
 
 @section('headers')
     <link href="/css/rank.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html"/>
+    <link href="/css/offer.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 @endsection
 
 @section('content')
@@ -23,7 +26,12 @@
                         <td>{{$top->name}}</td>
                         <td>{{$top->courseid}}</td>
                         <td>{{$top->coursename}}</td>
-                        <td><button type="button" id="submit" data-email="{{$top->email}}" class="btn-primary email-send" id="user_email" class="btn-primary">Send Email</button></td>
+                        <td>
+                            <button type="button" id="submit" data-email="{{$top->email}}" class="btn btn-success email-send has-spinner">
+                                <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+                                Send Email
+                            </button>
+                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -35,5 +43,6 @@
 
 @section('scripts')
     <script src="/js/offer.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 @endsection
 

@@ -21,8 +21,13 @@ $("document").ready(function(){
             type: "POST",
             url: url,
             data: email,
+            beforeSend: function() {
+                $(".email-send").toggleClass('active');
+            },
             success: function (data) {
-                console.log(data);
+                if (data.status != 'failure') {
+                    location.reload(true);
+                }
             }
         }, "json");
     })

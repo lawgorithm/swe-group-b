@@ -30,5 +30,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script src="/js/rank.js"></script>
     <link href="/css/rank.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html"/>
-
 @endsection

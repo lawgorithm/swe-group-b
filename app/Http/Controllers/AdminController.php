@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
-use Swift_MailTransport;
-use Swift_Message;
 use Laracasts\Flash\Flash;
+
 
 class AdminController extends Controller {
 
