@@ -2,7 +2,6 @@
 
 use App\Applicant;
 use App\Applicant_Course;
-use Carbon\Carbon;
 use App\Course;
 use App\Phase;
 use App\Http\Requests;

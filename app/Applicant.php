@@ -49,4 +49,21 @@ class Applicant extends Model {
 
         return $recommended;
     }
+
+    public function getTopTenApplicantsByCourseId(){
+        $topTen = new Applicant();
+        $db = new DB();
+
+        $topTen = $db::table('applicant')
+            ->join('applicantcourse', 'applicant.sso', '=', 'applicantcourse.sso')
+            ->join('course', 'applicantcourse.courseid', '=', 'course.courseid')
+            ->where('applicantcourse.rank', '>=', 1)
+            ->where('applicantcourse.rank', '<', 10)
+            ->groupby('applicantcourse.rank', 'applicant.name', 'applicantcourse.courseid', 'course.coursename', 'applicant.email')
+            ->orderby('applicantcourse.courseid')
+            ->select('applicantcourse.rank', 'applicant.name', 'applicantcourse.courseid', 'course.coursename', 'applicant.email')
+            ->get();
+
+        return $topTen;
+    }
 }

@@ -146,3 +146,8 @@ body {
     position: absolute;
     bottom: 20px;
 }
+
+.offerRankedApplicants{
+    overflow: scroll;
+    max-height: 500px;
+}

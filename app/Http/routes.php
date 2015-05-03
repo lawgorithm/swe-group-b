@@ -27,6 +27,8 @@ Route::get('admin/submit/{id}', 'AdminController@submit');
 Route::post('admin/save', 'AdminController@save');
 Route::get('admin/settings', 'AdminController@settings');
 Route::post('admin/settings', 'AdminController@phaseStore');
+Route::get('admin/offer', 'AdminController@sendOffers');
+Route::post('admin/offer', 'AdminController@sendEmail');
 
 Route::get('instructor/home', 'InstructorController@home');
 Route::get('instructor/feedback', 'InstructorController@index');

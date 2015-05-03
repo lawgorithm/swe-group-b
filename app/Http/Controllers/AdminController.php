@@ -3,8 +3,6 @@
 use App\Applicant_Course;
 use App\Applicant_offer;
 use App\Http\Requests;
-use Illuminate\Mail;
-
 use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
@@ -14,7 +12,12 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use Swift_MailTransport;
+use Swift_Message;
 
 class AdminController extends Controller {
 
@@ -47,7 +50,6 @@ class AdminController extends Controller {
      */
     public function home()
     {
-
         return view ('admin/home');
     }
 
@@ -191,40 +193,52 @@ class AdminController extends Controller {
         return view('admin/settings', $data);
     }
 
-    public function email()
-    {
-//        Mail::send('emails.auth.mail', array('token'=>'SAMPLE'), function($message){
-//            $message = Swift_Message::newInstance();
-//            $email = $_POST['email']; $name = $_POST['name']; $subject = $_POST['subject']; $msg = $_POST['msg'];
-//
-//            $message = Swift_Message::newInstance()
-//                ->setFrom(array($email => $name))
-//                ->setTo(array('name@gmail.com' => 'Name'))
-//                ->setSubject($subject)
-//                ->setBody($msg);
-//
-//
-//
-//
-//            $transport = Swift_MailTransport::newInstance('smtp.gmail.com', 465, 'ssl');
-//
-//            $mailer = Swift_Mailer::newInstance($transport);
-//            //Send the message
-//            $result = $mailer->send($message);
-//            if($result){
-//
-//                var_dump('worked');
-//            }else{
-//                var_dump('Did not send mail');
-//            }
-//        }
+    public function sendOffers(){
+        $topTen = new Applicant();
+        $topTen = $topTen->getTopTenApplicantsByCourseId();
 
-        Mail::send('jake.august.parham@gmail.com', array('token'=>'SAMPLE'), function($message)
-        {
-            $message->from( Input::get('email'), Input::get('name') );
-
-            $message->to('name@gmail.com', 'Name')->subject( Input::get('subject') );
-        });
+        return view('admin/offer', ['topTen' => $topTen]);
     }
+
+    public function sendEmail(){
+        if (Session::token() !== Input::get('_token')) {
+            return Response::json(array(
+                'msg' => 'Unauthorized attempt to create setting'
+            ));
+        }
+
+        $email = Input::get('email');
+        $email = htmlspecialchars($email);
+        $email = pg_escape_string($email);
+
+        if(isset($email)) {
+
+            $data = ['recipient' => $email];
+
+            Mail::send('emails.offer', $data, function($message) use ($data)
+            {
+                $message->to($data['recipient'])->subject('TA Position Job Offer!');
+            });
+
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Email was sent successfully',
+            );
+        } else{
+            $response = array(
+                'status' => 'failure',
+                'msg' => 'Email was sent unsuccessfully',
+            );
+        }
+
+        return Response::json($response);
+    }
+
+//    public function email_All(){
+//        Mail::raw("You have been selected to be a TA!\nReply with a response to Sandy Moore ASAP!", function($message)
+//        {
+//            $message->to('GrantScott@missouri.edu')->cc('wjbz82@mail.missouri.edu', 'pld9bc@mail.missouri.edu', ' jmlmdf@mail.missouri.edu', ' bgnqp4@mail.missouri.edu', ' masyv6@mail.missouri.edu', ' rcsc77@mail.missouri.edu', '')->subject('TA Position Job Offer!');
+//        });
+//    }
 
 }
