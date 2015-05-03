@@ -35,6 +35,13 @@
 		</div>
 	</nav>
 	<div id="page-container" class="wrapper">
+        @if (Session::has('flash_notification.message'))
+            <div class="alert alert-{{ Session::get('flash_notification.level') }}" style="margin: 0% 13% 1%; text-align: center; font-size: 20px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                {{ Session::get('flash_notification.message') }}
+            </div>
+        @endif
 		@yield('content')
 	</div>
 	<!-- Scripts -->

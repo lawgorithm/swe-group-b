@@ -9,14 +9,14 @@ trait AuthenticatesAndRegistersUsers {
 	/**
 	 * The Guard implementation.
 	 *
-	 * @var Guard
+	 * @var \Illuminate\Contracts\Auth\Guard
 	 */
 	protected $auth;
 
 	/**
 	 * The registrar implementation.
 	 *
-	 * @var Registrar
+	 * @var \Illuminate\Contracts\Auth\Registrar
 	 */
 	protected $registrar;
 
@@ -71,10 +71,10 @@ trait AuthenticatesAndRegistersUsers {
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
-			'sso' => 'required', 'password' => 'required',
+			'email' => 'required|email', 'password' => 'required',
 		]);
 
-		$credentials = $request->only('sso', 'password');
+		$credentials = $request->only('email', 'password');
 
 		if ($this->auth->attempt($credentials, $request->has('remember')))
 		{
@@ -82,9 +82,9 @@ trait AuthenticatesAndRegistersUsers {
 		}
 
 		return redirect($this->loginPath())
-					->withInput($request->only('sso', 'remember'))
+					->withInput($request->only('email', 'remember'))
 					->withErrors([
-						'sso' => $this->getFailedLoginMessage(),
+						'email' => $this->getFailedLoginMessage(),
 					]);
 	}
 
@@ -107,7 +107,7 @@ trait AuthenticatesAndRegistersUsers {
 	{
 		$this->auth->logout();
 
-		return redirect('/');
+		return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 
 	/**
@@ -122,7 +122,7 @@ trait AuthenticatesAndRegistersUsers {
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : 'applicant/home';
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
 	}
 
 	/**

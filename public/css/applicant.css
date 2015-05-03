@@ -1,0 +1,12 @@
+
+
+.centered {
+	margin: 0 auto;
+}
+
+.wrapper {
+	min-height: 500px;
+	position: relative;
+	width: 530px;
+	margin: 0 auto;
+}

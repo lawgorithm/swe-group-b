@@ -1,2 +1,14 @@
 @extends('applicant/applicant')
-@include('home')
+
+
+@section('headers')
+<link href="/css/applicant.css" rel="stylesheet" />
+@endsection
+<!-- This needs to  -->
+
+@section('content')
+<div class="wrapper centered">
+	<div>Welcome {{ $name }}</div>
+	<div>{{ $message }}</div>
+</div>
+@endsection

@@ -7,8 +7,9 @@
 	"require": {
 		"laravel/framework": "5.0.*",
 		"doctrine/dbal": "~2.5",
-		"adamwathan/bootforms": "0.6.*"
-	},
+		"adamwathan/bootforms": "0.6.*",
+        "laracasts/flash": "~1.3"
+    },
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1"

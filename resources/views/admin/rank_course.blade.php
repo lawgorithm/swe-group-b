@@ -12,7 +12,7 @@
     @else
         <ul id="sortable">
             @foreach($applied as $apply)
-                <li class="ui-state-default" id="sort-{{$apply->sso}}" value="{{$apply->rank}}|{{$apply->sso}}"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{$apply->name}}</li>
+                <li class="ui-state-default " id="sort-{{$apply->sso}}" value="{{$apply->rank}}|{{$apply->sso}}"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{$apply->name}}</li>
             @endforeach
         </ul>
         <br>

@@ -18,6 +18,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Swift_MailTransport;
 use Swift_Message;
+use Laracasts\Flash\Flash;
 
 class AdminController extends Controller {
 
@@ -74,8 +75,10 @@ class AdminController extends Controller {
      */
     public function rankShow($id)
     {
-        if (Course::checkIfCourseComplete($id))
+        if (Course::checkIfCourseComplete($id)) {
+            Flash::success('Course ' . $id . ' Rank Already Submitted!');
             return redirect()->back();
+        }
 
         $courses = Course::all()->toArray();
 
@@ -118,6 +121,8 @@ class AdminController extends Controller {
             ]);
             $count++;
         }
+
+        Flash::success('Rank Submitted for '. $id . '!');
         return redirect('admin/rank');
     }
 
