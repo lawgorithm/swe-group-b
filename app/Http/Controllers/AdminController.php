@@ -237,12 +237,4 @@ class AdminController extends Controller {
 
         return Response::json($response);
     }
-
-//    public function email_All(){
-//        Mail::raw("You have been selected to be a TA!\nReply with a response to Sandy Moore ASAP!", function($message)
-//        {
-//            $message->to('GrantScott@missouri.edu')->cc('wjbz82@mail.missouri.edu', 'pld9bc@mail.missouri.edu', ' jmlmdf@mail.missouri.edu', ' bgnqp4@mail.missouri.edu', ' masyv6@mail.missouri.edu', ' rcsc77@mail.missouri.edu', '')->subject('TA Position Job Offer!');
-//        });
-//    }
-
 }

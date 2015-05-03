@@ -11,7 +11,7 @@
     <form id="offer" action="#" method="post">
     <div id="main">
         <div class="offerRankedApplicants">
-            <h3 style="padding-left: 450px; padding-bottom: 25px; margin: 5px 5px 5px 5px;">Top Ranked Applicants:</h3>
+            <h3 class="offer-header">Top Ranked Applicants:</h3>
                 <table class="table table-hover">
                     <tr>
                     <th>Rank</th>
@@ -21,7 +21,8 @@
                     <th>Action</th>
                 </tr>
                 @foreach($topTen as $top)
-                    <tr class="person-row" id="person-row" data-email="{{$top->email}}" data-name="{{$top->name}}">
+                    <div class="table-row-container">
+                        <tr class="person-row" id="person-row" data-email="{{$top->email}}" data-name="{{$top->name}}">
                         <td>{{$top->rank}}</td>
                         <td>{{$top->name}}</td>
                         <td>{{$top->courseid}}</td>
@@ -33,6 +34,7 @@
                             </button>
                         </td>
                     </tr>
+                    </div>
                 @endforeach
             </table>
         </div>
