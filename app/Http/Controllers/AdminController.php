@@ -23,7 +23,7 @@ class AdminController extends Controller
 {
 
     protected $check;
-    protected $phaseDefinition = ['Awaiting Configuration', 'Collecting Applications', 'Collecting Feedback', 'Awaiting Ranking'];
+    protected $phaseDefinition = ['Awaiting Configuration', 'Awaiting Opening', 'Collecting Applications', 'Collecting Feedback', 'Awaiting Ranking'];
     protected $phaseFormat = 'l, F jS';
 
     /**
