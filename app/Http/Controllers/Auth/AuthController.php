@@ -61,7 +61,7 @@ class AuthController extends Controller {
     {
         return redirect('/');
     }
-    
+
     public function redirectPath()
     {
         if (property_exists($this, 'redirectPath'))
