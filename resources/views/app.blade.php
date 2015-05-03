@@ -24,7 +24,6 @@
 				<ul class="nav navbar-nav navbar-right">
 				@yield('links')
                     @if (!\Auth::check())
-                            <li><a href="/auth/register">Register</a></li>
                             <li><a href="/auth/login">Sign In</a></li>
                     @else
                     	
