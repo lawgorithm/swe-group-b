@@ -20,26 +20,40 @@
         <a href="/admin/submit/{{$cid}}"><button id="course_button" >Submit</button></a>
         @foreach($applied as $apply)
             <div class="hidden" id="info-{{$apply->sso}}" hidden>
-                <p>Name: {{$apply->name}}</p>
-                <p>Email: {{$apply->email}}</p>
-                <p>Phone: {{$apply->phone}}</p>
-                <p>GPA: {{$apply->gpa}}</p>
-                <p>Graduates: {{$apply->graddate}}</p>
-                <p>Program: {{$apply->program}}</p>
-                @if (isset($apply->speakscore))
-                    <p>International Student</p>
-                    <p> Speak Score: {{$apply->speakscore}}
-                    <p> Speak Date: {{$apply->speakdate}}</p>
+                <span>Name: {{$apply->name}}</span><br>
+                <span>Email: {{$apply->email}}</span><br>
+                <span>Phone: {{$apply->phone}}</span><br>
+                <span>GPA: {{$apply->gpa}}</span><br>
+                <span>Graduates: {{$apply->graddate}}</span><br>
+                <span>Program: {{$apply->program}}</span><br>
+                @if (($prevs = \App\Applicant_Course::getPrevTaught($apply->sso)) != NULL)
+                    <span>Previously Taught:</span><br>
+                    @foreach ($prevs as $prev)
+                        {{$prev['courseid']}}
+                    @endforeach
+                    <br>
                 @endif
-                <p>Experience: {{$apply->previouswork}}</p>
+                @if (($currs = \App\Applicant_Course::getCurrTaught($apply->sso)) != NULL)
+                    <span>Currently Teaching:</span><br>
+                    @foreach ($currs as $curr)
+                        {{$curr['courseid']}}
+                    @endforeach
+                    <br>
+                @endif
+                @if (isset($apply->speakscore))
+                    <span>International Student</span><br>
+                    <span> Speak Score: {{$apply->speakscore}}</span><br>
+                    <span> Speak Date: {{$apply->speakdate}}</span><br>
+                @endif
+                <span>Experience: {{$apply->previouswork}}</span><br>
                 @if (isset($apply->rank))
-                    <p>Rank: {{$apply->rank}}</p>
+                    <span>Rank: {{$apply->rank}}</span><br>
                 @endif
                 @if (isset($apply->feedback))
-                    <p>Feedback by {{\App\Course::getInstructor($cid)}}: "{{$apply->feedback}}"</p>
+                    <span>Feedback by {{\App\Course::getInstructor($cid)}}: "{{$apply->feedback}}"</span><br>
                 @endif
                 @if ($apply->recommendation != 0)
-                    <p>Recommended: {{$apply->recommendation}}</p>
+                    <span>Recommended: {{$apply->recommendation}}</span>
                 @endif
             </div>
         @endforeach
