@@ -16,7 +16,7 @@
             @endforeach
         </ul>
         <br>
-        <h5 id="submit_space" style="font-color: #dff0d8;"></h5>
+        <h5 id="submit_space" style="font-color: #dff0d8;">Changes Saved</h5>
         <a href="/admin/submit/{{$cid}}"><button id="course_button" >Submit</button></a>
         @foreach($applied as $apply)
             <div class="hidden" id="info-{{$apply->sso}}" style="font-weight: 100;" hidden>

@@ -1,5 +1,4 @@
 $(function() {
-    $("#submit_space").text("Changes Saved");
     $("#submit_space").fadeOut(1);
     $( "#sortable" ).sortable({
 
@@ -15,8 +14,7 @@ $(function() {
                     _token: $('meta[name=csrf-token]').attr('content'),
                     ids: ids,
                     courseid: $('meta[name=courseid]').attr('content')
-                }
-            )
+            })
             .done(function(data) {
                     $("#submit_space").fadeIn(100);
                     $("#submit_space").fadeOut(2000);
@@ -27,11 +25,31 @@ $(function() {
         }
     });
 });
+$("#sortable").ready( function(){
+    var ids = $( "#sortable" ).sortable( "toArray" );
+    if ($(".info"))
+    if ($.isArray(ids)) {
+        for (var item in ids) {
+            var vals = ids[item].split("-");
+            ids[item] = vals[1];
+        }
+        $.post('/admin/save', {
+                _token: $('meta[name=csrf-token]').attr('content'),
+                ids: ids,
+                courseid: $('meta[name=courseid]').attr('content')
+        })
+        .done(function (data) {
+
+        })
+        .fail(function () {
+            alert("error");
+        });
+    }
+});
 $(function() {
     $( "button#course_button" )
         .button()
         .click(function( event ) {
-            $("p#submit_space").text("Applicant Choice Submitted");
         });
 });
 $(function() {
