@@ -29,7 +29,7 @@ body{
     width: 50%;
     text-align: center;
     margin: auto;
-    margin-top: 8%;
+    margin-top: 13%;
 }
 
 .welcome .welcome-wrap{
@@ -124,7 +124,7 @@ body{
     transition: all 0.2s linear;
 }
 .fmcircle_in span {
-    margin: 0;
+    margin: auto;
     padding: 0;
     border: 0;
     vertical-align: baseline;
@@ -163,6 +163,9 @@ body{
 
 #get-started{
     font-family: 'Ubuntu', sans-serif;
+    margin: auto;
+    margin-top: 75px;
+    margin-left: 5px;
 }
 
 /*** Base64 Patterns ***/

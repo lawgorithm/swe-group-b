@@ -50,7 +50,11 @@ class ApplicantController extends Controller {
         if( $curDate >= $phaseOpen && $curDate < $phaseTransition ) {
             $message = "Applications are open!";
         } else if ( $curDate > $phaseTransition && $curDate < $phaseClose ) {
-            $message = "Applications are closed, Pending feedback.";
+            $message = "Applications are closed, ";
+            if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
+                $message = $message . "come back next year.";
+            else
+                $message = $message . "offers pending.";
         } else {
             $message = "TA applications will open sometime I guess.";
         }
