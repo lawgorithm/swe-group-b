@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 //use App\Http\Requests;
+use App\Applicant_offer;
 use App\Http\Controllers\Controller;
 
 //Namespace for accepting requests
@@ -10,6 +11,7 @@ use App\Applicant;
 use App\Course;
 use App\Applicant_Course;
 use App\Phase;
+use Illuminate\Support\Facades\Mail;
 use Session;
 use Redirect;
 use Laracasts\Flash\Flash;
@@ -22,7 +24,7 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['index', 'home', 'accepted']]);
+        $this->middleware('time', ['except' => ['index', 'home', 'accepted', 'accepted']]);
     }
 
     public function home()
@@ -150,16 +152,56 @@ class ApplicantController extends Controller {
 
     public function accepted(){
         $sso = \Auth::user()->sso;
+        $offers = new Applicant_offer();
+        $offers = $offers->getOfferedCourseBySSO($sso);
+        $hasAccepted = new Applicant_offer();
+        $allAccepted = array();
+        foreach($offers as $offer) {
+            array_push($allAccepted, $hasAccepted->getAcceptedBySSO($sso, $offer->courseid));
+        }
 
-        #TODO Make this pull all true offer sent fields where sso = user.sso;
-
-        var_dump($sso); die();
-        return view('applicant/accepted');
+        return view('applicant/accepted', ['offers' => $offers, 'allAccepted' => $allAccepted]);
     }
 
     public function updateAccepted(){
-        #TODO Update users confirmation for TA positions
-        die();
+
+        $email = $_POST['email'];
+        $course = $_POST['course'];
+        $name = $_POST['name'];
+        $sso = $_POST['sso'];
+
+        if(isset($_POST['yesBtn']))
+            $offerResponse = $_POST['yesBtn'];
+        else if(isset($_POST['noBtn']))
+            $offerResponse = $_POST['noBtn'];
+
+        $applicant = array(
+            'course' => $course,
+            'sso' => $sso,
+        );
+
+        if($offerResponse == "yes") {
+            $data = ['email'=>$email, 'name' => $name];
+
+            Mail::send('emails.responseYes', $data, function ($message) use ($data) {
+                $message->from($data['email'], $data['name']);
+                $message->to('jake.august.parham@gmail.com')->subject('RE: TA Position Job Offer!');
+            });
+        }
+        else if($offerResponse == "no") {
+            $data = ['email'=>$email, 'name'=>$name];
+
+            Mail::send('emails.responseNo', $data, function ($message) use ($data) {
+                $message->from($data['email'], $data['name']);
+                $message->to('jake.august.parham@gmail.com')->subject('RE: TA Position Job Offer!');
+            });
+        }
+
+        $appOffer = new Applicant_offer();
+        $appOffer->updateOfferAccepted($applicant);
+
+        return Redirect::to('applicant/accepted');
+
     }
 
 }

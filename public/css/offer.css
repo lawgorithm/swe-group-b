@@ -35,12 +35,16 @@
 }
 
 .offer-header{
-    padding-left: 450px;
-    padding-bottom: 25px;
     margin: 5px 5px 5px 5px;
 }
 
 .table-row-container{
     overflow: scroll;
     max-height: 500px;
+}
+
+.err-msg{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 50px;
+    margin: 20px 20px 20px 20px;
 }

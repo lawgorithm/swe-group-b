@@ -3,6 +3,8 @@ $("document").ready(function(){
         e.preventDefault();
 
         $email = $(this).data("email");
+        $courseid = $(this).data("course");
+        $sso = $(this).data("sso");
 
         var tok = document.getElementById("csrf_tok");
         var csrf = tok.value;
@@ -10,6 +12,8 @@ $("document").ready(function(){
 
         var email = {
             email: $email,
+            course: $courseid,
+            sso: $sso,
             _token: csrf
         };
 

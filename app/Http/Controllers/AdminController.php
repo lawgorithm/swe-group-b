@@ -118,7 +118,9 @@ class AdminController extends Controller
             Applicant_offer::create([
                 'sso' => $offer->sso,
                 'courseid' => $offer->courseid,
-                'rank' => $count
+                'rank' => $count,
+                'offersent' => false,
+                'offeraccepted' => false
             ]);
             $count++;
         }
@@ -210,8 +212,8 @@ class AdminController extends Controller
 
     public function sendOffers()
     {
-        $topTen = new Applicant();
-        $topTen = $topTen->getTopTenApplicantsByCourseId();
+        $topTen = new Applicant_offer();
+        $topTen = $topTen->getTopTenApplicantsForEachCourse();
 
         return view('admin/offer', ['topTen' => $topTen]);
     }
@@ -223,10 +225,22 @@ class AdminController extends Controller
                 'msg' => 'Unauthorized attempt to create setting'
             ));
         }
-
+        $appOffer = new Applicant_offer();
         $email = Input::get('email');
+        $course = Input::get('course');
+        $sso = Input::get('sso');
+
         $email = htmlspecialchars($email);
         $email = pg_escape_string($email);
+        $course = htmlspecialchars($course);
+        $course = pg_escape_string($course);
+        $sso = htmlspecialchars($sso);
+        $sso = pg_escape_string($sso);
+
+        $applicant = array(
+            'sso' => $sso,
+            'course' => $course,
+        );
 
         if (isset($email)) {
 
@@ -235,6 +249,8 @@ class AdminController extends Controller
             Mail::send('emails.offer', $data, function ($message) use ($data) {
                 $message->to($data['recipient'])->subject('TA Position Job Offer!');
             });
+
+            $appOffer->updateOfferSentBySso($applicant);
 
             $response = array(
                 'status' => 'success',

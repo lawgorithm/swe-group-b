@@ -72,4 +72,5 @@ class Applicant extends Model {
             return false;
         return true;
     }
+
 }
