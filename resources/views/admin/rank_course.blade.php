@@ -52,8 +52,10 @@
                 @if (isset($apply->feedback))
                     <span>Feedback by {{\App\Course::getInstructor($cid)}}: "{{$apply->feedback}}"</span><br>
                 @endif
-                @if ($apply->recommendation != 0)
-                    <span>Recommended: {{$apply->recommendation}}</span>
+                @if ($apply->recommendation == 1)
+                    <span>Recommended by {{\App\Course::getInstructor($cid)}}</span>
+                @elseif ($apply->recommendation == -1)
+                    <span>Not recommended by {{\App\Course::getInstructor($cid)}}</span>
                 @endif
             </div>
         @endforeach

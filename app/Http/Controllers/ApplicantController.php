@@ -4,6 +4,7 @@
 use App\Http\Controllers\Controller;
 
 //Namespace for accepting requests
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use App\Applicant;
 use App\Course;
@@ -11,6 +12,7 @@ use App\Applicant_Course;
 use App\Phase;
 use Session;
 use Redirect;
+use Laracasts\Flash\Flash;
 
 //use Illuminate\Http\Request;
 
@@ -21,11 +23,6 @@ class ApplicantController extends Controller {
         $this->middleware('auth');
         $this->middleware('role');
         $this->middleware('time', ['except' => ['index', 'home', 'accepted']]);
-    }
-
-    public function index()
-    {
-    	return view('applicant/home');
     }
 
     public function home()
@@ -60,7 +57,12 @@ class ApplicantController extends Controller {
 
     public function form()
     {
-    	 $courses = Course::all()->toArray();
+    	$courses = Course::all()->toArray();
+
+        if (Applicant::checkIfSubmitted(Auth::user()->sso)){
+            Flash::error('You have already submitted an application!');
+            return redirect('applicant/home');
+        }
 
         return view('applicant/form', ['courses' => $courses]);
     }
@@ -79,7 +81,7 @@ class ApplicantController extends Controller {
 
         foreach ($input['studentWork'] as $studentWork) {
             if ( strlen($work) > 0 ) {
-                $work = $work . ',' . $studentWork;
+                $work = $work . ', ' . $studentWork;
             } else {
                 $work = $studentWork;
             }

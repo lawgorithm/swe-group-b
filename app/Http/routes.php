@@ -13,7 +13,6 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('applicant', 'ApplicantController@index');
 Route::get('applicant/home', 'ApplicantController@home');
 Route::get('applicant/form', 'ApplicantController@form');
 Route::post('applicant/form', 'ApplicantController@formStore');

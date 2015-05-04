@@ -66,4 +66,10 @@ class Applicant extends Model {
 
         return $topTen;
     }
+
+    public static function checkIfSubmitted($sso) {
+        if (Applicant::where('sso', '=', $sso)->first() == NULL)
+            return false;
+        return true;
+    }
 }
