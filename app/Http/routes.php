@@ -19,7 +19,6 @@ Route::post('applicant/form', 'ApplicantController@formStore');
 Route::get('applicant/accepted', 'ApplicantController@accepted');
 Route::post('applicant/accepted', 'ApplicantController@updateAccepted');
 
-Route::get('admin', 'AdminController@index');
 Route::get('admin/home', 'AdminController@home');
 Route::get('admin/rank', 'AdminController@rank');
 Route::get('admin/rank/{id}', 'AdminController@rankShow');

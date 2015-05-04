@@ -14,6 +14,7 @@ class Applicant_Course extends Model {
         'sso',
         'courseid',
         'action',
+        'rank',
         'feedback',
         'recommendation'
     ];
@@ -25,6 +26,12 @@ class Applicant_Course extends Model {
         $appCourse = \App\Applicant_Course::where('sso', '=', $applicant[0])
             ->where('courseid', '=', $applicant[1])
             ->update(['feedback' => $applicant[2], 'recommendation' => $applicant[3]]);
+    }
+
+    public static function checkIfCourseHasApps($courseid) {
+        if (Applicant_Course::where('courseid', '=', $courseid)->where('action', '=', '001')->first() == null)
+            return false;
+        return true;
     }
 
     public static function getPrevTaught($id) {

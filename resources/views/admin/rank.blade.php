@@ -11,7 +11,9 @@
             <ul id="list_course">
                 @foreach($courses as $course)
                     @if (!\App\Course::checkIfCourseComplete($course['courseid']))
-                        <a href="{{action('AdminController@rankShow', $course['courseid'])}} "><li class="single_course">{{$course['courseid']}}</li></a>
+                        @if (\App\Applicant_Course::checkIfCourseHasApps($course['courseid']))
+                            <a href="{{action('AdminController@rankShow', $course['courseid'])}} "><li class="single_course">{{$course['courseid']}}</li></a>
+                        @endif
                     @endif
                 @endforeach
             </ul>

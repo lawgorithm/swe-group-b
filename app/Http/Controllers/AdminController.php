@@ -37,16 +37,6 @@ class AdminController extends Controller
     }
 
     /**
-     * redirect index page to home page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('admin/home');
-    }
-
-    /**
      * home page view
      *
      * @return \Illuminate\View\View
@@ -78,7 +68,11 @@ class AdminController extends Controller
     public function rankShow($id)
     {
         if (Course::checkIfCourseComplete($id)) {
-            Flash::info('Course ' . $id . ' Rank Already Submitted!');
+            Flash::info('Course ' . $id . ' rank already submitted!');
+            return redirect()->back();
+        }
+        if (!Applicant_Course::checkIfCourseHasApps($id)) {
+            Flash::info('Course ' . $id . ' does not have any applicants!');
             return redirect()->back();
         }
 
