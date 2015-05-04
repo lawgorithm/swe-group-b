@@ -21,20 +21,18 @@
                     <th>Action</th>
                 </tr>
                 @foreach($topTen as $top)
-                    <div class="table-row-container">
                         <tr class="person-row" id="person-row" data-email="{{$top->email}}" data-name="{{$top->name}}">
                         <td>{{$top->rank}}</td>
                         <td>{{$top->name}}</td>
                         <td>{{$top->courseid}}</td>
                         <td>{{$top->coursename}}</td>
                         <td>
-                            <button type="button" id="submit" data-email="{{$top->email}}" class="btn btn-success email-send has-spinner">
+                            <button type="button" id="submit" data-sso="{{$top->sso}}" data-course="{{$top->courseid}}" data-email="{{$top->email}}" class="btn btn-success email-send has-spinner">
                                 <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
                                 Send Email
                             </button>
                         </td>
                     </tr>
-                    </div>
                 @endforeach
             </table>
         </div>
