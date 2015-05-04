@@ -23,16 +23,17 @@ body{
     z-index: -1;
 }
 .welcome-wrap{
-    padding-left: 320px;
-    padding-top: 100px;
-    position: absolute;
+    position: relative;
     overflow: hidden;
-    height: 550px;
-    width: 650px;
+    height: 50%;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-top: 8%;
 }
 
 .welcome .welcome-wrap{
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -56,19 +57,16 @@ body{
 /*-Get started button css-*/
 .grid-3 {
     display: inline;
-    float: left;
-    margin-left: 155px;
-    margin-right: 10px;
-    width: 220px;
+    text-align: center;
 }
 .fmcircle_out {
-    width: 200px;
-    height: 200px;
+
     background: rgba(221,221,221,0.3) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAO0lEQVQYV2NkIAIwElKze/fu/3gVgRS4uroyEjQJZBNWRTATYE7BUISuAKdJ6J6Bm4TNBBTr8CkAKQQA02QXOj4w/E8AAAAASUVORK5CYII=);
     text-align: center;
     display: block;
-    margin-left: 20px;
     opacity: 0.5;
+    margin: auto;
+    width: 30%;
 
     border-radius: 100px;
     -moz-border-radius: 100px;
@@ -105,7 +103,6 @@ body{
 .fmcircle_in {
     width: 170px;
     height: 170px;
-    margin: 15px;
     display: inline-block;
     overflow: hidden;
 
@@ -134,8 +131,6 @@ body{
     width: 160px;
     background: #fff;
     color: #666666;
-    padding: 5px;
-    margin: 70px 0 0 0;
     height: 20px;
     text-align: center;
     font-weight: bold;
