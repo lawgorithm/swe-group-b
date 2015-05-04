@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Laracasts\Flash\Flash;
 
 class Authenticate {
 
@@ -40,7 +41,8 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+                Flash::error('You must be logged in!');
+                return redirect()->guest('auth/login');
 			}
 		}
 
