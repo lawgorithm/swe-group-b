@@ -12,3 +12,7 @@
 	<div>{{ $message }}</div>
 </div>
 @endsection
+
+@section('script')
+    <script src="/js/konami.js"></script>
+@endsection

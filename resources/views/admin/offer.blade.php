@@ -45,6 +45,7 @@
         <input type="hidden" id="csrf_tok" name="_token" value="<?php echo csrf_token(); ?>">
     </div>
     </form>
+
 @endsection
 
 @section('scripts')
