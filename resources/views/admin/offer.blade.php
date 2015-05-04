@@ -26,8 +26,7 @@
                         <td>{{$top->name}}</td>
                         <td>{{$top->courseid}}</td>
                         <td>{{$top->coursename}}</td>
-                        @foreach($offersSent as $offers)
-                            @if($offers->courseid == $top->courseid && $offers->rank != $top->rank)
+                        @if($top->offersent == false)
                         <td>
                             <button type="button" id="submit" data-sso="{{$top->sso}}" data-course="{{$top->courseid}}" data-email="{{$top->email}}" class="btn btn-success email-send has-spinner">
                                 <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
@@ -37,7 +36,6 @@
                             @else
                                 <td><span>Email Sent</span></td>
                             @endif
-                        @endforeach
                     </tr>
                 @endforeach
             </table>

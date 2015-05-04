@@ -154,13 +154,8 @@ class ApplicantController extends Controller {
         $sso = \Auth::user()->sso;
         $offers = new Applicant_offer();
         $offers = $offers->getOfferedCourseBySSO($sso);
-        $hasAccepted = new Applicant_offer();
-        $allAccepted = array();
-        foreach($offers as $offer) {
-            array_push($allAccepted, $hasAccepted->getAcceptedBySSO($sso, $offer->courseid));
-        }
 
-        return view('applicant/accepted', ['offers' => $offers, 'allAccepted' => $allAccepted]);
+        return view('applicant/accepted', ['offers' => $offers]);
     }
 
     public function updateAccepted(){

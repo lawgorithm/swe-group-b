@@ -214,14 +214,8 @@ class AdminController extends Controller
     {
         $topTen = new Applicant_offer();
         $topTen = $topTen->getTopTenApplicantsForEachCourse();
-        $offerSent = new Applicant_offer();
 
-        $offersSent = array();
-        foreach($topTen as $each) {
-            array_push($offersSent, $offerSent->getOfferedCourseBySSO($each->sso));
-        }
-
-        return view('admin/offer', ['topTen' => $topTen, 'offersSent' => $offersSent[1]]);
+        return view('admin/offer', ['topTen' => $topTen]);
     }
 
     public function sendEmail()
