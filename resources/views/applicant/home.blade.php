@@ -13,6 +13,6 @@
 </div>
 @endsection
 
-@section('script')
+@section('scripts')
     <script src="/js/konami.js"></script>
 @endsection

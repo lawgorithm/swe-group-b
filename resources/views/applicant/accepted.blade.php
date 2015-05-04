@@ -21,7 +21,7 @@
                     </tr>
                     @foreach($offers as $offer)
                         @foreach($allAccepted as $accepted)
-                            @if($offer->courseid != $accepted[0]->courseid)
+                            @if($offer->courseid != $accepted->courseid && $offer->offeraccepted != $accepted->offeraccepted)
                         <tr class="person-row" id="person-row">
                             <td style="padding-top: 15px;">{{$offer->courseid}}</td>
                             <td>
