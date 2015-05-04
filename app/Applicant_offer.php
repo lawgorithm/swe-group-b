@@ -34,10 +34,10 @@ class Applicant_offer extends Model {
             ->join('course', 'applicantoffer.courseid', '=', 'course.courseid')
             ->where('applicantoffer.rank', '>=', 1)
             ->where('applicantoffer.rank', '<', 10)
-            ->groupby('applicant.sso','applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email')
+            ->groupby('applicant.sso','applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email', 'applicantoffer.offersent')
             ->orderby('applicantoffer.courseid')
             ->orderby('applicantoffer.rank', 'ASC')
-            ->select('applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email','applicant.sso')
+            ->select('applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email','applicant.sso', 'applicantoffer.offersent')
             ->get();
 
         return $topTen;

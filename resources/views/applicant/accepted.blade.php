@@ -20,8 +20,7 @@
                         <th>Response</th>
                     </tr>
                     @foreach($offers as $offer)
-                        @foreach($allAccepted as $accepted)
-                            @if($offer->courseid != $accepted->courseid && $offer->offeraccepted != $accepted->offeraccepted)
+                            @if($offer->offeraccepted == false)
                         <tr class="person-row" id="person-row">
                             <td style="padding-top: 15px;">{{$offer->courseid}}</td>
                             <td>
@@ -35,7 +34,6 @@
                                 <td style="font-family: 'Ubuntu', sans-serif; padding-left: 25px;">Thank you for submitting feedback!</td>
                             </tr>
                             @endif
-                            @endforeach
                     @endforeach
                 </table>
             </div>
