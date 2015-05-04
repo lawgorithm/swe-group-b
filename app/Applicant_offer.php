@@ -35,6 +35,7 @@ class Applicant_offer extends Model {
             ->where('applicantoffer.rank', '>=', 1)
             ->where('applicantoffer.rank', '<', 10)
             ->groupby('applicant.sso','applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email')
+            ->orderby('applicantoffer.courseid')
             ->orderby('applicantoffer.rank', 'ASC')
             ->select('applicantoffer.rank', 'applicant.name', 'applicantoffer.courseid', 'course.coursename', 'applicant.email','applicant.sso')
             ->get();
@@ -50,7 +51,7 @@ class Applicant_offer extends Model {
         $offer = $db::table('applicantoffer')
             ->where('applicantoffer.sso', '=', $sso)
             ->where('applicantoffer.offersent', '=', true)
-            ->select('applicantoffer.courseid', 'applicantoffer.rank')
+            ->select('applicantoffer.courseid', 'applicantoffer.rank', 'applicantoffer.offeraccepted')
             ->get();
 
         return $offer;

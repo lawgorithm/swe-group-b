@@ -221,6 +221,8 @@ class AdminController extends Controller
             array_push($offersSent, $offerSent->getOfferedCourseBySSO($each->sso));
         }
 
+
+
         return view('admin/offer', ['topTen' => $topTen, 'offersSent' => $offersSent[1]]);
     }
 

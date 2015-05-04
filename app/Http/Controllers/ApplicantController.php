@@ -160,7 +160,7 @@ class ApplicantController extends Controller {
             array_push($allAccepted, $hasAccepted->getAcceptedBySSO($sso, $offer->courseid));
         }
 
-        return view('applicant/accepted', ['offers' => $offers, 'allAccepted' => $allAccepted]);
+        return view('applicant/accepted', ['offers' => $offers, 'allAccepted' => $allAccepted[0]]);
     }
 
     public function updateAccepted(){
