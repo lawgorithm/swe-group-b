@@ -124,30 +124,35 @@ class ApplicantController extends Controller {
             'speakdate' => $validArray['speakdate']
         ]);
 
+
         foreach ($input['prevTaught'] as $prev) {
-            Applicant_Course::create([
-                'sso' => $user['sso'],
-                'courseid' => $prev,
-                'action' => "100"
-            ]);
+            if ($prev != "")
+                Applicant_Course::create([
+                    'sso' => $user['sso'],
+                    'courseid' => $prev,
+                    'action' => "100"
+                ]);
         }
         foreach ($input['currTaught'] as $curr) {
-            Applicant_Course::create([
-                'sso' => $user['sso'],
-                'courseid' => $curr,
-                'action' => "010"
-            ]);
+            if ($curr != "")
+                Applicant_Course::create([
+                    'sso' => $user['sso'],
+                    'courseid' => $curr,
+                    'action' => "010"
+                ]);
         }
         foreach ($input['likeTeach'] as $like) {
-            Applicant_Course::create([
-                'sso' => $user['sso'],
-                'courseid' => $like,
-                'action' => "001",
-                'recommendation' => 0
-            ]);
+          if ($like != "")
+                Applicant_Course::create([
+                    'sso' => $user['sso'],
+                    'courseid' => $like,
+                    'action' => "001",
+                    'recommendation' => 0
+                ]);
         }
 
-        return "It worked " . serialize($input) . "!";
+        Flash::success('You have successfully submitted an application!');
+        return redirect('applicant/home');
     }
 
     public function accepted(){
