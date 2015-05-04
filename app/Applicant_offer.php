@@ -50,7 +50,7 @@ class Applicant_offer extends Model {
         $offer = $db::table('applicantoffer')
             ->where('applicantoffer.sso', '=', $sso)
             ->where('applicantoffer.offersent', '=', true)
-            ->select('applicantoffer.courseid')
+            ->select('applicantoffer.courseid', 'applicantoffer.rank')
             ->get();
 
         return $offer;
@@ -74,5 +74,4 @@ class Applicant_offer extends Model {
 
         return $accepted;
     }
-
 }
