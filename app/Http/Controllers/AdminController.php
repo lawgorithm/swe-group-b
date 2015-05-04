@@ -46,6 +46,11 @@ class AdminController extends Controller
         return view('admin/home');
     }
 
+    public function about()
+    {
+        return view('admin/about');
+    }
+
     /**
      * forwards to rank home page
      *
