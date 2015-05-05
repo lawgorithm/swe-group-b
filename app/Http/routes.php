@@ -18,6 +18,8 @@ Route::get('applicant/form', 'ApplicantController@form');
 Route::post('applicant/form', 'ApplicantController@formStore');
 Route::get('applicant/accepted', 'ApplicantController@accepted');
 Route::post('applicant/accepted', 'ApplicantController@updateAccepted');
+Route::get('applicant/about', 'ApplicantController@about');
+
 
 Route::get('admin/home', 'AdminController@home');
 Route::get('admin/rank', 'AdminController@rank');
@@ -35,6 +37,7 @@ Route::get('instructor/feedback', 'InstructorController@index');
 Route::post('instructor/feedback', 'InstructorController@redirectCourse');
 Route::get('instructor/feedback/{id}', 'InstructorController@showApplicants');
 Route::post('instructor/feedback/{id}', 'InstructorController@feedbackStore');
+Route::get('instructor/about', 'InstructorController@about');
 
 
 Route::controllers([

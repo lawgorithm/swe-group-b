@@ -24,7 +24,12 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['index', 'home', 'accepted', 'accepted']]);
+        $this->middleware('time', ['except' => ['index', 'about', 'home', 'accepted', 'accepted']]);
+    }
+
+    public function about()
+    {
+        return view('applicant/about');
     }
 
     public function home()
