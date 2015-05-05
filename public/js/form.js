@@ -21,6 +21,27 @@ $(function() {
 		}
 	});
 
+	$('#option').click(function(e) {
+		if($("#gradOption").is(':selected')) {
+			$("#studentMajor").val("").hide();
+			$("#studentYear").val("").hide();
+			$("#studentField").val("").hide();
+			$("#studentGPA").val("").hide();
+			$("#studentField").hide();
+			$("#gpaLabel").hide();
+			$("#programLabel").hide();
+		}
+		else
+		{
+			$("#studentMajor").show();
+			$("#studentYear").show();
+			$("#studentGPA").show();
+			$("#studentField").show();
+			$("#gpaLabel").show();
+			$("#programLabel").show();
+		}
+	});
+
 	$("#moreTaught").click(function(e) {
 		var obj = $("#prevTaught").clone();
 
