@@ -31,7 +31,7 @@ class ApplicantController extends Controller {
 
     public function about()
     {
-        return view('admin/about');
+        return view('applicant/about');
     }
 
     public function home()
