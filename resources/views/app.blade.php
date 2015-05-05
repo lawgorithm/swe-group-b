@@ -4,11 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TAPRICOT</title>
+	<title>Tapricot</title>
 
 	<link href="/css/app.css" rel="stylesheet">
 	@yield('headers')
 	<link href="/css/overrides.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="/favicon.ico">
 
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
