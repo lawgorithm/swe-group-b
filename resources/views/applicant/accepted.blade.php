@@ -9,7 +9,7 @@
 
 @section('content')
     <form id="respond" action="#" method="post">
-        <div id="main" style="width: 30%; margin-left: 430px;">
+        <div id="main" style="width: 35%; margin-left: 430px;">
             <div class="offerRankedApplicants" style="width: 100%;">
                 <div class="panel panel-success">
                     <h3 class="offer-header" style="font-family: 'Ubuntu', sans-serif; margin: 5px 5px 2px 40px;">Courses Offered To TA: </h3>
