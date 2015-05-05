@@ -45,7 +45,7 @@ class AdminController extends Controller
      */
     public function home()
     {
-        return view('admin/home');
+        return view('admin/home', $this->getPhaseData());
     }
 
     public function about()

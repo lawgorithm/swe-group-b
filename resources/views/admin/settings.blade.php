@@ -34,7 +34,6 @@
         <p class="phase-statement">We are currently in Phase {{$phaseCode}}: {{$phaseDefinition}}</p>
         @if ($phaseCode !== 0)
             <div class="alert alert-info text-center natural-dates" role="alert">
-
                 <p>We will <strong>begin collecting applications</strong> on <u>{{$open}}</u>.</p>
                 <p><u>{{$transition}}</u> is the <strong>deadline for student submissions</strong>.</p>
                 <p><u>{{$close}}</u> is the <strong>deadline for instructor feedback</strong>.</p>
