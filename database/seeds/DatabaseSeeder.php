@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
 		$this->call('RoleTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('CourseTableSeeder');
-	//	$this->call('ApplicantTableSeeder');
-	//	$this->call('ApplicantCourseTableSeeder');
+		$this->call('ApplicantTableSeeder');
+		$this->call('ApplicantCourseTableSeeder');
         $this->call('InstructorTableSeeder');
 	}
 }
@@ -173,21 +173,19 @@ class ApplicantTableSeeder extends Seeder
 {
 	public function run ()
 	{
-		DB::table('applicant')->delete();		
-	
-		App\Applicant::create(['sso' => 'wer443', 'name' => 'Michael Jordan', 'phone' => '1231231127', 'email' => 'winning@basket.ball', 'gpa' => '4.0', 'graddate' => 'S16', 'program' => 'CS BS fresh', 'previouswork' => 'Taco Bell', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'lmwv2c', 'name' => 'Lawrence Williams', 'phone' => '1234557878', 'email' => 'lawrencewilliams.lw@gmail.com', 'gpa' => '3.2', 'graddate' => 'S17', 'program' => 'IT BA soph', 'previouswork' => 'Strip Club', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'jn9qc', 'name' => 'Jackson Nowotny', 'phone' => '7774448787', 'email' => 'ajnowotny@gmail.com', 'gpa' => '2.9', 'graddate' => 'F16', 'program' => 'CS BS junior', 'previouswork' => 'Burger King', 'speakscore' => '2', 'speakdate' => '05/20/2016']);
-		App\Applicant::create(['sso' => 'rmixv8', 'name' => 'Ryan Iffrig', 'phone' => '8988986655', 'email' => 'rmixv8@mail.missouri.edu', 'gpa' => '3.0', 'graddate' => 'F17', 'program' => 'IT BS senior', 'previouswork' => 'El Maquey', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'jpvc4', 'name' => 'Jake Parham', 'phone' => '1237895656', 'email' => 'jpvc4@mail.missouri.edu', 'gpa' => '1.9', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Panda Express', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'abc123', 'name' => 'John Smith', 'phone' => '5735551234', 'email' => 'fake@fake.fake', 'gpa' => '2.1', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Missing Person', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'zxy987', 'name' => 'Richard Nixon', 'phone' => '8085554321', 'email' => 'jowels@president.fake', 'gpa' => '2.2', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Wiretaps', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'fewft3', 'name' => 'Andrew Jackson', 'phone' => '5735558888', 'email' => 'banks@president.fake', 'gpa' => '2.3', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Politician', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'jfj675', 'name' => 'Rene Magritte', 'phone' => '1235551234', 'email' => 'paint@art.null', 'gpa' => '2.4', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Surrealism', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'bobros', 'name' => 'Bob Ross', 'phone' => '3145555555', 'email' => 'paint@art.happylittletrees', 'gpa' => '2.5', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Happy little trees', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'disney', 'name' => 'Walt Disney', 'phone' => '8125555555', 'email' => 'mickey@mouse.disney', 'gpa' => '2.6', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Animation', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'tal449', 'name' => 'Tim Laidlaw', 'phone' => '5735551956', 'email' => 'tal449@mail.missouri.edu', 'gpa' => '3.99', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'DoIT', 'speakscore' => NULL, 'speakdate' => NULL]);
-		App\Applicant::create(['sso' => 'gwbush', 'name' => 'George W Bush', 'phone' => '1235555555', 'email' => 'misunderestimate@president.fake', 'gpa' => '1.1', 'graddate' => 'S15', 'program' => 'CS BS senior', 'previouswork' => 'Lived & Worked Washington DC', 'speakscore' => NULL, 'speakdate' => NULL]);
+		DB::table('applicant')->delete();
+
+        App\Applicant::create(['sso' => 'lmwv2c', 'name' => 'Lawrence Williams', 'phone' => '1234557878', 'email' => 'lawrencewilliams.lw@gmail.com', 'gpa' => '3.2', 'graddate' => 'S17', 'program' => 'Und IT BA soph', 'previouswork' => 'Strip Club', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'wer443', 'name' => 'Michael Jordan', 'phone' => '1231231127', 'email' => 'winning@basket.ball', 'gpa' => '4.0', 'graddate' => 'S16', 'program' => 'Und CS BS fresh', 'previouswork' => 'Taco Bell', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'jn9qc', 'name' => 'Jackson Nowotny', 'phone' => '7774448787', 'email' => 'ajnowotny@gmail.com', 'gpa' => '2.9', 'graddate' => 'F16', 'program' => 'Und CS BS junior', 'previouswork' => 'Burger King', 'speakscore' => '2', 'speakdate' => '05/20/2016']);
+        App\Applicant::create(['sso' => 'rmixv8', 'name' => 'Ryan Iffrig', 'phone' => '8988986655', 'email' => 'rmixv8@mail.missouri.edu', 'gpa' => '3.0', 'graddate' => 'F17', 'program' => 'Und IT BS senior', 'previouswork' => 'El Maquey', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'abc123', 'name' => 'John Smith', 'phone' => '5735551234', 'email' => 'fake@fake.fake', 'gpa' => '2.1', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Missing Person', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'fewft3', 'name' => 'Andrew Jackson', 'phone' => '5735558888', 'email' => 'banks@president.fake', 'gpa' => '2.3', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Politician', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'jfj675', 'name' => 'Rene Magritte', 'phone' => '1235551234', 'email' => 'paint@art.null', 'gpa' => '2.4', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Surrealism', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'bobros', 'name' => 'Bob Ross', 'phone' => '3145555555', 'email' => 'paint@art.happylittletrees', 'gpa' => '2.5', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Happy little trees', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'disney', 'name' => 'Walt Disney', 'phone' => '8125555555', 'email' => 'mickey@mouse.disney', 'gpa' => '2.6', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Animation', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'tal449', 'name' => 'Tim Laidlaw', 'phone' => '5735551956', 'email' => 'tal449@mail.missouri.edu', 'gpa' => '3.99', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'DoIT', 'speakscore' => NULL, 'speakdate' => NULL]);
+        App\Applicant::create(['sso' => 'gwbush', 'name' => 'George W Bush', 'phone' => '1235555555', 'email' => 'misunderestimate@president.fake', 'gpa' => '1.1', 'graddate' => 'S15', 'program' => 'Und CS BS senior', 'previouswork' => 'Lived & Worked Washington DC', 'speakscore' => NULL, 'speakdate' => NULL]);
     }
 	
 }
@@ -200,80 +198,76 @@ class ApplicantCourseTableSeeder extends Seeder
         DB::table('applicantcourse')->delete();
 
 
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student never came to class but got good grades', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student would not stop talking during lecture', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was always in class and did great', 'recommendation' => 0]);
-		App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was annoying to the whole class', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student never came to class but got good grades']);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student would not stop talking during lecture']);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was always in class and did great']);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+		App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => NULL]);
+        App\Applicant_Course::create(['sso' => 'tal449', 'courseid' => 'CS1050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS1050', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
 
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => 'terrible student with no work ethic', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS2050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was caught cheating on homework', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was a delight to teach', 'recommendation' => 0]);
-		App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS2050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was a difficult to teach', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was never came to class', 'recommendation' => 0]);
-
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS2270', 'action' => '100', 'rank' => NULL, 'feedback' => 'this student failed every test', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2270', 'action' => '100', 'rank' => NULL, 'feedback' => 'student forgot about homeworks often', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS2270', 'action' => '010', 'rank' => NULL, 'feedback' => 'student got 100 in the class', 'recommendation' => 0]);
-
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student dropped my class after a week', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3050', 'action' => '010', 'rank' => NULL, 'feedback' => 'student transferred to hogwarts', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was very easy to teach and learned quickly', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS3050', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was a cheater', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was a a compulsive liar', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+		App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'tal449', 'courseid' => 'CS2050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2050', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2050', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
 
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3280', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was always early to class and ready to learn', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3280', 'action' => '010', 'rank' => NULL, 'feedback' => 'student was very attractive so I gave her an A', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3280', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was always in class but very quiet', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS2270', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS2270', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS2270', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3330', 'action' => '001', 'rank' => NULL, 'feedback' => 'student showed lack of effor all year', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS3330', 'action' => '010', 'rank' => NULL, 'feedback' => 'student was always eager to learn', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3330', 'action' => '100', 'rank' => NULL, 'feedback' => 'great student with a drive for success', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3330', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was very selfish', 'recommendation' => 0]);
-
-
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3380', 'action' => '100', 'rank' => NULL, 'feedback' => 'student had major flatulence problems', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3380', 'action' => '001', 'rank' => NULL, 'feedback' => 'student had fantastic breasts', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3380', 'action' => '010', 'rank' => NULL, 'feedback' => 'student showed up naked to class almost every day', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3380', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was a never to class on time', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3050', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3050', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
 
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4050', 'action' => '100', 'rank' => NULL, 'feedback' => 'awful student who cheats on tests', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student paid me to get good grades', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS4050', 'action' => '010', 'rank' => NULL, 'feedback' => 'student paid attention but forgot about homework', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4050', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was loud and annoying', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3280', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3280', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3280', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3330', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3330', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3330', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
 
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4270', 'action' => '001', 'rank' => NULL, 'feedback' => 'student got 100 in the class', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4270', 'action' => '010', 'rank' => NULL, 'feedback' => 'student showed little work ethic but was smart', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4270', 'action' => '001', 'rank' => NULL, 'feedback' => 'student never showed to class except tests', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4270', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was a delight to teach', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS4270', 'action' => '100', 'rank' => NULL, 'feedback' => 'student never learned anything', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS3380', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS3380', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS3380', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS3380', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'tal449', 'courseid' => 'CS3380', 'action' => '001', 'rank' => NULL, 'feedback' => NULL]);
 
 
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4320', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was obnoxious and loud', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4320', 'action' => '010', 'rank' => NULL, 'feedback' => 'student was very smart and polite always', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS4320', 'action' => '100', 'rank' => NULL, 'feedback' => 'student drove a lamborghini', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4320', 'action' => '100', 'rank' => NULL, 'feedback' => 'student did not like the way I teach', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4050', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4050', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
 
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4450', 'action' => '001', 'rank' => NULL, 'feedback' => 'student never wore pants to class', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4450', 'action' => '010', 'rank' => NULL, 'feedback' => 'student never wore shirts to class', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4450', 'action' => '001', 'rank' => NULL, 'feedback' => 'student wore only underwear to class', 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4270', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4270', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4270', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4270', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
 
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => 'student helped tutor in my office hours', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS4520', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was always prepared for class', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => 'student didnt try as hard as he shouldh have', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4520', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was very disrespectful', 'recommendation' => 0]);
-        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4520', 'action' => '100', 'rank' => NULL, 'feedback' => 'student was awesome', 'recommendation' => 0]);
 
-        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => 'student helped tutor in my office hours']);
-        App\Applicant_Course::create(['sso' => 'jpvc4', 'courseid' => 'CS4520', 'action' => '001', 'rank' => NULL, 'feedback' => 'student was always prepared for class']);
-        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => 'student didnt try as hard as he shouldh have']);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4320', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4320', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4320', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'tal449', 'courseid' => 'CS4320', 'action' => '001', 'rank' => NULL, 'feedback' => NULL]);
+
+
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4450', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4450', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4450', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4520', 'action' => '010', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'jn9qc', 'courseid' => 'CS4520', 'action' => '001', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'wer443', 'courseid' => 'CS4520', 'action' => '100', 'rank' => NULL, 'feedback' => NULL, 'recommendation' => 0]);
+        App\Applicant_Course::create(['sso' => 'rmixv8', 'courseid' => 'CS4520', 'action' => '001', 'rank' => NULL, 'feedback' => NULL]);
+        App\Applicant_Course::create(['sso' => 'lmwv2c', 'courseid' => 'CS4520', 'action' => '100', 'rank' => NULL, 'feedback' => NULL]);
     }
 }
 
