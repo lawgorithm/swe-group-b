@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Mail;
 use Session;
 use Redirect;
 use Laracasts\Flash\Flash;
+use Swift_SmtpTransport;
+use Swift_Mailer;
 
 //use Illuminate\Http\Request;
 
@@ -205,27 +207,38 @@ class ApplicantController extends Controller {
         );
 
         if($offerResponse == "yes") {
-            $data = ['email'=>$email, 'name' => $name];
+            $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+                ->setUsername('tapplemizzou@gmail.com')
+                ->setPassword('Riley123..');
 
-            Mail::send('emails.responseYes', $data, function ($message) use ($data) {
-                $message->from($data['email'], $data['name']);
-                $message->to('jake.august.parham@gmail.com')->subject('RE: TA Position Job Offer!');
-            });
+            $mailer = Swift_Mailer::newInstance($transport);
+
+            $message = \Swift_Message::newInstance('RE: TA Job Offer!')
+                ->setFrom(array('tapplemizzou@gmail.com'))
+                ->setTo(array('jake.august.parham@gmail.com'))
+                ->setBody("Yes, I would like to TA for ".$course."!");
+
+            $result = $mailer->send($message);
         }
         else if($offerResponse == "no") {
-            $data = ['email'=>$email, 'name'=>$name];
+            $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+                ->setUsername('tapplemizzou@gmail.com')
+                ->setPassword('Riley123..');
 
-            Mail::send('emails.responseNo', $data, function ($message) use ($data) {
-                $message->from($data['email'], $data['name']);
-                $message->to('jake.august.parham@gmail.com')->subject('RE: TA Position Job Offer!');
-            });
+            $mailer = Swift_Mailer::newInstance($transport);
+
+            $message = \Swift_Message::newInstance('RE: TA Job Offer!')
+                ->setFrom(array($email))
+                ->setTo(array('jake.august.parham@gmail.com'))
+                ->setBody("I would not like to TA for " . $course . " at this time. Thank you for the offer.");
+
+            $result = $mailer->send($message);
         }
 
         $appOffer = new Applicant_offer();
         $appOffer->updateOfferAccepted($applicant);
 
         return Redirect::to('applicant/accepted');
-
     }
 
 }

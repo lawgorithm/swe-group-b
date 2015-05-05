@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Laracasts\Flash\Flash;
+use Swift_SmtpTransport;
+use Swift_Mailer;
+
 
 
 class AdminController extends Controller
@@ -243,11 +246,18 @@ class AdminController extends Controller
 
         if (isset($email)) {
 
-            $data = ['recipient' => $email];
+            $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+                ->setUsername('tapplemizzou@gmail.com')
+                ->setPassword('Riley123..');
 
-            Mail::send('emails.offer', $data, function ($message) use ($data) {
-                $message->to($data['recipient'])->subject('TA Position Job Offer!');
-            });
+            $mailer = Swift_Mailer::newInstance($transport);
+
+            $message = \Swift_Message::newInstance('TA Job Offer!')
+                ->setFrom(array('tapplemizzou@gmail.com'))
+                ->setTo(array($email))
+                ->setBody("Congradulations, You have been offered a TA position for ".$course."!");
+
+            $result = $mailer->send($message);
 
             $appOffer->updateOfferSentBySso($applicant);
 
