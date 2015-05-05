@@ -32,7 +32,7 @@ class InstructorController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['home']]);
+        $this->middleware('time', ['except' => ['home', 'about']]);
     }
 
     public function index()
@@ -41,6 +41,11 @@ class InstructorController extends Controller {
         $courses = $courses->getAllCourses();
 
         return view('course', ['courses' => $courses]);
+    }
+
+    public function about()
+    {
+        return view('instructor/about');
     }
 
     public function home()

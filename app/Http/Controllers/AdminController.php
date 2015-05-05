@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
 use App\Phase;
-//use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
@@ -33,7 +32,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['only' => ['rank', 'rankShow', 'submit', 'save']]);
+        $this->middleware('time', ['only' => ['rank', 'rankShow', 'submit', 'save', 'sendOffers', 'sendEmail']]);
     }
 
     /**

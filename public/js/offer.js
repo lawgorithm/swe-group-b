@@ -26,7 +26,7 @@ $("document").ready(function(){
             url: url,
             data: email,
             beforeSend: function() {
-                //$(".email-send").toggleClass('active');
+                $(".email-send").toggleClass('active');
             },
             success: function (data) {
                 if (data.status != 'failure') {

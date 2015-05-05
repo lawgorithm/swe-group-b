@@ -24,7 +24,12 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['index', 'home', 'accepted', 'updateAccepted']]);
+        $this->middleware('time', ['except' => ['index', 'home', 'about', 'accepted', 'updateAccepted']]);
+    }
+
+    public function about()
+    {
+        return view('admin/about');
     }
 
     public function home()
@@ -35,7 +40,7 @@ class ApplicantController extends Controller {
 
         $sso = \Auth::user()->sso;
         $offers = new Applicant_offer();
-        $offers = $offers->getAllOffersBySSO($sso);
+        $offers = $offers->getOfferedCourseBySSO($sso);
 
         date_default_timezone_set('America/Chicago');
         $curDate = getdate();
@@ -94,7 +99,7 @@ class ApplicantController extends Controller {
 
         $user = \Auth::user()->toArray();
 
-        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : 0;
+        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : null;
 
         $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
 
