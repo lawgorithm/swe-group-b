@@ -10,7 +10,6 @@
 <div class="wrapper centered">
 	<div>Welcome {{ $name }}</div>
 	<div>{{ $message }}</div>
-</div>
 @endsection
 
 @section('scripts')

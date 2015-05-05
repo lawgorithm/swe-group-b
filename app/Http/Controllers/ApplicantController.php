@@ -24,11 +24,12 @@ class ApplicantController extends Controller {
     {
         $this->middleware('auth');
         $this->middleware('role');
-        $this->middleware('time', ['except' => ['index','about', 'home', 'accepted', 'updateAccepted']]);
+        $this->middleware('time', ['except' => ['index', 'home', 'about', 'accepted', 'updateAccepted']]);
     }
 
-    public function about(){
-        return view('applicant/about');
+    public function about()
+    {
+        return view('admin/about');
     }
 
     public function home()
@@ -36,6 +37,10 @@ class ApplicantController extends Controller {
         $applicantName = \Auth::user()->name;
         $phase = new Phase();
         $phase = $phase->getPhaseData();
+
+        $sso = \Auth::user()->sso;
+        $offers = new Applicant_offer();
+        $offers = $offers->getOfferedCourseBySSO($sso);
 
         date_default_timezone_set('America/Chicago');
         $curDate = getdate();
@@ -49,21 +54,32 @@ class ApplicantController extends Controller {
         $phaseTransition = strtotime($phaseTransition);
         $phaseClose = strtotime($phaseClose);
 
-        $message = "Applications are now closed!";
+        $message = "Applications are now closed! ";
+        $offersPending = false;
 
-        if( $curDate >= $phaseOpen && $curDate < $phaseTransition ) {
-            $message = "Applications are open!";
-        } else if ( $curDate > $phaseTransition && $curDate < $phaseClose ) {
-            $message = "Applications are closed, ";
-            if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
-                $message = $message . "come back next year.";
-            else
-                $message = $message . "offers pending.";
-        } else {
-            $message = "TA applications will open sometime I guess.";
+        foreach ($offers as $offer) {
+            if ($offer->offeraccepted == false) {
+                $offersPending = true;
+            }
         }
 
-        return view('applicant/home', ['name' => $applicantName, 'message' => $message]);    }
+        if( $curDate >= $phaseOpen && $curDate < $phaseTransition ) {
+            $message = "Applications are open! ";
+        } else if ( $curDate > $phaseTransition && $curDate < $phaseClose ) {
+            $message = "Applications are closed.";
+            if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
+                $message = $message . "Come back next year.";
+            else
+                $message = $message . "Offers pending.";
+        } else {
+            if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
+                $message = $message . "Come back next year.";
+            else
+                $message = $message . "Offers pending.";
+        }
+
+        return view('applicant/home', ['name' => $applicantName, 'message' => $message, 'offersPending' => $offersPending, 'offers' => $offers]);    
+    }
 
     public function form()
     {
@@ -83,7 +99,7 @@ class ApplicantController extends Controller {
 
         $user = \Auth::user()->toArray();
 
-        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : 0;
+        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : null;
 
         $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
 
@@ -115,7 +131,7 @@ class ApplicantController extends Controller {
 
         $badMessage = validInput( $validArray );
         if ( $badMessage != "" ) {
-            Session::flash('Validation_Error', $badMessage);
+            Flash::error($badMessage);
             return Redirect::to('applicant/form');
         }
 

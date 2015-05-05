@@ -58,10 +58,10 @@
       </div>
                
       <div class="form-inline">
-        <label for="opt">*SPEAK/OPT score</label>
+        <label for="opt">*SPEAK/OPT</label>
         <input type="text" class="form-control" style="width: 80px; margin-right: 20px;" id="opt" name="studentOpt" placeholder="4">
 
-        <label for="prevTaught">Semester of last test</label>
+        <label for="prevTaught">*Semester of last test</label>
         <select class="form-control" name="speakDate">
           <option value=''></option>
           <option value="F12">Fall 2012</option>
