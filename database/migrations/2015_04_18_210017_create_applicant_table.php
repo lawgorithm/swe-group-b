@@ -26,7 +26,7 @@ class CreateApplicantTable extends Migration {
 			$table->string('previouswork', 140)->nullable();#Optional work history
 			$table->integer('speakscore')->nullable();#Optional speech score for non-native english speakers
 			$table->string('speakdate')->nullable();#Optional date of speech test
-
+            $table->foreign('sso')->references('sso')->on('role')->onDelete('cascade');#If Applicant DNE, then role and subsequent applications should be removed
 		});
 	}
 
