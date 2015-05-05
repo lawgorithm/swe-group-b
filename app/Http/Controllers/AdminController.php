@@ -90,7 +90,7 @@ class AdminController extends Controller
             ->where('applicantcourse.courseid', '=', $id)
             ->select('*')
             ->orderBy('applicantcourse.rank', 'asc')
-            ->orderBy('applicantcourse.recommendation', 'desc')
+            ->orderBy('applicantcourse.recommendation', 'asc')
             ->orderBy('applicant.gpa', 'desc')
             ->get();
 
