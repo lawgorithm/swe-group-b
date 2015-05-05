@@ -1,0 +1,25 @@
+/* TEAM */
+
+Database Guru: Lawrence Williams.
+Email: lawrencewilliams.lw@gmail.com
+Github: https://github.com/lawgorithm
+
+
+
+/* THANKS */
+
+
+Name: name or url
+
+
+
+/* SITE */
+
+Standards: HTML5, CSS3
+
+Components: Laravel 5
+
+Last update:2012/02/04
+	Language: English
+	Doctype: HTML5
+	IDE: PhpStorm, Sublime Text

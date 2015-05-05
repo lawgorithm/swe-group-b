@@ -140,26 +140,6 @@ INSERT INTO applicantcourse VALUES ('jfj675','CS2050','2','blah');
 INSERT INTO applicantcourse VALUES ('abc123','CS4320','1','blah blah');
 INSERT INTO applicantcourse VALUES ('zyx987','CS4320','2','blah blah blah');
 
-/*INSERT INTO applicantoffer VALUES ('wer443','CS1050');
-INSERT INTO applicantoffer VALUES ('zyx987');
-INSERT INTO applicantoffer VALUES ('jfj675');
-INSERT INTO applicantoffer VALUES ('abc123');
-INSERT INTO applicantoffer VALUES ('fewft3');
-INSERT INTO applicantoffer VALUES ('bobros');
-INSERT INTO applicantoffer VALUES ('disney');
-INSERT INTO applicantoffer VALUES ('');
-
-NOT IN USE UNTIL OFFERS ARE MADE
-*/
-
-
-
-/*INSERT INTO section VALUES ('A','Monday Morning','0','CS4320','Mon 8AM');
-INSERT INTO section VALUES ('B','Monday Morning','0','CS4320','Mon 2PM');
-
-DONE AWAY W/ SEC TABLE, PROFESSORS KNOW HOW MANY TA'S TO ACCEPT
-*/
-
 INSERT INTO role VALUES ('wer443','applicant');
 INSERT INTO role VALUES ('zyx987','applicant');
 INSERT INTO role VALUES ('jfj675','applicant');

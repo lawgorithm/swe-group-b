@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Course;
 use App\Applicant;
 use App\Phase;
-//use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
