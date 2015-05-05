@@ -84,7 +84,7 @@ class ApplicantController extends Controller {
 
         $user = \Auth::user()->toArray();
 
-        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : 0;
+        $speakscore = ($input['studentOpt'] != "") ? $input['studentOpt'] : null;
 
         $speakdate = ($input['speakDate'] != "") ? $input['speakDate'] : null;
 
