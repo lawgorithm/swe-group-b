@@ -64,18 +64,18 @@ class ApplicantController extends Controller {
         }
 
         if( $curDate >= $phaseOpen && $curDate < $phaseTransition ) {
-            $message = "Applications are open! ";
+            $message = "Applications are open! \n";
         } else if ( $curDate > $phaseTransition && $curDate < $phaseClose ) {
-            $message = "Applications are closed.";
+            $message = "Applications are closed.\n";
             if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
-                $message = $message . "Come back next year.";
+                $message = $message . "Come back next year.\n";
             else
-                $message = $message . "Offers pending.";
+                $message = $message . "Offers pending.\n";
         } else {
             if (!Applicant::checkIfSubmitted(\Auth::user()->sso))
-                $message = $message . "Come back next year.";
+                $message = $message . "Come back next year.\n";
             else
-                $message = $message . "Offers pending.";
+                $message = $message . "Offers pending.\n";
         }
 
         return view('applicant/home', ['name' => $applicantName, 'message' => $message, 'offersPending' => $offersPending, 'offers' => $offers]);    
