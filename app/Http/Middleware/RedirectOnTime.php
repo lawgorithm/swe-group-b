@@ -19,8 +19,13 @@ class RedirectOnTime {
         $phase = Phase::getPhaseData();
         if ($phase == null)
         {
-            Flash::info('No Times Set!');
             $role = $request->user()->getRole();
+            if ($request->user()->isAdmin())
+            {
+                return redirect("admin/settings");
+            }
+
+            Flash::info('No Times Set!');
             return redirect($role . '/home');
         }
         if ($request->user()->isApplicant() && (($phase->open > Carbon::now('America/Chicago')) || ($phase->transition < Carbon::now('America/Chicago'))))
