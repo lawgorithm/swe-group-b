@@ -25,8 +25,7 @@ class AdminController extends Controller
 {
 
     protected $check;
-    protected $phaseDefinition = ['Awaiting Configuration', 'Awaiting Opening', 'Collecting Applications', 'Collecting Feedback', 'Awaiting Ranking'];
-    protected $phaseFormat = 'l, F jS';
+
 
     /**
      * rank constructor: checks auth and role middleware
@@ -45,7 +44,11 @@ class AdminController extends Controller
      */
     public function home()
     {
-        return view('admin/home', $this->getPhaseData());
+        $phase = Phase::getPhaseData();
+        if ($phase == null) {
+            return redirect('admin/settings');
+        }
+        return view('admin/home', Phase::getPhaseText());
     }
 
     public function about()
@@ -154,49 +157,7 @@ class AdminController extends Controller
 
     public function settings()
     {
-        return view('admin/settings', $this->getPhaseData());
-    }
-
-    public function getPhaseData()
-    {
-        $data = [];
-        $data['phaseCode'] = $this->getPhaseCode();
-        $data['phaseDefinition'] = $this->phaseDefinition[$data['phaseCode']];
-
-        if ($data['phaseCode'] !== 0) {
-
-            $hold = Phase::all()->last()->toArray();
-
-            $fs = $this->phaseFormat;
-
-            $data['open'] = Carbon::parse($hold['open'])->format($fs);
-            $data['transition'] = Carbon::parse($hold['transition'])->format($fs);
-            $data['close'] = Carbon::parse($hold['close'])->format($fs);
-            $data['author'] = $hold['author'];
-
-        }
-        return $data;
-    }
-
-    public function getPhaseCode()
-    {
-        $hold = Phase::all();
-        $dt = Carbon::now('America/Chicago');
-
-        if ($hold->count() === 0) {
-            return 0;
-        }
-        $hold = $hold->last()->toArray();
-
-        if ($dt < $hold['open']) {
-            return 1;
-        } else if ($dt >= $hold['open'] && $dt < $hold['transition']) {
-            return 2;
-        } else if ($dt >= $hold['transition'] && $dt < $hold['close']) {
-            return 3;
-        } else if ($dt >= $hold['close']) {
-            return 4;
-        }
+        return view('admin/settings', Phase::getPhaseText());
     }
 
 
@@ -208,8 +169,10 @@ class AdminController extends Controller
         $phase = Phase::create($input);
 
         $phase->save();
-        
-        return view('admin/settings', $this->getPhaseData());
+
+        Flash::success('Settings were updated!');
+        return view('admin/settings', Phase::getPhaseText());
+
     }
 
     public function sendOffers()

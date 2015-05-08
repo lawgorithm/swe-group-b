@@ -42,7 +42,6 @@
         @else
             <div class="alert alert-warning text-center" role="alert">
                 <p>Your application phases have not been set.</p>
-
             </div>
         @endif
         <div class="settings-form">
