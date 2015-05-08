@@ -19,3 +19,9 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# phpStorm
+*.iml
+
+## Directory-based project format:
+.idea/
