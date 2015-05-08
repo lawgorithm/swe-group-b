@@ -50,6 +50,15 @@ $(function() {
 			moreTaught = moreTaught + 1;
 		}
 	});
+    $("#lessTaught").click(function(e) {
+        if (moreTaught > 0) {
+            $("[id=prevTaught]").get(moreTaught).remove();
+            moreTaught = moreTaught - 1;
+        }
+        else if (moreTaught == 0) {
+            $("[id=prevTaught]").get(moreTaught).value = "";
+        }
+    });
 
 	$("#moreCurrent").click(function(e) {
 		var obj = $("#currTaught").clone()
@@ -59,6 +68,15 @@ $(function() {
 			moreCurrent = moreCurrent + 1;
 		}
 	});
+    $("#lessCurrent").click(function(e) {
+        if (moreCurrent > 0) {
+            $("[id=currTaught]").get(moreCurrent).remove();
+            moreCurrent = moreCurrent - 1;
+        }
+        else if (moreCurrent == 0) {
+            $("[id=currTaught]").get(moreCurrent).value = "";
+        }
+    });
 
 	$("#moreWant").click(function(e) {
 		var obj = $("#likeTeach").clone();
@@ -68,6 +86,15 @@ $(function() {
 			moreWant = moreWant + 1;
 		}
 	});
+    $("#lessWant").click(function(e) {
+        if (moreWant > 0) {
+            $("[id=likeTeach]").get(moreWant).remove();
+            moreWant = moreWant - 1;
+        }
+        else if (moreWant == 0) {
+            $("[id=likeTeach]").get(moreWant).value = "";
+        }
+    });
 
 	$("#moreJobs").click(function(e) {
 		var obj = $("#work").clone();
@@ -78,6 +105,15 @@ $(function() {
 			moreJobs = moreJobs + 1;
 		}
 	});
+    $("#lessJobs").click(function(e) {
+        if (moreJobs > 0) {
+            $("[id=work]").get(moreJobs).remove();
+            moreJobs = moreJobs - 1;
+        }
+        else if (moreJobs == 0) {
+            $("[id=work]").get(moreJobs).value = "";
+        }
+    });
 
 	$("#next1").click(function(e) {
 		e.preventDefault();

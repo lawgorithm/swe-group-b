@@ -55,6 +55,7 @@
         <br />
         <input type="text" class="form-control" id="work" name="studentWork[]" style="width: 110px" placeholder="Google">
         <div class="btn btn-success" id="moreJobs">+</div>
+        <div class="btn btn-success" id="lessJobs">-</div>
       </div>
                
       <div class="form-inline">
@@ -101,6 +102,7 @@
             @endforeach
         </select>
         <div class="btn btn-success" id="moreTaught">+</div>
+        <div class="btn btn-success" id="lessTaught">-</div>
       </div>
 
       <label for="currTaught">*Currently teaching</label>
@@ -112,6 +114,7 @@
             @endforeach
         </select>
         <div class="btn btn-success" id="moreCurrent">+</div>
+        <div class="btn btn-success" id="lessCurrent">-</div>
       </div>
 
       <label for="likeTeach">Would like to teach</label>
@@ -123,6 +126,7 @@
             @endforeach
         </select>
         <div class="btn btn-success" id="moreWant">+</div>
+        <div class="btn btn-success" id="lessWant">-</div>
       </div>
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <div class="submit-button">
